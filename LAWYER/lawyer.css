@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Custom Variables
+   ========================================================================== */
+:root {
+    --gold: #d4af37;
+}
+/* ==========================================================================
+   Typography & Base
+   ========================================================================== */
+.tail-container {
+    font-family: 'Inter', system-ui, sans-serif;
+}
+.heading-font {
+    font-family: 'Playfair Display', serif;
+}
+.hero-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.78)),
+                url('lawyer images/hero lawyer lady.jpg') center/cover no-repeat;
+    background-position: center 25%;
+    background-attachment: fixed;
+}
+@media (max-width: 640px) {
+    .hero-bg {
+        background: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.82)),
+                    url('lawyer images/hero lawyer lady.jpg') center/cover no-repeat;
+    }
+}
+/* ==========================================================================
+   Gold Button
+   ========================================================================== */
+.gold-button {
+    background-color: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.gold-button:hover {
+    background-color: var(--gold);
+    color: #1a1a1a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+}
+/* ==========================================================================
+   Navigation Links
+   ========================================================================== */
+.nav-link {
+    position: relative;
+    color: white;
+    transition: color 0.2s ease;
+}
+.nav-link:hover {
+    color: var(--gold) !important;
+}
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--gold);
+    transition: width 0.3s ease;
+}
+.nav-link:hover:after {
+    width: 100%;
+}
+/* ==========================================================================
+   Mobile Menu
+   ========================================================================== */
+#mobile-menu {
+    padding: 2rem 1.5rem;
+}
+#mobile-menu a {
+    display: block;
+    padding: 0.5rem 0;
+    font-size: 1.125rem;
+    transition: color 0.2s ease;
+}
+#mobile-menu a:hover {
+    color: var(--gold);
+}
+/* ==========================================================================
+   Practice Cards
+   ========================================================================== */
+.practice-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e5e5e5;
+    background: white;
+    height: 100%;
+}
+.practice-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.25);
+}
+/* ==========================================================================
+   Image Containers (now using aspect-square for reduced height)
+   ========================================================================== */
+.aspect-square,
+.aspect-\[4\/5\],
+.aspect-\[3\/4\] {
+    position: relative;
+}
+.aspect-square img,
+.aspect-\[4\/5\] img,
+.aspect-\[3\/4\] img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.aspect-square:hover img,
+.aspect-\[4\/5\]:hover img,
+.aspect-\[3\/4\]:hover img {
+    transform: scale(1.06);
+}
+/* ==========================================================================
+   Testimonial Slider
+   ========================================================================== */
+.testimonial-slide {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* ==========================================================================
+   Scroll Reveal Animations
+   ========================================================================== */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), 
+                transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Visible but subtle section dividers */
+.h-px.bg-gradient-to-r {
+    height: 1px;
+    opacity: 0.7;
+}

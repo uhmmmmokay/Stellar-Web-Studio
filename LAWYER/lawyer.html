@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Gegaros | Premier New York Trial Attorney</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="lawyer.css">
+</head>
+<body class="tail-container bg-white text-neutral-900">
+<header class="bg-black border-b border-neutral-800 sticky top-0 z-50">
+    <div class="max-w-[1920px] mx-auto px-6 lg:px-8 py-4">
+        <div class="flex items-center justify-between">
+            <!-- Logo - left -->
+            <a href="#home" class="flex-shrink-0">
+                <img src="lawyer.svg" alt="Mark Gegaros" class="h-10 sm:h-12 w-auto">
+            </a>
+            <!-- Right side container: nav + button + hamburger -->
+            <div class="flex items-center gap-6 lg:gap-10">
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-x-6 text-base font-semibold whitespace-nowrap">
+                    <a href="#home" class="nav-link text-white hover:text-[#d4af37] transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-white hover:text-[#d4af37] transition-colors">About</a>
+                    <a href="#practice" class="nav-link text-white hover:text-[#d4af37] transition-colors">Practice Areas</a>
+                    <a href="#results" class="nav-link text-white hover:text-[#d4af37] transition-colors">Results</a>
+                    <a href="#contact" class="nav-link text-white hover:text-[#d4af37] transition-colors">Contact</a>
+                </nav>
+                <!-- Desktop Free Consultation Button -->
+                <button
+                    onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"
+                    class="hidden lg:block gold-button whitespace-nowrap px-6 py-3 text-sm font-semibold uppercase tracking-wider rounded-none transition-all"
+                >
+                    FREE CONSULTATION
+                </button>
+                <!-- Mobile Hamburger -->
+                <button id="mobile-menu-btn" class="lg:hidden text-2xl text-white focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu – very tight variant -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-black border-t border-neutral-800 px-6 py-6">
+        <div class="flex flex-col gap-4 text-lg font-medium text-white">
+            <a href="#home" class="block py-1.5">Home</a>
+            <a href="#about" class="block py-1.5">About Mark</a>
+            <a href="#practice" class="block py-1.5">Practice Areas</a>
+            <a href="#results" class="block py-1.5">Notable Results</a>
+            <a href="#contact" class="block py-1.5">Contact</a>
+            <button
+                onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
+                         document.getElementById('mobile-menu').classList.add('hidden');
+                         document.getElementById('mobile-menu-btn').innerHTML = '<i class=\'fa-solid fa-bars\'></i>';"
+                class="mt-1 gold-button w-full py-3 text-sm font-semibold uppercase tracking-wider transition-all border-t border-neutral-700 pt-4"
+            >
+                FREE CONSULTATION
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero-bg min-h-screen flex items-center text-white relative">
+    <div class="w-full mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-9 2xl:px-10 py-10 lg:py-14">
+        <div class="w-full lg:w-[92%] xl:w-[94%] 2xl:w-[95%] pl-0 lg:pl-3 xl:pl-4 2xl:pl-5">
+            <h1 class="heading-font text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-none mb-3 lg:mb-5">
+                MARK GEGAROS
+            </h1>
+            <p class="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-white/95 mb-5 lg:mb-7">
+                Premier Trial Attorney Since 1995
+            </p>
+            <div class="inline-flex items-center gap-x-3 bg-white/15 backdrop-blur-md px-5 py-1.5 rounded-none text-sm tracking-widest mb-7 lg:mb-9">
+                <span class="w-2 h-2 bg-[#d4af37] rounded-full animate-pulse"></span>
+                NEW YORK CITY
+            </div>
+            <p class="max-w-2xl text-base sm:text-lg lg:text-xl text-white/85 leading-relaxed mb-9 lg:mb-12">
+                Thirty years of courtroom victories. Over $150 million recovered.
+                When everything is on the line, New York turns to Mark Gegaros.
+            </p>
+            <div class="flex flex-wrap gap-4 sm:gap-6">
+                <button
+                    onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"
+                    class="gold-button px-7 py-4 sm:px-9 sm:py-5 text-sm sm:text-base font-semibold uppercase tracking-widest flex items-center gap-x-3 hover:shadow-xl transition-all duration-300"
+                >
+                    <span>Schedule Confidential Consultation</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <a href="#results"
+                   class="border border-white/60 hover:border-white px-7 py-4 sm:px-9 sm:py-5 text-sm sm:text-base font-medium uppercase tracking-widest flex items-center transition-all duration-300"
+                >
+                    View Landmark Results
+                </a>
+            </div>
+            <div class="mt-10 lg:mt-14 flex flex-wrap items-center gap-x-8 gap-y-6 text-sm sm:text-base">
+                <div class="flex items-center gap-x-3">
+                    <i class="fa-solid fa-award text-[#d4af37] text-2xl sm:text-3xl"></i>
+                    <div>
+                        <div class="font-semibold">AV Preeminent®</div>
+                        <div class="text-white/70 text-xs sm:text-sm">Martindale-Hubbell</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <i class="fa-solid fa-star text-[#d4af37] text-2xl sm:text-3xl"></i>
+                    <div>
+                        <div class="font-semibold">Super Lawyers®</div>
+                        <div class="text-white/70 text-xs sm:text-sm">2008–2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="bg-neutral-900 py-6 fade-in-section">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-8 text-white text-center">
+            <div class="flex flex-col items-center">
+                <span class="text-[#d4af37] text-4xl font-bold">150+</span>
+                <span class="text-xs tracking-widest mt-1">VERDICTS &amp; SETTLEMENTS</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-[#d4af37] text-4xl font-bold">$150M+</span>
+                <span class="text-xs tracking-widest mt-1">RECOVERED</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-[#d4af37] text-4xl font-bold">30</span>
+                <span class="text-xs tracking-widest mt-1">YEARS EXPERIENCE</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-[#d4af37] text-4xl font-bold">AV®</span>
+                <span class="text-xs tracking-widest mt-1">PREEMINENT RATED</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-[#d4af37] text-4xl font-bold">NY</span>
+                <span class="text-xs tracking-widest mt-1">STATE &amp; FEDERAL COURTS</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-[#d4af37] text-4xl font-bold">100%</span>
+                <span class="text-xs tracking-widest mt-1">PERSONAL SERVICE</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- INTRODUCTION -->
+<section class="py-16 lg:py-20 bg-white fade-in-section">
+    <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
+        <div class="grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <!-- Left: text content -->
+            <div class="md:col-span-7 lg:col-span-6 order-2 md:order-1 pt-4 lg:pt-8">
+                <span class="uppercase text-[#d4af37] text-sm md:text-base tracking-[4px] font-medium">NEW YORK’S PREMIER LITIGATION COUNSEL</span>
+                <h2 class="heading-font text-5xl sm:text-6xl lg:text-7xl leading-tight tracking-tighter mt-4 mb-6">
+                    Your Case.<br>Your Life.<br>Our Fight.
+                </h2>
+                <div class="prose prose-lg lg:prose-xl max-w-none text-neutral-700">
+                    <p class="text-xl lg:text-2xl">For more than three decades, Mark Gegaros has stood as one of New York’s most respected and results-driven advocates. From the boardrooms of Fortune 500 companies to the courtrooms of every borough, Mr. Gegaros has built a legacy of uncompromising excellence in complex civil litigation and catastrophic personal injury matters.</p>
+                    <p class="mt-6 text-lg lg:text-xl">Our Midtown Manhattan office in One Grand Central Place serves clients throughout the five boroughs and the entire State of New York. Every client receives Mark’s personal cell-phone number and direct access to him at every stage of the case.</p>
+                </div>
+            </div>
+            <!-- Right: shorter image -->
+            <div class="md:col-span-5 lg:col-span-6 order-1 md:order-2">
+                <div class="aspect-square overflow-hidden rounded-xl shadow-2xl">
+                    <img
+                        src="lawyer images/mark lawyer.jpg"
+                        alt="Mark Gegaros"
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subtle divider -->
+    <div class="h-px bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent my-10 lg:my-16 mx-auto max-w-5xl"></div>
+</section>
+
+<!-- ABOUT MARK -->
+<section id="about" class="py-16 lg:py-24 bg-neutral-50 fade-in-section">
+    <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
+        <!-- Part 1: Who I Am -->
+        <div class="grid md:grid-cols-12 gap-8 lg:gap-12 items-start mb-16 lg:mb-20">
+            <!-- Image -->
+            <div class="md:col-span-5 lg:col-span-5 order-1 md:order-2">
+                <div class="aspect-square overflow-hidden rounded-xl shadow-2xl">
+                    <img
+                        src="lawyer images/mark lawyer2.jpg"
+                        alt="Mark Gegaros"
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+            <!-- Text -->
+            <div class="md:col-span-7 lg:col-span-7 order-2 md:order-1 pt-4 lg:pt-8">
+                <span class="text-[#d4af37] uppercase text-sm md:text-base tracking-wider font-medium">WHO I AM</span>
+                <h2 class="heading-font text-5xl sm:text-6xl lg:text-7xl tracking-tighter mt-4 mb-6">
+                    Mark Gegaros
+                </h2>
+                <div class="text-neutral-700 prose prose-lg lg:prose-xl">
+                    <p class="text-lg lg:text-xl">Born and raised in New York City. Columbia Law School graduate. Former Manhattan Assistant District Attorney. Clerk to the Honorable Robert P. Patterson Jr. in the U.S. District Court.</p>
+                    <p class="mt-6">Founder of the Law Offices of Mark Gegaros in 1995 with one mission: deliver the highest caliber of legal representation to clients who demand excellence.</p>
+                </div>
+                <a href="#contact" class="inline-flex items-center gap-x-3 mt-10 text-[#d4af37] font-semibold text-lg hover:text-[#d4af37]/80 transition-colors">
+                    MEET MARK IN PERSON <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Part 2: Education & Experience -->
+        <div class="grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <!-- Text -->
+            <div class="md:col-span-7 lg:col-span-7 pt-4 lg:pt-8">
+                <div class="prose prose-lg lg:prose-xl text-neutral-700">
+                    <h3 class="heading-font text-3xl lg:text-4xl tracking-tight mb-6">Education & Clerkships</h3>
+                    <ul class="list-none space-y-5 lg:space-y-6 text-lg">
+                        <li class="flex gap-x-6"><span class="font-semibold w-44 shrink-0">Columbia Law School</span><span>J.D. 1992 – Notes Editor, Columbia Law Review</span></li>
+                        <li class="flex gap-x-6"><span class="font-semibold w-44 shrink-0">Fordham University</span><span>B.A. magna cum laude 1989</span></li>
+                        <li class="flex gap-x-6"><span class="font-semibold w-44 shrink-0">U.S. District Court SDNY</span><span>Law Clerk to Hon. Robert P. Patterson Jr.</span></li>
+                    </ul>
+                    <h3 class="heading-font text-3xl lg:text-4xl tracking-tight mt-12 mb-6">Admissions & Memberships</h3>
+                    <p class="text-lg lg:text-xl">New York State • U.S. District Courts (SDNY & EDNY) • Second Circuit Court of Appeals • United States Supreme Court • New York State Trial Lawyers Association • American Association for Justice • Million Dollar Advocates Forum</p>
+                </div>
+            </div>
+            <!-- Image -->
+            <div class="md:col-span-5 lg:col-span-5">
+                <div class="aspect-square overflow-hidden rounded-xl shadow-2xl">
+                    <img
+                        src="lawyer images/mark lawyer4.jpg"
+                        alt="Mark Gegaros professional"
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Divider after About section -->
+    <div class="h-px bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent my-10 lg:my-16 mx-auto max-w-5xl"></div>
+</section>
+
+<!-- PRACTICE AREAS -->
+<section id="practice" class="py-16 lg:py-20 bg-white fade-in-section">
+    <div class="max-w-screen-2xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="uppercase text-[#d4af37] text-sm lg:text-base tracking-[4px] font-medium">AREAS OF FOCUS</span>
+            <h2 class="heading-font text-5xl sm:text-6xl lg:text-7xl tracking-tighter mt-3 mb-8">
+                Practice Areas
+            </h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            <!-- Card 1 -->
+            <div class="practice-card border border-neutral-200 p-8 lg:p-10 group hover:shadow-xl transition-all duration-300">
+                <div class="h-2 bg-[#d4af37] w-12 mb-6"></div>
+                <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Catastrophic Personal Injury &amp; Wrongful Death</h3>
+                <p class="text-neutral-600 text-base lg:text-lg">Traumatic brain injuries, spinal cord paralysis, amputations, and fatal accidents. We have secured eight- and nine-figure recoveries against the largest insurers and corporations.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="practice-card border border-neutral-200 p-8 lg:p-10 group hover:shadow-xl transition-all duration-300">
+                <div class="h-2 bg-[#d4af37] w-12 mb-6"></div>
+                <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Medical Malpractice &amp; Healthcare Litigation</h3>
+                <p class="text-neutral-600 text-base lg:text-lg">Surgical errors, misdiagnosis, birth injuries, and nursing home neglect. Working with board-certified specialists in every field.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="practice-card border border-neutral-200 p-8 lg:p-10 group hover:shadow-xl transition-all duration-300">
+                <div class="h-2 bg-[#d4af37] w-12 mb-6"></div>
+                <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Motor Vehicle, Truck &amp; Motorcycle Accidents</h3>
+                <p class="text-neutral-600 text-base lg:text-lg">Record recoveries against trucking companies and rideshare giants. Black-box data secured within hours of retention.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="practice-card border border-neutral-200 p-8 lg:p-10 group hover:shadow-xl transition-all duration-300">
+                <div class="h-2 bg-[#d4af37] w-12 mb-6"></div>
+                <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Premises Liability &amp; Construction Accidents</h3>
+                <p class="text-neutral-600 text-base lg:text-lg">Labor Law 240(1) and 241(6) cases. Scaffolding collapses, slip-and-falls in luxury high-rises, and electrocutions.</p>
+            </div>
+            <!-- Card 5 -->
+            <div class="practice-card border border-neutral-200 p-8 lg:p-10 group hover:shadow-xl transition-all duration-300">
+                <div class="h-2 bg-[#d4af37] w-12 mb-6"></div>
+                <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Product Liability &amp; Defective Design</h3>
+                <p class="text-neutral-600 text-base lg:text-lg">Automobiles, medical devices, pharmaceuticals, and industrial machinery. National engineering experts on retainer.</p>
+            </div>
+            <!-- Card 6 -->
+            <div class="practice-card border border-neutral-200 p-8 lg:p-10 group hover:shadow-xl transition-all duration-300">
+                <div class="h-2 bg-[#d4af37] w-12 mb-6"></div>
+                <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Complex Commercial &amp; Business Litigation</h3>
+                <p class="text-neutral-600 text-base lg:text-lg">Breach of contract, partnership dissolutions, shareholder disputes, trade-secret theft, and fiduciary breach cases.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NOTABLE RESULTS -->
+<section id="results" class="py-16 lg:py-20 bg-neutral-900 text-white fade-in-section">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <span class="text-[#d4af37] text-sm uppercase">PROVEN RESULTS</span>
+                <h2 class="heading-font text-6xl tracking-tighter text-white">Notable Verdicts &amp; Settlements</h2>
+            </div>
+            <a href="#" class="text-[#d4af37] flex items-center gap-x-2 text-sm">View all victories →</a>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-neutral-800 p-8 transition-all hover:-translate-y-1 hover:shadow-2xl">
+                <div class="text-[#d4af37] text-5xl font-bold mb-2">$47.5M</div>
+                <div class="text-white/70 text-sm">Jury Verdict – Catastrophic brain injury from commercial truck fatigue</div>
+            </div>
+            <div class="bg-neutral-800 p-8 transition-all hover:-translate-y-1 hover:shadow-2xl">
+                <div class="text-[#d4af37] text-5xl font-bold mb-2">$32M</div>
+                <div class="text-white/70 text-sm">Settlement – Wrongful death of mother and two children</div>
+            </div>
+            <div class="bg-neutral-800 p-8 transition-all hover:-translate-y-1 hover:shadow-2xl">
+                <div class="text-[#d4af37] text-5xl font-bold mb-2">$19.8M</div>
+                <div class="text-white/70 text-sm">Verdict – Medical malpractice resulting in permanent paralysis</div>
+            </div>
+            <div class="bg-neutral-800 p-8 transition-all hover:-translate-y-1 hover:shadow-2xl">
+                <div class="text-[#d4af37] text-5xl font-bold mb-2">$15.3M</div>
+                <div class="text-white/70 text-sm">Settlement – Construction accident under Labor Law 240(1)</div>
+            </div>
+            <div class="bg-neutral-800 p-8 transition-all hover:-translate-y-1 hover:shadow-2xl">
+                <div class="text-[#d4af37] text-5xl font-bold mb-2">$12.7M</div>
+                <div class="text-white/70 text-sm">Recovery – Defective automobile product liability</div>
+            </div>
+            <div class="bg-neutral-800 p-8 transition-all hover:-translate-y-1 hover:shadow-2xl">
+                <div class="text-[#d4af37] text-5xl font-bold mb-2">$9.4M</div>
+                <div class="text-white/70 text-sm">Settlement – Luxury high-rise slip-and-fall premises liability</div>
+            </div>
+        </div>
+        <p class="text-center text-white/50 text-xs mt-10">Prior results do not guarantee similar outcomes. Every case is unique.</p>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="py-16 lg:py-20 bg-white fade-in-section">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="text-center mb-12">
+            <span class="text-[#d4af37]">CLIENT VOICES</span>
+            <h2 class="heading-font text-6xl tracking-tighter mt-2">What Our Clients Say</h2>
+        </div>
+        <div id="testimonial-slider" class="relative overflow-hidden">
+            <div class="flex transition-transform duration-700" id="slides-container">
+                <!-- Slide 1 -->
+                <div class="testimonial-slide min-w-full px-4">
+                    <div class="max-w-2xl mx-auto text-center">
+                        <p class="text-2xl italic leading-relaxed">"Mark not only secured a life-changing settlement but treated our family with dignity and compassion. He became like a member of our family."</p>
+                        <div class="mt-10">
+                            <div class="font-semibold">Maria R.</div>
+                            <div class="text-sm text-neutral-500">Queens, NY – Wrongful Death Trucking Case</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="testimonial-slide min-w-full px-4">
+                    <div class="max-w-2xl mx-auto text-center">
+                        <p class="text-2xl italic leading-relaxed">"Three other firms turned down the case. Mark took it on and delivered a $19.8 million verdict. He is simply the best."</p>
+                        <div class="mt-10">
+                            <div class="font-semibold">Dr. Jonathan K.</div>
+                            <div class="text-sm text-neutral-500">Manhattan – Medical Malpractice</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="testimonial-slide min-w-full px-4">
+                    <div class="max-w-2xl mx-auto text-center">
+                        <p class="text-2xl italic leading-relaxed">"Mark answered my call at 11 p.m. on a weekend. That dedication is rare. He got me the money for lifelong care."</p>
+                        <div class="mt-10">
+                            <div class="font-semibold">Lisa T.</div>
+                            <div class="text-sm text-neutral-500">Staten Island – Catastrophic Injury</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slider Controls -->
+            <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white shadow p-4 rounded-none transition-transform hover:scale-110">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white shadow p-4 rounded-none transition-transform hover:scale-110">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why" class="py-16 lg:py-20 bg-white fade-in-section">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="grid md:grid-cols-12 gap-x-16">
+            <div class="md:col-span-5">
+                <h2 class="heading-font text-6xl tracking-tighter">Why Clients Choose Mark Gegaros</h2>
+            </div>
+            <div class="md:col-span-7">
+                <div class="space-y-10">
+                    <div class="flex gap-6">
+                        <div class="w-8 h-8 bg-[#d4af37] text-white flex-shrink-0 flex items-center justify-center text-xl font-bold">01</div>
+                        <div>
+                            <h3 class="text-2xl font-medium">Direct 24/7 Access to Mark</h3>
+                            <p class="text-neutral-600">You receive Mark’s personal cell phone on day one. No secretaries. No associates handling your case.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="w-8 h-8 bg-[#d4af37] text-white flex-shrink-0 flex items-center justify-center text-xl font-bold">02</div>
+                        <div>
+                            <h3 class="text-2xl font-medium">Every Case Prepared for Trial</h3>
+                            <p class="text-neutral-600">Insurance companies know we do not bluff. We prepare every matter as if it will go before a jury.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="w-8 h-8 bg-[#d4af37] text-white flex-shrink-0 flex items-center justify-center text-xl font-bold">03</div>
+                        <div>
+                            <h3 class="text-2xl font-medium">No Fee Unless We Win</h3>
+                            <p class="text-neutral-600">Contingency representation in all qualifying personal injury and wrongful death matters.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-16 lg:py-20 bg-neutral-900 text-white fade-in-section">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="grid md:grid-cols-12 gap-16">
+            <div class="md:col-span-7">
+                <h2 class="heading-font text-6xl tracking-tighter text-white">Begin Your Case Today</h2>
+                <p class="mt-6 text-white/70 text-lg">The consultation is completely free, private, and carries no obligation. Mark Gegaros will personally review your matter.</p>
+                <form class="mt-12 space-y-8">
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-xs tracking-widest mb-2">FULL NAME</label>
+                            <input type="text" class="w-full bg-transparent border-b border-white/30 focus:border-[#d4af37] py-4 outline-none text-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs tracking-widest mb-2">PHONE NUMBER</label>
+                            <input type="tel" class="w-full bg-transparent border-b border-white/30 focus:border-[#d4af37] py-4 outline-none text-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs tracking-widest mb-2">EMAIL ADDRESS</label>
+                        <input type="email" class="w-full bg-transparent border-b border-white/30 focus:border-[#d4af37] py-4 outline-none text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs tracking-widest mb-2">BRIEF DESCRIPTION OF YOUR MATTER</label>
+                        <textarea rows="5" class="w-full bg-transparent border-b border-white/30 focus:border-[#d4af37] py-4 outline-none text-white resize-none"></textarea>
+                    </div>
+                    <button type="button" onclick="alert('Thank you. Mark will contact you within the hour. (Demo)')"
+                            class="w-full py-6 bg-[#d4af37] text-neutral-900 font-semibold text-lg tracking-widest hover:bg-amber-300 transition-all">
+                        SUBMIT – SPEAK WITH MARK DIRECTLY
+                    </button>
+                </form>
+            </div>
+            <div class="md:col-span-5">
+                <div class="bg-white/10 backdrop-blur p-8 h-full flex flex-col">
+                    <div class="flex-1">
+                        <div class="text-sm tracking-widest mb-2">ONE GRAND CENTRAL PLACE</div>
+                        <div class="text-4xl font-light">60 East 42nd Street, Suite 4600</div>
+                        <div class="text-4xl font-light">New York, NY 10165</div>
+                    </div>
+                    <div class="mt-auto space-y-8">
+                        <div>
+                            <div class="flex items-center gap-x-4">
+                                <i class="fa-solid fa-phone text-[#d4af37]"></i>
+                                <div>
+                                    <div class="text-xs">DIRECT LINE</div>
+                                    <a href="tel:2125550198" class="text-3xl">(212) 555-0198</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-x-4">
+                                <i class="fa-solid fa-mobile-screen text-[#d4af37]"></i>
+                                <div>
+                                    <div class="text-xs">AFTER HOURS / EMERGENCY</div>
+                                    <a href="tel:9175550198" class="text-3xl">(917) 555-0198</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="mailto:mg@gegaroslaw.com" class="text-[#d4af37] text-3xl">mg@gegaroslaw.com</a>
+                        </div>
+                    </div>
+                    <div class="pt-12 text-xs text-white/50">
+                        Same-day consultations available in urgent matters.<br>
+                        We respond within one business hour.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black text-white/70 py-16">
+    <div class="max-w-[1920px] mx-auto px-8">
+        <div class="grid md:grid-cols-12 gap-y-12">
+            <div class="md:col-span-4">
+                <div class="flex items-center gap-x-3 text-white">
+                    <div class="w-9 h-9 bg-[#d4af37] flex items-center justify-center text-3xl font-bold">MG</div>
+                    <div class="text-3xl heading-font">Mark Gegaros</div>
+                </div>
+                <p class="mt-6 text-sm">One Grand Central Place<br>60 East 42nd Street, Suite 4600<br>New York, NY 10165</p>
+            </div>
+            <div class="md:col-span-2">
+                <div class="text-xs tracking-widest mb-4">NAVIGATION</div>
+                <div class="flex flex-col gap-y-3 text-sm">
+                    <a href="#about" class="hover:text-white">About</a>
+                    <a href="#practice" class="hover:text-white">Practice Areas</a>
+                    <a href="#results" class="hover:text-white">Results</a>
+                </div>
+            </div>
+            <div class="md:col-span-3">
+                <div class="text-xs tracking-widest mb-4">CONTACT</div>
+                <a href="tel:2125550198" class="block text-3xl text-white hover:text-[#d4af37]">(212) 555-0198</a>
+                <a href="mailto:mg@gegaroslaw.com" class="block mt-6 text-[#d4af37]">mg@gegaroslaw.com</a>
+            </div>
+            <div class="md:col-span-3 text-right md:text-left">
+                <p class="text-xs">© 2026 Mark Gegaros, Attorney at Law.<br>All Rights Reserved.</p>
+                <div class="text-xs mt-8 space-x-4">
+                    <span class="hover:text-white cursor-pointer">Attorney Advertising</span>
+                    <span class="hover:text-white cursor-pointer">Privacy Policy</span>
+                </div>
+                <div class="mt-12 text-[10px]">Admitted in New York and before the U.S. Supreme Court</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="lawyer.js"></script>
+</body>
+</html> 

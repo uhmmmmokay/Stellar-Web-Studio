@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title -->
+    <title>Dr. Smith Dental Clinic | Healthy Smiles Start Here</title>
+    
+    <!-- Meta Description -->
+    <meta name="description" content="Dr. Smith Dental Clinic offers modern, comfortable family dentistry in Anytown. Expert care with advanced technology – checkups, whitening, orthodontics, implants & more. Book your appointment today!">
+    
+    <!-- Favicon (tiny logo in browser tab) -->
+    <link rel="icon" type="image/svg+xml" href="dr smiths images/footer dentist logo.svg">
+    <link rel="apple-touch-icon" href="dr smiths images/footer dentist logo.svg">
+    
+    <!-- Extra polish for browser UI -->
+    <meta name="theme-color" content="#2196f3">
+    <meta name="msapplication-TileColor" content="#2196f3">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="drsmith.css">
+</head>
+
+<body>
+    <header>
+        <img src="dr smiths images/dentist logo.svg" alt="Dr. Smith Dental Logo" class="header-image">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+<nav id="nav">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Healthy Smiles Start Here</h1>
+        <p>Professional dental care using modern technology for your entire family.</p>
+        <div class="hero-review">
+            "Dr. Smith made my root canal painless! The team is incredibly professional and caring."
+            <div class="hero-stars">★★★★★</div>
+            <span style="font-size:0.9rem; opacity:0.9;">- Jane D.</span>
+        </div>
+        <a class="cta" href="#contact">Book Appointment</a>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="about">
+        <h2>About Our Clinic</h2>
+        <div class="about">
+            <div class="about-text">
+                <p>
+                    Dr. Smith Dental Clinic provides modern dental care with advanced equipment and experienced professionals. Our mission is to provide comfortable, affordable, and high-quality dental services for every patient. Founded in 2010, we've served over 10,000 smiles in our community with a focus on patient comfort and cutting-edge treatments.
+                </p>
+            </div>
+            <div class="about-images">
+                <img src="dr smiths images/clinic interior.jpg" alt="Clinic Interior 1">
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service">
+                <img src="dr smiths images/dental check.jpg" alt="Dental Checkup">
+                <div>
+                    <h3>Dental Checkups</h3>
+                    <p>Routine cleaning and examinations to keep your smile healthy and prevent issues before they arise.</p>
+                </div>
+            </div>
+            <div class="service">
+                <img src="dr smiths images/teeth.jpg" alt="Teeth Whitening">
+                <div>
+                    <h3>Teeth Whitening</h3>
+                    <p>Brighten your smile professionally with safe, effective treatments tailored to your needs.</p>
+                </div>
+            </div>
+            <div class="service">
+                <img src="dr smiths images/Orthodontics.jpg" alt="Orthodontics">
+                <div>
+                    <h3>Orthodontics</h3>
+                    <p>Braces and clear aligners for perfect alignment and a confident smile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="team">
+        <h2>Meet Our Team</h2>
+        <div class="doctors-grid">
+            <div class="doctor">
+                <img src="dr smiths images/denstist smith.jpg" alt="Dr. John Smith">
+                <h3>Dr. John Smith</h3>
+                <p>DDS, Cosmetic Dentistry Specialist with 15 years experience. Passionate about creating confident smiles.</p>
+            </div>
+            <div class="doctor">
+                <img src="dr smiths images/2nd dentist female.jpg" alt="Dr. Sarah Lee">
+                <h3>Dr. Sarah Lee</h3>
+                <p>DMD, Orthodontist specializing in Invisalign. Committed to comfortable, effective treatments.</p>
+            </div>
+            <div class="doctor">
+                <img src="dr smiths images/dentist female.jpg" alt="Dr. Emily Chen">
+                <h3>Dr. Emily Chen</h3>
+                <p>DDS, Pediatric Dentist. Makes dental visits fun for kids with a gentle approach.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="testimonials">
+        <h2>What Our Patients Say</h2>
+        <div class="testimonials-container">
+            <div class="testimonials-slideshow" id="slideshow">
+                <div class="testimonial-slide">
+                    <p>Dr. Smith made my root canal painless! The team is incredibly professional and caring.</p>
+                    <h4>- Jane D.</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                </div>
+                <div class="testimonial-slide">
+                    <p>Professional and friendly staff. My smile looks amazing after whitening—worth every penny!</p>
+                    <h4>- Mike S.</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                </div>
+                <div class="testimonial-slide">
+                    <p>Best pediatric dentist in town. My kids love coming here and leave with big smiles!</p>
+                    <h4>- Lisa P.</h4>
+                    <div class="testimonial-stars">★★★★★</div>
+                </div>
+            </div>
+            <div class="testimonial-nav">
+                <button onclick="prevSlide()">←</button>
+                <button onclick="nextSlide()">→</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="insurance">
+        <h2>Insurance & Billing</h2>
+        <div class="insurance-grid">
+            <div class="insurance-item">
+                <h3>Delta Dental</h3>
+                <p>Accepted</p>
+            </div>
+            <div class="insurance-item">
+                <h3>Aetna</h3>
+                <p>Accepted</p>
+            </div>
+            <div class="insurance-item">
+                <h3>Cigna</h3>
+                <p>Accepted</p>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:2rem; font-size:1.1rem; color:#666; font-weight:300;">We also offer CareCredit financing and flexible payment plans.
+            
+        </a>.</p>
+    </section>
+
+    <div class="divider"></div>
+
+<section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="dr smiths images/gallery 1.jpg" alt="Dental clinic gallery image 1">
+        </div>
+        <div class="gallery-item">
+            <img src="dr smiths images/gallery 2.jpg" alt="Dental clinic gallery image 2">
+        </div>
+        <div class="gallery-item">
+            <img src="dr smiths images/gallery 3.jpg" alt="Dental clinic gallery image 3">
+        </div>
+        <div class="gallery-item">
+            <img src="dr smiths images/gallery 4.jpg" alt="Dental clinic gallery image 4">
+        </div>
+        <div class="gallery-item">
+            <img src="dr smiths images/gallery 5.jpg" alt="Dental clinic gallery image 5">
+        </div>
+        <div class="gallery-item">
+            <img src="dr smiths images/gallery 6.jpg" alt="Dental clinic gallery image 6">
+        </div>
+    </div>
+</section>
+    <div class="divider"></div>
+
+    <section>
+        <h2>Smile Transformation</h2>
+        <div class="before-after">
+            <img src="dr smiths images/before and after.png" alt="Before After Smile">
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="pricing">
+        <h2>Pricing Guide</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Checkup</h3>
+                <div class="price">$80</div>
+                <p>Cleaning + consultation</p>
+            </div>
+            <div class="price-card">
+                <h3>Whitening</h3>
+                <div class="price">$250</div>
+                <p>Professional whitening treatment</p>
+            </div>
+            <div class="price-card">
+                <h3>Implants</h3>
+                <div class="price">$1200</div>
+                <p>Permanent tooth replacement</p>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:2rem; font-size:1.1rem; color:#666; font-weight:300;">Prices are estimates; contact us for personalized quotes and insurance details.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <div class="faq-question">Do dental treatments hurt?</div>
+                <div class="faq-answer">Modern dentistry uses painless techniques and anesthesia to ensure your comfort throughout every procedure.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How often should I visit the dentist?</div>
+                <div class="faq-answer">Most patients should visit every 6 months for preventive care and early detection of any issues.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you accept insurance?</div>
+                <div class="faq-answer">Yes, we accept most major insurance plans. See our Insurance page for details on accepted providers.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What should I bring to my first appointment?</div>
+                <div class="faq-answer">Insurance card, ID, and completed patient forms. We provide forms online for your convenience.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you offer sedation dentistry?</div>
+                <div class="faq-answer">Yes, we provide sedation options for anxious patients to make visits more relaxing.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What payment methods do you accept?</div>
+                <div class="faq-answer">We accept cash, credit cards, and financing options like CareCredit. Insurance is billed directly.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Are you open on weekends?</div>
+                <div class="faq-answer">We offer limited Saturday hours from 9AM to 2PM for your convenience.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How long does a teeth whitening session take?</div>
+                <div class="faq-answer">Our in-office whitening typically takes about 1 hour, with immediate results.</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    
+    <!-- Map above contact form/details -->
+    <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.242201!2d-73.98731968459042!3d40.758895979328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b311746d%3A0xd134e199a405a163!2sDental%20Clinic!5e0!3m2!1sen!2sus!4v1630000000000" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    
+    <div class="contact-content">
+<div class="contact-details">
+    <h3>Get In Touch</h3>
+    <p class="address" onclick="copyToClipboard('123 Smile Street, Anytown, USA 12345', this)">123 Smile Street, Anytown, USA 12345</p>
+    <p class="phone" onclick="copyToClipboard('(555) 123-4567', this)"> (555) 123-4567 </p>
+    <p class="email" onclick="copyToClipboard('info@drsmithdental.com', this)"> info@drsmithdental.com </p>
+    <p>Mon-Fri: 8AM-5PM | Sat: 9AM-2PM</p>
+</div>        
+
+<div class="contact-form">
+            <form id="contactForm">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="subject" placeholder="Subject (e.g., Appointment)" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit" class="cta">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<!-- ✅ REPLACE the entire <footer> block with this (added left-align + location copy + divider) -->
+<footer>
+    <div class="footer-main">
+        
+        <!-- Logo + Slogan -->
+        <div class="footer-brand">
+            <img src="dr smiths images/footer dentist logo.svg" 
+                 alt="Dr. Smith Dental Clinic" 
+                 class="footer-logo">
+            <div class="footer-slogan">Healthy Smiles Start Here.</div>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="footer-contact-wrapper">
+            <h3 class="footer-heading">Contact Us</h3>
+            <div class="footer-contact">
+                <p class="address" onclick="copyToClipboard('123 Smile Street, Anytown, USA 12345', this)">
+                    <span class="footer-icon">
+                        <img src="dr smiths images/maps icon.svg" alt="Location icon" width="18" height="18">
+                    </span>
+                    123 Smile Street, Anytown, USA 12345
+                </p>
+                <p class="phone" onclick="copyToClipboard('(555) 123-4567', this)">
+                    <span class="footer-icon">
+                        <img src="dr smiths images/phone icon.svg" alt="Phone icon" width="18" height="18">
+                    </span>
+                    (555) 123-4567
+                </p>
+                <p class="email" onclick="copyToClipboard('info@drsmithdental.com', this)">
+                    <span class="footer-icon">
+                        <img src="dr smiths images/email icon.svg" alt="Email icon" width="18" height="18">
+                    </span>
+                    info@drsmithdental.com
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Visible white divider line -->
+    <div class="footer-divider"></div>
+
+    <div class="footer-copyright">
+        <p>© 2026 Dr. Smith Dental Clinic. All rights reserved.</p>
+    </div>
+</footer>
+
+    <a class="float-btn" href="#contact">Book Appointment</a>
+
+    <script src="drsmith.js"></script>
+</body>
+</html>
