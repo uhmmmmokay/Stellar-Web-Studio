@@ -993,3 +993,30 @@ section {
 }
 
 
+
+/* =============================================
+   MOBILE FIX - About Our Clinic Section
+   Image on top + paragraph below (as requested)
+============================================= */
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column-reverse;   /* ← This puts the image FIRST (on top) */
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+    }
+
+    .about-text {
+        text-align: center;               /* looks cleaner on mobile */
+        font-size: 1.05rem;
+    }
+
+    .about-images {
+        display: block;                   /* cleaner single image on mobile */
+    }
+
+    .about-images img {
+        width: 100%;
+        max-height: 280px;                /* slightly smaller on phones */
+        border-radius: 15px;
+    }
+}
