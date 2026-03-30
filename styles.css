@@ -1471,3 +1471,34 @@ footer h4 {
         transform: translateX(-50%) !important;
     }
 }
+
+/* ====================== MOBILE FIX ====================== */
+@media (max-width: 768px) {
+    .package,
+    .blog-card,
+    .portfolio-card {
+        padding: 0 !important;
+    }
+
+    /* ── NEW: Package card mobile improvements ── */
+    .package .price {
+        padding: 0 20px;           /* prevents $50 from touching edges */
+    }
+
+    .package ul {
+        max-width: none !important;   /* gives the list maximum possible width */
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 20px;           /* ← ticks now have space from card edge */
+        padding-right: 20px;
+    }
+
+    .package .cta,
+    .blog-card .cta,
+    .portfolio-card .cta {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 18px 0 !important;
+        text-align: center;
+    }
+}
