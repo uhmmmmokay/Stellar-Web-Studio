@@ -74,20 +74,24 @@
                 Thirty years of courtroom victories. Over $150 million recovered.
                 When everything is on the line, New York turns to Mark Gegaros.
             </p>
-            <div class="flex flex-wrap gap-4 sm:gap-6">
+            
+            <!-- ✅ FIXED HERO BUTTONS - No more horizontal scroll on mobile -->
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
                 <button
                     onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"
-                    class="gold-button px-7 py-4 sm:px-9 sm:py-5 text-sm sm:text-base font-semibold uppercase tracking-widest flex items-center gap-x-3 hover:shadow-xl transition-all duration-300"
+                    class="gold-button w-full sm:w-auto px-7 py-4 sm:px-9 sm:py-5 text-sm sm:text-base font-semibold uppercase tracking-widest flex items-center justify-center sm:justify-start gap-x-3 hover:shadow-xl transition-all duration-300"
                 >
                     <span>Schedule Confidential Consultation</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
+                
                 <a href="#results"
-                   class="border border-white/60 hover:border-white px-7 py-4 sm:px-9 sm:py-5 text-sm sm:text-base font-medium uppercase tracking-widest flex items-center transition-all duration-300"
+                   class="border border-white/60 hover:border-white w-full sm:w-auto px-7 py-4 sm:px-9 sm:py-5 text-sm sm:text-base font-medium uppercase tracking-widest flex items-center justify-center sm:justify-start transition-all duration-300"
                 >
                     View Landmark Results
                 </a>
             </div>
+
             <div class="mt-10 lg:mt-14 flex flex-wrap items-center gap-x-8 gap-y-6 text-sm sm:text-base">
                 <div class="flex items-center gap-x-3">
                     <i class="fa-solid fa-award text-[#d4af37] text-2xl sm:text-3xl"></i>
@@ -107,6 +111,7 @@
         </div>
     </div>
 </section>
+    
 
 <!-- TRUST BAR -->
 <div class="bg-neutral-900 py-6 fade-in-section">
