@@ -1502,3 +1502,31 @@ footer h4 {
         text-align: center;
     }
 }
+/* Social Icons */
+.footer-socials {
+    display: flex;
+    align-items: center; /* 🔥 fixes vertical alignment */
+    gap: 12px;
+    margin-top: 6px; /* tighter spacing under Follow Us */
+}
+
+/* Fix SVG alignment */
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0; /* removes weird inline spacing */
+}
+
+.footer-socials a svg {
+    width: 22px;
+    height: 22px;
+    display: block; /* 🔥 fixes vertical misalignment */
+    fill: black;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-socials a:hover svg {
+    transform: scale(1.1);
+    opacity: 0.7;
+}
