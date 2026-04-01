@@ -1530,3 +1530,103 @@ footer h4 {
     transform: scale(1.1);
     opacity: 0.7;
 }
+
+/* ── NEW CONTACT FORM STYLES (add this at the VERY END of your styles.css) ── */
+.contact-form {
+    max-width: 700px;
+    margin: 40px auto 30px auto;
+    background: #f9f9f9;
+    padding: 45px 35px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contact-form:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-color: #222;
+}
+
+.form-group {
+    margin-bottom: 28px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #000;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 160px;
+    line-height: 1.6;
+}
+
+.form-btn {
+    background-color: black;
+    color: white;
+    padding: 18px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    margin-top: 10px;
+}
+
+.form-btn:hover {
+    transform: scale(1.03);
+    background-color: #222;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile adjustments for the form */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 35px 25px;
+        margin: 30px auto;
+    }
+    
+    .form-group label {
+        font-size: 1rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 14px 18px;
+        font-size: 1rem;
+    }
+    
+    .form-btn {
+        padding: 16px 25px;
+        font-size: 17px;
+    }
+}
