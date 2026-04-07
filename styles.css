@@ -35,7 +35,13 @@ body {
 .blog-card,
 .package,
 .founder-container,
-.faq-item {
+.faq-item,
+.what-container,
+.what-card,
+.what-left
+.what-right
+
+{
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
@@ -235,7 +241,7 @@ nav ul li a:hover {
     font-weight: bold;
 }
 .hero-subheading {
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 30px;
     color: black;
 }
@@ -650,7 +656,7 @@ section {
 }
 .approach {
     padding: 70px 20px;
-    text-align: center;
+    text-align: left;
     background-color: white;
 }
 .approach-heading {
@@ -658,6 +664,7 @@ section {
     margin-bottom: 60px;
     position: relative;
     font-weight: bold;
+    text-align: center;
 }
 .approach-heading::after {
     content: '';
@@ -1628,5 +1635,152 @@ footer h4 {
     .form-btn {
         padding: 16px 25px;
         font-size: 17px;
+    }
+}
+/* ── TRUST LINE ── */
+.trust-line {
+    width: 100%;
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: trustSlide 0.8s ease forwards;
+}
+
+@keyframes trustSlide {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── WHAT WE DO ── */
+.what-we-do {
+        text-align: left;
+}
+
+/* Layout */
+.what-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.what-left {
+    flex: 1;
+    max-width: 600px;
+}
+
+.what-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.what-right img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Text */
+.what-intro {
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.what-heading {
+    font-size: 2.6rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    
+}
+
+.what-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #222;
+}
+
+/* Cards */
+.what-cards {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.what-card {
+    flex: 1;
+    background: #f9f9f9;
+    padding: 35px 25px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.what-card:hover {
+    transform: translateY(-6px);
+    border-color: black;
+}
+
+.what-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.what-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+/* CTA */
+.what-cta {
+    margin-top: 10px;
+    text-align: center
+}
+
+@media (max-width: 768px) {
+    .what-container {
+        flex-direction: column;
+        gap: 30px;
+        /* ← REMOVED padding-left/right: 0 so text stays padded like other sections */
+    }
+
+    .what-heading {
+        font-size: 2rem;
+    }
+
+    .what-cards {
+        flex-direction: column;
+    }
+
+    /* WHAT WE DO IMAGE ONLY — full bleed on mobile (text stays with normal 20px padding) */
+    .what-right {
+        margin-left: -20px !important;
+        margin-right: -20px !important;
+    }
+
+    .what-right img {
+        width: 100% !important;
+        max-width: none !important;
+        display: block;
+        border-radius: 0;
     }
 }
