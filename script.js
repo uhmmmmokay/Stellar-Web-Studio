@@ -64,7 +64,7 @@ const animationObserver = new IntersectionObserver((entries) => {
 });
 
 const elementsToAnimate = document.querySelectorAll(
-    '.hero-content, .hero-image, .feature-row, .approach-step, .portfolio-card, .blog-card, .package, .founder-container, .faq-item'
+    '.hero-content, .hero-image, .feature-row, .approach-step, .portfolio-card, .blog-card, .package, .founder-container, .faq-item , .what-container, .what-card, .what-right'
 );
 
 elementsToAnimate.forEach(el => animationObserver.observe(el));
