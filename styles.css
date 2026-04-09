@@ -22,12 +22,6 @@ body {
                 transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.hero-image {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1),
-                transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
 
 .feature-row,
 .approach-step,
@@ -216,16 +210,24 @@ nav ul li a:hover {
 }
 /* RIGHT SIDE IMAGE */
 .hero-image {
+        transform: translateX(50px); /* comes from right */
+    transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1),
+                transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+
     position: absolute;
     top: 0;
     right: 0;
-    width: 48%;
+    width: 50%;          /* clean 50-50 split */
     height: 100%;
-    object-fit: cover;
+
+    object-fit: contain; /* 🔥 THIS FIXES ZOOM (no cropping) */
     object-position: center right;
+
+    background: black;   /* 🔥 gives your SVG a background */
+    padding: 40px;       /* 🔥 creates breathing space (zoom-out feel) */
+
     z-index: 0;
-}
-/* LEFT SIDE CONTENT */
+}/* LEFT SIDE CONTENT */
 .hero-content {
     width: 50%;
     max-width: 600px;
@@ -264,6 +266,21 @@ nav ul li a:hover {
 }
 /* ── Mobile Hero ── */
 @media (max-width: 768px) {
+        .hero {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-content {
+        order: 1; /* 🔥 text first */
+    }
+
+    .hero-image {
+        order: 2; /* 🔥 image after */
+    }
+
+
+
     .hero {
         height: auto;
         flex-direction: column;
@@ -273,14 +290,20 @@ nav ul li a:hover {
         max-width: 100%;
     }
     .hero::before { display: none; }
+ @media (max-width: 768px) {
     .hero-image {
         position: relative;
         width: 100%;
-        height: 250px;
-        object-fit: cover;
-        object-position: center;
-        margin-top: 0;               /* Extra safety - zero top margin */
+        height: auto;
+
+        object-fit: contain; /* 🔥 no crop */
+        background: black;
+
+        padding: 20px;
+        margin: 0;
+        display: block;
     }
+}
     .hero-content {
         width: 100%;
         padding: 20px;
@@ -1660,37 +1683,22 @@ footer h4 {
     }
 }
 
-/* ── WHAT WE DO ── */
+/* ── WHAT WE DO (CENTERED VERSION) ── */
 .what-we-do {
-        text-align: left;
+    text-align: center;
 }
 
 /* Layout */
 .what-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
+    justify-content: center;
     margin-bottom: 60px;
 }
 
+/* Main content */
 .what-left {
-    flex: 1;
-    max-width: 600px;
-}
-
-.what-right {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.what-right img {
-    width: 100%;
-    max-width: none;
-    height: auto;
-    border-radius: 12px;
-    object-fit: cover;
+    max-width: 750px;
+    margin: 0 auto;
 }
 
 /* Text */
@@ -1707,18 +1715,22 @@ footer h4 {
     font-size: 2.6rem;
     font-weight: bold;
     margin-bottom: 25px;
-    
+    text-align: center;
 }
 
 .what-paragraph {
     font-size: 1.1rem;
     line-height: 1.8;
     color: #222;
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto;
 }
 
 /* Cards */
 .what-cards {
     display: flex;
+    justify-content: center;
     gap: 30px;
     margin-bottom: 40px;
 }
@@ -1730,7 +1742,7 @@ footer h4 {
     border-radius: 12px;
     border: 1px solid #ddd;
     transition: all 0.3s ease;
-    text-align: left;
+    text-align: center;
 }
 
 .what-card:hover {
@@ -1753,14 +1765,14 @@ footer h4 {
 /* CTA */
 .what-cta {
     margin-top: 10px;
-    text-align: center
+    text-align: center;
 }
 
+/* ── MOBILE ── */
 @media (max-width: 768px) {
     .what-container {
         flex-direction: column;
         gap: 30px;
-        /* ← REMOVED padding-left/right: 0 so text stays padded like other sections */
     }
 
     .what-heading {
@@ -1770,17 +1782,5 @@ footer h4 {
     .what-cards {
         flex-direction: column;
     }
-
-    /* WHAT WE DO IMAGE ONLY — full bleed on mobile (text stays with normal 20px padding) */
-    .what-right {
-        margin-left: -20px !important;
-        margin-right: -20px !important;
-    }
-
-    .what-right img {
-        width: 100% !important;
-        max-width: none !important;
-        display: block;
-        border-radius: 0;
-    }
 }
+
