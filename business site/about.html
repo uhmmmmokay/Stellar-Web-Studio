@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Vertex Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Lato:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Oswald:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --primary-50: #eff6ff;
+            --bg-color: #fafaf9;
+            --bg-alt: #f5f5f4;
+            --card-bg: #ffffff;
+            --nav-bg: #ffffff;
+            --text-color: #1c1917;
+            --text-muted: #57534e;
+            --border-color: #e7e5e4;
+            --footer-bg: #1c1917;
+            --footer-text: #ffffff;
+            --footer-muted: #a8a29e;
+            --font-heading: 'Inter', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+        }
+
+        .tail-container { font-family: var(--font-body); }
+        .heading-font { font-family: var(--font-heading); }
+
+        .bg-page { background-color: var(--bg-color) !important; }
+        .bg-page-alt { background-color: var(--bg-alt) !important; }
+        .bg-card { background-color: var(--card-bg) !important; }
+        .bg-nav { background-color: var(--nav-bg) !important; }
+        .bg-footer { background-color: var(--footer-bg) !important; }
+
+        .bg-primary { background-color: var(--primary) !important; }
+        .bg-primary-dark { background-color: var(--primary-dark) !important; }
+        .text-primary { color: var(--primary) !important; }
+        .border-primary { border-color: var(--primary) !important; }
+        .hover\:bg-primary-dark:hover { background-color: var(--primary-dark) !important; }
+        .hover\:text-primary:hover { color: var(--primary) !important; }
+        .hover\:bg-primary-50:hover { background-color: var(--primary-50) !important; }
+        .bg-primary-light { background-color: var(--primary-light) !important; }
+
+        .text-main { color: var(--text-color) !important; }
+        .text-muted { color: var(--text-muted) !important; }
+        .text-footer { color: var(--footer-text) !important; }
+        .text-footer-muted { color: var(--footer-muted) !important; }
+        .border-theme { border-color: var(--border-color) !important; }
+
+        .nav-link { position: relative; transition: all 0.3s ease; color: var(--text-color); }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px; bottom: -2px; left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after { width: 100%; }
+        .nav-link:hover { color: var(--primary); }
+
+        .hamburger span { 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: var(--text-color) !important;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+        .swiper-button-prev:after, .swiper-button-next:after { content: '' !important; }
+        .swiper-button-next svg, .swiper-button-prev svg { width: 24px !important; height: 24px !important; }
+        .swiper-button-next, .swiper-button-prev { position: relative !important; margin-top: 32px; }
+        .swiper-slide.swiper-slide-active { border-color: var(--primary) !important; }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        .nav-link.active {
+            color: var(--primary) !important;
+            font-weight: 600;
+        }
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 2px; bottom: -2px; left: 0;
+            background-color: var(--primary);
+        }
+
+        .faq-item {
+            background-color: var(--card-bg) !important;
+            border-color: var(--border-color) !important;
+        }
+        .faq-button:hover {
+            background-color: color-mix(in srgb, var(--text-color) 5%, transparent) !important;
+        }
+
+        .review-card {
+            background-color: var(--card-bg) !important;
+            border-color: var(--border-color) !important;
+            color: var(--text-color);
+        }
+        .review-card:hover {
+            border-color: var(--primary) !important;
+        }
+
+        #theme-panel {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        #theme-panel.closed {
+            transform: translateX(110%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #theme-panel::-webkit-scrollbar { width: 6px; }
+        #theme-panel::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 3px; }
+    </style>
+
+    <div id="copy-toast"
+         class="fixed bottom-5 right-5 translate-y-[120%] opacity-0 z-[9999] transition-all duration-300 max-w-xs w-[90%] sm:w-full bg-white border border-stone-200 rounded-2xl shadow-xl">
+        <div class="flex items-center p-4 gap-x-3">
+            <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <p id="toast-message" class="text-sm font-medium text-stone-700 flex-1">Copied to clipboard!</p>
+            <button onclick="hideToast()" class="text-stone-400 hover:text-stone-700 transition shrink-0">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+</head>
+<body class="tail-container">
+
+<!-- NAVBAR -->
+<nav class="bg-nav border-b border-theme sticky top-0 z-50 shadow-sm">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex items-center gap-x-2 sm:gap-x-3 shrink-0">
+                <a href="index.html" class="flex items-center gap-x-2 sm:gap-x-3">
+                    <div id="logo-icon" class="w-9 h-9 sm:w-10 sm:h-10 bg-primary rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl shadow-inner font-bold">V</div>
+                    <div class="leading-tight">
+                        <span id="brand-name" class="heading-font text-xl sm:text-2xl font-bold tracking-tight text-main">Vertex</span>
+                        <span id="brand-tagline" class="block text-[9px] sm:text-[10px] text-muted -mt-1 tracking-[1px]">SOLUTIONS</span>
+                    </div>
+                </a>
+            </div>
+
+            <button onclick="handlePhoneCTA()"
+                class="lg:hidden ml-auto flex items-center gap-x-2 bg-card border border-primary text-primary px-3 py-2 rounded-2xl hover:bg-primary-50 transition text-sm font-semibold whitespace-nowrap">
+                <i class="fa-solid fa-phone"></i>
+                <span id="mobile-phone" class="font-medium">98765 43210</span>
+            </button>
+
+            <div class="hidden lg:flex items-center gap-x-6 xl:gap-x-8 text-sm font-medium">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="index.html#work" class="nav-link">Work</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-x-3 xl:gap-x-4">
+                <button onclick="handlePhoneCTA()"
+                    class="hidden lg:flex items-center gap-x-2 bg-card border border-primary text-primary px-4 xl:px-5 py-2.5 rounded-2xl hover:bg-primary-50 transition text-sm font-semibold whitespace-nowrap">
+                    <i class="fa-solid fa-phone"></i>
+                    <span id="desktop-phone" class="truncate max-w-[140px] xl:max-w-none">+91 98765 43210</span>
+                </button>
+                <a href="contact.html"
+                   class="bg-primary hover:bg-primary-dark text-white px-5 xl:px-6 py-2.5 rounded-2xl text-sm font-semibold transition shadow-md whitespace-nowrap">
+                    Free Consultation
+                </a>
+            </div>
+
+            <button id="hamburger" class="hamburger lg:hidden flex flex-col justify-center items-center gap-y-1.5 w-11 h-11 shrink-0">
+                <span class="block w-7 h-0.5 rounded"></span>
+                <span class="block w-7 h-0.5 rounded"></span>
+                <span class="block w-7 h-0.5 rounded"></span>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden bg-nav border-t border-theme fixed inset-x-0 top-20 shadow-xl py-6 z-50 max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <div class="max-w-[85rem] mx-auto px-6">
+            <div class="flex flex-col text-lg font-medium">
+                <a href="index.html" onclick="toggleMobileMenu()" class="py-3 border-b border-theme text-main">Home</a>
+                <a href="about.html" onclick="toggleMobileMenu()" class="py-3 border-b border-theme text-main">About</a>
+                <a href="services.html" onclick="toggleMobileMenu()" class="py-3 border-b border-theme text-main">Services</a>
+                <a href="index.html#work" onclick="toggleMobileMenu()" class="py-3 border-b border-theme text-main">Work</a>
+                <a href="contact.html" onclick="toggleMobileMenu()" class="py-3 border-b border-theme text-main">Contact</a>
+            </div>
+            <div class="pt-8">
+                <a href="contact.html" onclick="toggleMobileMenu()"
+                   class="block w-full text-center bg-primary hover:bg-primary-dark text-white py-4 rounded-3xl font-semibold text-lg transition">
+                    Free Consultation
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="bg-page">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-10 lg:pt-16 lg:pb-16">
+    <div class="animate-on-scroll text-center max-w-3xl mx-auto">
+      <p class="text-primary font-semibold tracking-wide uppercase text-sm mb-3">About Us</p>
+      <h1 class="heading-font text-3xl sm:text-4xl lg:text-5xl font-bold text-main leading-tight">
+        Building lasting partnerships through strategy and execution
+      </h1>
+      <p class="mt-5 text-lg text-muted">
+        Vertex is a strategy and digital consulting firm that helps mid-market and enterprise organizations solve complex challenges and unlock sustainable growth.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT CONTENT -->
+<section class="bg-page">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-10 lg:pt-4 lg:pb-16">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="animate-on-scroll">
+        <p class="text-primary font-semibold tracking-wide uppercase text-sm">Our Story</p>
+        <h2 class="heading-font mt-2 text-3xl sm:text-4xl font-bold text-main leading-tight">
+          Partnering with Leaders to Drive Measurable Results
+        </h2>
+        <p class="mt-6 text-lg text-muted">
+          Founded with a simple belief — that great strategy only matters when it is executed well — Vertex combines deep industry insight with practical delivery. We work side-by-side with leadership teams to turn ambition into outcomes.
+        </p>
+        <p class="mt-4 text-muted">
+          From operational excellence and digital transformation to growth strategy and organizational change, every engagement is tailored, collaborative, and focused on results that show up on the bottom line.
+        </p>
+        <ul class="mt-8 space-y-4 text-main">
+          <li class="flex items-start gap-3">
+            <span class="text-primary text-xl">✓</span>
+            <span><strong>Strategy First:</strong> Clear roadmaps grounded in data and market insight</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-primary text-xl">✓</span>
+            <span><strong>End-to-End Delivery:</strong> From discovery through implementation and support</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-primary text-xl">✓</span>
+            <span><strong>Proven Frameworks:</strong> Repeatable methods that reduce risk and accelerate value</span>
+          </li>
+        </ul>
+      </div>
+      <div class="animate-on-scroll">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200"
+               alt="Business meeting"
+               class="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover rounded-2xl shadow-xl"/>
+          <div class="absolute -z-10 inset-0 bg-primary-light rounded-2xl md:translate-x-8 md:translate-y-8"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="bg-page-alt">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+    <div class="animate-on-scroll">
+      <div class="text-center mb-12">
+        <h2 class="heading-font text-3xl sm:text-4xl font-bold text-main">Trusted by Growing Companies</h2>
+      </div>
+    </div>
+    <div class="animate-on-scroll">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <p class="text-4xl sm:text-5xl font-bold text-primary">320+</p>
+          <h4 class="mt-2 text-lg font-medium text-muted">Projects Delivered</h4>
+        </div>
+        <div>
+          <p class="text-4xl sm:text-5xl font-bold text-primary">180+</p>
+          <h4 class="mt-2 text-lg font-medium text-muted">Happy Clients</h4>
+        </div>
+        <div>
+          <p class="text-4xl sm:text-5xl font-bold text-primary">12+</p>
+          <h4 class="mt-2 text-lg font-medium text-muted">Years Experience</h4>
+        </div>
+        <div>
+          <p class="text-4xl sm:text-5xl font-bold text-primary">25+</p>
+          <h4 class="mt-2 text-lg font-medium text-muted">Expert Consultants</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH / PROCESS -->
+<section class="bg-page">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-10 lg:pt-4 lg:pb-16">
+    <div class="animate-on-scroll">
+      <div class="max-w-2xl mb-12">
+        <h2 class="heading-font text-3xl sm:text-4xl font-bold text-main">Our Working Process</h2>
+        <p class="mt-3 text-muted">A clear, collaborative approach that moves from insight to impact with minimal friction.</p>
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="animate-on-scroll">
+        <div class="h-[400px] sm:h-[500px]">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200"
+               class="w-full h-full object-cover rounded-2xl shadow-lg" alt="Team collaboration"/>
+        </div>
+      </div>
+      <div class="animate-on-scroll">
+        <div class="space-y-10">
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-md">1</div>
+            <div>
+              <h4 class="text-lg font-semibold text-main">Discovery & Alignment</h4>
+              <p class="text-muted mt-1">We listen carefully, map your current state, and align on goals, constraints, and success metrics.</p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-md">2</div>
+            <div>
+              <h4 class="text-lg font-semibold text-main">Strategy & Design</h4>
+              <p class="text-muted mt-1">We develop a practical roadmap with clear initiatives, owners, timelines, and expected outcomes.</p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-md">3</div>
+            <div>
+              <h4 class="text-lg font-semibold text-main">Execution & Results</h4>
+              <p class="text-muted mt-1">We work alongside your team to implement, measure, and refine until the desired results are achieved.</p>
+            </div>
+          </div>
+          <div class="pt-6">
+            <a href="contact.html"
+               class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl shadow-md transition">
+              Start a Conversation <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="bg-page-alt">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <div class="animate-on-scroll">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="heading-font text-3xl sm:text-4xl font-bold text-main">Meet Our Experts</h2>
+        <p class="mt-4 text-lg text-muted">
+          Seasoned consultants, strategists, and operators who bring real-world experience to every engagement.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="group text-center">
+          <div class="relative overflow-hidden rounded-xl">
+            <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
+                 class="w-full h-72 object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+          <h3 class="mt-4 text-xl font-semibold text-main">Rahul Sharma</h3>
+          <p class="text-muted">Managing Partner</p>
+        </div>
+        <div class="group text-center">
+          <div class="relative overflow-hidden rounded-xl">
+            <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+                 class="w-full h-72 object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+          <h3 class="mt-4 text-xl font-semibold text-main">Amit Verma</h3>
+          <p class="text-muted">Strategy Director</p>
+        </div>
+        <div class="group text-center">
+          <div class="relative overflow-hidden rounded-xl">
+            <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+                 class="w-full h-72 object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+          <h3 class="mt-4 text-xl font-semibold text-main">Neha Singh</h3>
+          <p class="text-muted">Digital Transformation Lead</p>
+        </div>
+        <div class="group text-center">
+          <div class="relative overflow-hidden rounded-xl">
+            <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sofia-mcguire.png"
+                 class="w-full h-72 object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+          <h3 class="mt-4 text-xl font-semibold text-main">Priya Mehta</h3>
+          <p class="text-muted">Operations Partner</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-24 bg-page">
+  <div class="animate-on-scroll"> 
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-10 lg:pt-4 lg:pb-16">
+      <div class="flex justify-center items-center gap-y-8 lg:gap-y-0 flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between lg:gap-x-8 max-w-sm sm:max-w-2xl lg:max-w-full mx-auto">
+        <div class="w-full lg:w-2/5">
+          <span class="text-sm text-primary font-semibold mb-4 block">Testimonials</span>
+          <h2 class="heading-font text-4xl font-bold text-main leading-[3.25rem] mb-8">
+            Trusted by <span class="text-primary">forward-thinking leaders</span>
+          </h2>
+          <div class="flex items-center justify-center lg:justify-start gap-10">
+            <button class="prev-btn group flex justify-center items-center border border-solid border-primary !w-12 !h-12 transition-all duration-500 rounded-xl hover:bg-primary">
+              <svg class="h-6 w-6 text-primary group-hover:text-white" viewBox="0 0 24 24" fill="none">
+                <path d="M20.9999 12L4.99992 12M9.99992 6L4.70703 11.2929C4.3737 11.6262 4.20703 11.7929 4.20703 12C4.20703 12.2071 4.3737 12.3738 4.70703 12.7071L9.99992 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="next-btn group flex justify-center items-center border border-solid border-primary !w-12 !h-12 transition-all duration-500 rounded-xl hover:bg-primary">
+              <svg class="h-6 w-6 text-primary group-hover:text-white" viewBox="0 0 24 24" fill="none">
+                <path d="M3 12L19 12M14 18L19.2929 12.7071C19.6262 12.3738 19.7929 12.2071 19.7929 12C19.7929 11.7929 19.6262 11.6262 19.2929 11.2929L14 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="w-full lg:w-3/5">
+          <div class="swiper myTestimonialSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide review-card border border-solid rounded-2xl p-6 transition-all duration-500">
+                <div class="flex items-center gap-5 mb-5 sm:mb-9">
+                  <img class="rounded-full object-cover w-12 h-12" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                  <div class="grid gap-1">
+                    <h5 class="text-main font-semibold">Rajesh Sharma</h5>
+                    <span class="text-sm text-muted">CEO, TechVista</span>
+                  </div>
+                </div>
+                <div class="flex items-center mb-5 sm:mb-9 gap-1 text-amber-500">★★★★★</div>
+                <p class="text-sm text-muted leading-6 min-h-24">Vertex helped us redesign our go-to-market strategy. Within nine months we saw a 40% increase in qualified pipeline.</p>
+              </div>
+              <div class="swiper-slide review-card border border-solid rounded-2xl p-6 transition-all duration-500">
+                <div class="flex items-center gap-5 mb-5 sm:mb-9">
+                  <img class="rounded-full object-cover w-12 h-12" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+                  <div class="grid gap-1">
+                    <h5 class="text-main font-semibold">Priya Mehta</h5>
+                    <span class="text-sm text-muted">COO, Horizon Retail</span>
+                  </div>
+                </div>
+                <div class="flex items-center mb-5 sm:mb-9 gap-1 text-amber-500">★★★★★</div>
+                <p class="text-sm text-muted leading-6 min-h-24">Their operations workstream cut our fulfillment costs by 18% while improving delivery times. Clear communication and strong execution.</p>
+              </div>
+              <div class="swiper-slide review-card border border-solid rounded-2xl p-6 transition-all duration-500">
+                <div class="flex items-center gap-5 mb-5 sm:mb-9">
+                  <img class="rounded-full object-cover w-12 h-12" src="https://randomuser.me/api/portraits/men/12.jpg" alt="">
+                  <div class="grid gap-1">
+                    <h5 class="text-main font-semibold">Amit Singh</h5>
+                    <span class="text-sm text-muted">Founder, ScaleUp Labs</span>
+                  </div>
+                </div>
+                <div class="flex items-center mb-5 sm:mb-9 gap-1 text-amber-500">★★★★☆</div>
+                <p class="text-sm text-muted leading-6 min-h-24">Practical advice, no fluff. They helped us prioritize the right digital initiatives and avoid costly mistakes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 bg-page-alt">
+  <div class="animate-on-scroll">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-10 lg:pt-4 lg:pb-16">
+      <div class="grid md:grid-cols-5 gap-10 lg:gap-16">
+        <div class="md:col-span-2">
+          <div class="max-w-xs">
+            <span class="text-primary font-semibold tracking-widest uppercase text-sm">FAQ</span>
+            <h2 class="heading-font text-4xl font-bold text-main leading-tight mt-3">Frequently Asked Questions</h2>
+            <p class="mt-4 text-muted">Common questions about working with Vertex.</p>
+          </div>
+        </div>
+        <div class="md:col-span-3 space-y-4">
+          <div class="faq-item border rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="faq-button w-full px-6 py-5 text-left flex justify-between items-center transition-all">
+              <span class="font-medium text-main pr-4">How long does a typical engagement last?</span>
+              <span class="faq-icon text-primary text-2xl">+</span>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="px-6 pb-6 text-muted">Most strategy and transformation projects run 8–16 weeks. Ongoing advisory retainers are available for continuous support.</div>
+            </div>
+          </div>
+          <div class="faq-item border rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="faq-button w-full px-6 py-5 text-left flex justify-between items-center transition-all">
+              <span class="font-medium text-main pr-4">Do you work with startups or only larger companies?</span>
+              <span class="faq-icon text-primary text-2xl">+</span>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="px-6 pb-6 text-muted">We primarily serve mid-market and enterprise clients, but we selectively partner with high-growth startups that have clear product-market fit.</div>
+            </div>
+          </div>
+          <div class="faq-item border rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="faq-button w-full px-6 py-5 text-left flex justify-between items-center transition-all">
+              <span class="font-medium text-main pr-4">What does the discovery process look like?</span>
+              <span class="faq-icon text-primary text-2xl">+</span>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="px-6 pb-6 text-muted">We begin with a complimentary discovery call, followed by a short diagnostic phase (usually 1–2 weeks) before proposing a full engagement plan.</div>
+            </div>
+          </div>
+          <div class="faq-item border rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="faq-button w-full px-6 py-5 text-left flex justify-between items-center transition-all">
+              <span class="font-medium text-main pr-4">Can you work remotely or on-site?</span>
+              <span class="faq-icon text-primary text-2xl">+</span>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="px-6 pb-6 text-muted">Both. Most of our work is hybrid. We travel for key workshops and stakeholder sessions when it adds value.</div>
+            </div>
+          </div>
+          <div class="faq-item border rounded-2xl overflow-hidden">
+            <button onclick="toggleFaq(this)" class="faq-button w-full px-6 py-5 text-left flex justify-between items-center transition-all">
+              <span class="font-medium text-main pr-4">How do you measure success?</span>
+              <span class="faq-icon text-primary text-2xl">+</span>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="px-6 pb-6 text-muted">Success metrics are defined jointly at the start of every engagement—revenue impact, cost reduction, adoption rates, or operational KPIs—and tracked throughout.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT TEASER -->
+<section class="py-20 bg-page">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll">
+    <h2 class="heading-font text-3xl sm:text-4xl font-bold text-main">Ready to start a conversation?</h2>
+    <p class="mt-4 text-lg text-muted max-w-2xl mx-auto">
+      Tell us about your goals and challenges. We’ll respond within one business day.
+    </p>
+    <div class="mt-8">
+      <a href="contact.html"
+         class="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-2xl shadow-md transition text-lg">
+        Get Free Consultation <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-footer text-footer py-12 lg:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+      <div class="lg:col-span-5">
+        <div class="flex items-center gap-x-3 mb-6">
+          <div id="footer-logo-icon" class="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-xl font-bold shadow-inner text-white">V</div>
+          <div>
+            <span id="footer-brand-name" class="heading-font text-3xl font-bold tracking-tight text-footer">Vertex</span>
+            <span id="footer-brand-tagline" class="block text-xs text-primary tracking-[1.5px] -mt-1">SOLUTIONS</span>
+          </div>
+        </div>
+        <p id="footer-desc" class="text-footer-muted max-w-md leading-relaxed text-[15px]">
+          Helping ambitious organizations solve complex challenges and achieve measurable growth since 2012.
+        </p>
+        <div class="mt-8 flex gap-4">
+          <a href="#" class="w-9 h-9 rounded-2xl bg-white/10 hover:bg-primary transition flex items-center justify-center text-xl text-footer">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-2xl bg-white/10 hover:bg-primary transition flex items-center justify-center text-xl text-footer">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-2xl bg-white/10 hover:bg-primary transition flex items-center justify-center text-xl text-footer">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2">
+        <h4 class="font-semibold mb-5 text-lg text-footer">Quick Links</h4>
+<ul class="space-y-3 text-[15px]">
+    <li><a href="index.html" class="text-footer-muted hover:text-primary transition">Home</a></li>
+    <li><a href="about.html" class="text-footer-muted hover:text-primary transition">About</a></li>
+    <li><a href="services.html" class="text-footer-muted hover:text-primary transition">Services</a></li>
+    <li><a href="projects.html" class="text-footer-muted hover:text-primary transition">Work</a></li>
+    <li><a href="contact.html" class="text-footer-muted hover:text-primary transition">Contact</a></li>
+</ul>      
+      </div>
+
+      <div class="lg:col-span-2">
+        <h4 class="font-semibold mb-5 text-lg text-footer">Services</h4>
+        <ul class="space-y-3 text-[15px] text-footer-muted">
+          <li>Business Strategy</li>
+          <li>Digital Transformation</li>
+          <li>Operations Excellence</li>
+          <li>Change Management</li>
+          <li>Financial Advisory</li>
+          <li>Leadership & Talent</li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-3">
+        <h4 class="font-semibold mb-5 text-lg text-footer">Get In Touch</h4>
+        <div class="space-y-6">
+          <div class="flex gap-x-4 group">
+            <i class="fa-solid fa-phone text-footer mt-1 text-xl transition group-hover:text-primary"></i>
+            <div>
+              <button onclick="handlePhoneCTA()" id="footer-phone" class="font-semibold hover:text-primary transition text-left text-[15px] text-footer">
+                +91 98765 43210
+              </button>
+              <p class="text-footer-muted mt-1 text-sm">Mon – Sat | 9 AM – 6 PM</p>
+            </div>
+          </div>
+          <div class="flex gap-x-4">
+            <i class="fa-solid fa-location-dot text-footer mt-1 text-xl"></i>
+            <div id="footer-address" class="text-[15px] text-footer-muted">
+              Business Hub, Ratanada<br>Jodhpur, Rajasthan 342001
+            </div>
+          </div>
+          <div class="flex gap-x-4">
+            <i class="fa-solid fa-envelope text-footer mt-1 text-xl"></i>
+            <button onclick="handleEmailCTA()" id="footer-email" class="text-[15px] hover:text-primary transition text-left text-footer-muted">
+              hello@vertex.com
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-12 pt-6 text-center text-sm text-footer-muted">
+      <p>© 2026 <span id="footer-copyright-name" class="text-footer">Vertex Solutions</span>. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- THEME PANEL -->
+<button id="theme-toggle-btn" onclick="toggleThemePanel()"
+        class="fixed bottom-6 right-6 z-[100] w-14 h-14 rounded-full bg-primary text-white shadow-lg flex items-center justify-center text-xl hover:scale-105 transition">
+  <i class="fa-solid fa-palette"></i>
+</button>
+
+<div id="theme-panel" class="fixed bottom-24 right-6 z-[100] w-80 bg-white rounded-2xl shadow-2xl border border-stone-200 p-5 closed">
+  <div class="flex items-center justify-between mb-5 sticky top-0 bg-white pb-2">
+    <h3 class="font-semibold text-gray-900 text-lg">Theme & Branding</h3>
+    <button onclick="toggleThemePanel()" class="text-stone-400 hover:text-stone-700 text-xl"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <div class="mb-6">
+    <p class="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-3">Business Details</p>
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Company Name</label>
+    <input type="text" id="input-name" value="Vertex" oninput="updateBusiness()" class="w-full mb-3 px-3 py-2 border border-stone-200 rounded-lg text-sm focus:outline-none focus:border-blue-500">
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Tagline / Subtitle</label>
+    <input type="text" id="input-tagline" value="SOLUTIONS" oninput="updateBusiness()" class="w-full mb-3 px-3 py-2 border border-stone-200 rounded-lg text-sm focus:outline-none focus:border-blue-500">
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Phone Number</label>
+    <input type="text" id="input-phone" value="+91 98765 43210" oninput="updateBusiness()" class="w-full mb-3 px-3 py-2 border border-stone-200 rounded-lg text-sm focus:outline-none focus:border-blue-500">
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Email</label>
+    <input type="email" id="input-email" value="hello@vertex.com" oninput="updateBusiness()" class="w-full mb-3 px-3 py-2 border border-stone-200 rounded-lg text-sm focus:outline-none focus:border-blue-500">
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Address</label>
+    <textarea id="input-address" rows="2" oninput="updateBusiness()" class="w-full px-3 py-2 border border-stone-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 resize-none">Business Hub, Ratanada
+Jodhpur, Rajasthan 342001</textarea>
+  </div>
+
+  <div class="mb-6">
+    <p class="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-3">Colors</p>
+
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Primary Color</label>
+    <div class="flex gap-2 mb-3">
+      <input type="color" id="color-primary" value="#2563eb" oninput="setPrimaryColor(this.value)" class="w-12 h-10 rounded-lg cursor-pointer border border-stone-200">
+      <div class="flex flex-wrap gap-1.5 flex-1">
+        <button onclick="setPrimaryColor('#2563eb')" class="w-7 h-7 rounded-full bg-blue-600"></button>
+        <button onclick="setPrimaryColor('#16a34a')" class="w-7 h-7 rounded-full bg-green-600"></button>
+        <button onclick="setPrimaryColor('#dc2626')" class="w-7 h-7 rounded-full bg-red-600"></button>
+        <button onclick="setPrimaryColor('#7c3aed')" class="w-7 h-7 rounded-full bg-violet-600"></button>
+        <button onclick="setPrimaryColor('#ea580c')" class="w-7 h-7 rounded-full bg-orange-600"></button>
+        <button onclick="setPrimaryColor('#0891b2')" class="w-7 h-7 rounded-full bg-cyan-600"></button>
+        <button onclick="setPrimaryColor('#db2777')" class="w-7 h-7 rounded-full bg-pink-600"></button>
+        <button onclick="setPrimaryColor('#4f46e5')" class="w-7 h-7 rounded-full bg-indigo-600"></button>
+      </div>
+    </div>
+
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Background Color</label>
+    <div class="flex gap-2 mb-3">
+      <input type="color" id="color-bg" value="#fafaf9" oninput="setBgColor(this.value)" class="w-12 h-10 rounded-lg cursor-pointer border border-stone-200">
+      <div class="flex flex-wrap gap-1.5 flex-1">
+        <button onclick="setBgColor('#fafaf9')" class="w-7 h-7 rounded-full bg-stone-50 border border-stone-200"></button>
+        <button onclick="setBgColor('#ffffff')" class="w-7 h-7 rounded-full bg-white border border-stone-200"></button>
+        <button onclick="setBgColor('#f8fafc')" class="w-7 h-7 rounded-full bg-slate-50 border border-stone-200"></button>
+        <button onclick="setBgColor('#f1f5f9')" class="w-7 h-7 rounded-full bg-slate-100 border border-stone-200"></button>
+        <button onclick="setBgColor('#ecfdf5')" class="w-7 h-7 rounded-full bg-emerald-50 border border-stone-200"></button>
+        <button onclick="setBgColor('#0f172a')" class="w-7 h-7 rounded-full bg-slate-900"></button>
+      </div>
+    </div>
+
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Text Color</label>
+    <div class="flex gap-2">
+      <input type="color" id="color-text" value="#1c1917" oninput="setTextColor(this.value)" class="w-12 h-10 rounded-lg cursor-pointer border border-stone-200">
+      <div class="flex flex-wrap gap-1.5 flex-1">
+        <button onclick="setTextColor('#1c1917')" class="w-7 h-7 rounded-full bg-stone-900"></button>
+        <button onclick="setTextColor('#0f172a')" class="w-7 h-7 rounded-full bg-slate-900"></button>
+        <button onclick="setTextColor('#111827')" class="w-7 h-7 rounded-full bg-gray-900"></button>
+        <button onclick="setTextColor('#ffffff')" class="w-7 h-7 rounded-full bg-white border border-stone-200"></button>
+        <button onclick="setTextColor('#e2e8f0')" class="w-7 h-7 rounded-full bg-slate-200 border border-stone-200"></button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <p class="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-3">Fonts</p>
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Heading Font</label>
+    <select id="font-heading" onchange="setFont('heading', this.value)" class="w-full mb-3 px-3 py-2 border border-stone-200 rounded-lg text-sm">
+      <option value="'Inter', system-ui, sans-serif">Inter</option>
+      <option value="'Poppins', sans-serif">Poppins</option>
+      <option value="'Montserrat', sans-serif">Montserrat</option>
+      <option value="'Outfit', sans-serif">Outfit</option>
+      <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+      <option value="'DM Sans', sans-serif">DM Sans</option>
+      <option value="'Manrope', sans-serif">Manrope</option>
+      <option value="'Work Sans', sans-serif">Work Sans</option>
+      <option value="'Raleway', sans-serif">Raleway</option>
+      <option value="'Nunito', sans-serif">Nunito</option>
+      <option value="'Oswald', sans-serif">Oswald</option>
+      <option value="'Playfair Display', serif">Playfair Display</option>
+      <option value="'Merriweather', serif">Merriweather</option>
+      <option value="'Libre Baskerville', serif">Libre Baskerville</option>
+      <option value="'Roboto Slab', serif">Roboto Slab</option>
+    </select>
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Body Font</label>
+    <select id="font-body" onchange="setFont('body', this.value)" class="w-full px-3 py-2 border border-stone-200 rounded-lg text-sm">
+      <option value="'Inter', system-ui, sans-serif">Inter</option>
+      <option value="'Poppins', sans-serif">Poppins</option>
+      <option value="'Roboto', sans-serif">Roboto</option>
+      <option value="'Open Sans', sans-serif">Open Sans</option>
+      <option value="'Lato', sans-serif">Lato</option>
+      <option value="'Source Sans 3', sans-serif">Source Sans 3</option>
+      <option value="'Montserrat', sans-serif">Montserrat</option>
+      <option value="'DM Sans', sans-serif">DM Sans</option>
+      <option value="'Work Sans', sans-serif">Work Sans</option>
+      <option value="'Nunito', sans-serif">Nunito</option>
+      <option value="'Manrope', sans-serif">Manrope</option>
+      <option value="'Outfit', sans-serif">Outfit</option>
+    </select>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+function toggleThemePanel() {
+  document.getElementById('theme-panel').classList.toggle('closed');
+}
+
+function updateBusiness() {
+  const name = document.getElementById('input-name').value || 'Company';
+  const tagline = document.getElementById('input-tagline').value || '';
+  const phone = document.getElementById('input-phone').value || '';
+  const email = document.getElementById('input-email').value || '';
+  const address = document.getElementById('input-address').value || '';
+
+  const initial = name.charAt(0).toUpperCase();
+  document.getElementById('logo-icon').textContent = initial;
+  document.getElementById('footer-logo-icon').textContent = initial;
+
+  document.getElementById('brand-name').textContent = name;
+  document.getElementById('footer-brand-name').textContent = name;
+  document.getElementById('footer-copyright-name').textContent = name;
+
+  document.getElementById('brand-tagline').textContent = tagline;
+  document.getElementById('footer-brand-tagline').textContent = tagline;
+
+  document.getElementById('mobile-phone').textContent = phone.replace('+91 ', '');
+  document.getElementById('desktop-phone').textContent = phone;
+  document.getElementById('footer-phone').textContent = phone;
+
+  document.getElementById('footer-email').textContent = email;
+
+  const addressHtml = address.replace(/\n/g, '<br>');
+  document.getElementById('footer-address').innerHTML = addressHtml;
+
+  document.title = 'About Us | ' + name + (tagline ? ' – ' + tagline : '');
+}
+
+function setPrimaryColor(hex) {
+  const root = document.documentElement;
+  root.style.setProperty('--primary', hex);
+  root.style.setProperty('--primary-dark', adjustBrightness(hex, -25));
+  root.style.setProperty('--primary-light', hex + '22');
+  root.style.setProperty('--primary-50', hex + '15');
+  document.getElementById('color-primary').value = hex;
+}
+
+function setBgColor(hex) {
+  const root = document.documentElement;
+  root.style.setProperty('--bg-color', hex);
+
+  const isLight = isLightColor(hex);
+
+  root.style.setProperty('--bg-alt', adjustBrightness(hex, isLight ? -8 : 12));
+
+  if (isLight) {
+    root.style.setProperty('--nav-bg', '#ffffff');
+    root.style.setProperty('--card-bg', '#ffffff');
+    root.style.setProperty('--border-color', '#e7e5e4');
+    root.style.setProperty('--footer-bg', '#1c1917');
+    root.style.setProperty('--footer-text', '#ffffff');
+    root.style.setProperty('--footer-muted', '#a8a29e');
+  } else {
+    root.style.setProperty('--nav-bg', adjustBrightness(hex, 12));
+    root.style.setProperty('--card-bg', adjustBrightness(hex, 18));
+    root.style.setProperty('--border-color', adjustBrightness(hex, 30));
+    root.style.setProperty('--footer-bg', adjustBrightness(hex, -18));
+    root.style.setProperty('--footer-text', '#f5f5f4');
+    root.style.setProperty('--footer-muted', '#a8a29e');
+  }
+
+  document.body.style.backgroundColor = hex;
+  document.getElementById('color-bg').value = hex;
+}
+
+function setTextColor(hex) {
+  document.documentElement.style.setProperty('--text-color', hex);
+  const muted = adjustBrightness(hex, isLightColor(hex) ? -40 : 40);
+  document.documentElement.style.setProperty('--text-muted', muted);
+  document.getElementById('color-text').value = hex;
+}
+
+function isLightColor(hex) {
+  const num = parseInt(hex.replace('#', ''), 16);
+  const r = (num >> 16) & 255;
+  const g = (num >> 8) & 255;
+  const b = num & 255;
+  return (r * 299 + g * 587 + b * 114) / 1000 > 160;
+}
+
+function adjustBrightness(hex, percent) {
+  let num = parseInt(hex.replace('#', ''), 16);
+  if (isNaN(num)) return hex;
+  let r = Math.min(255, Math.max(0, (num >> 16) + percent));
+  let g = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + percent));
+  let b = Math.min(255, Math.max(0, (num & 0x0000FF) + percent));
+  return '#' + (0x1000000 + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function setFont(type, value) {
+  if (type === 'heading') {
+    document.documentElement.style.setProperty('--font-heading', value);
+  } else {
+    document.documentElement.style.setProperty('--font-body', value);
+  }
+}
+
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+async function handlePhoneCTA() {
+  const phone = document.getElementById('input-phone').value.replace(/\s/g, '');
+  if (isMobileDevice()) {
+    window.location.href = `tel:${phone}`;
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(phone);
+    showToast('Phone number copied!');
+  } catch (err) { console.error(err); }
+}
+
+async function handleEmailCTA() {
+  const email = document.getElementById('input-email').value.trim();
+  try {
+    await navigator.clipboard.writeText(email);
+    showToast('Email copied to clipboard!');
+  } catch (err) { console.error(err); }
+}
+
+const toast = document.getElementById('copy-toast');
+function showToast(msg = 'Copied to clipboard!') {
+  document.getElementById('toast-message').textContent = msg;
+  toast.classList.remove('translate-y-[120%]', 'opacity-0');
+  setTimeout(() => hideToast(), 2500);
+}
+function hideToast() {
+  toast.classList.add('translate-y-[120%]', 'opacity-0');
+}
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+function toggleMobileMenu() {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('hidden');
+}
+hamburger.addEventListener('click', toggleMobileMenu);
+
+window.onload = function () {
+  window.scrollTo(0, 0);
+};
+
+var testimonialSwiper = new Swiper(".myTestimonialSwiper", {
+  slidesPerView: 1, spaceBetween: 20, loop: true,
+  navigation: { nextEl: ".next-btn", prevEl: ".prev-btn" },
+  breakpoints: { 768: { slidesPerView: 2, spaceBetween: 28 } }
+});
+
+function toggleFaq(button) {
+  const content = button.nextElementSibling;
+  const icon = button.querySelector('.faq-icon');
+  document.querySelectorAll('.faq-content').forEach(item => {
+    if (item !== content) {
+      item.style.maxHeight = null;
+      const otherIcon = item.previousElementSibling.querySelector('.faq-icon');
+      if (otherIcon) otherIcon.textContent = '+';
+    }
+  });
+  if (content.style.maxHeight) {
+    content.style.maxHeight = null;
+    icon.textContent = '+';
+  } else {
+    content.style.maxHeight = content.scrollHeight + "px";
+    icon.textContent = '−';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll('.animate-on-scroll').forEach((el, index) => {
+    el.style.setProperty('--i', index % 6);
+    observer.observe(el);
+  });
+});
+</script>
+</body>
+</html>

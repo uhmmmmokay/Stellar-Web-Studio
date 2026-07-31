@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Vertex Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Lato:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Oswald:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --primary-50: #eff6ff;
+            --bg-color: #fafaf9;
+            --bg-alt: #f5f5f4;
+            --card-bg: #ffffff;
+            --nav-bg: #ffffff;
+            --text-color: #1c1917;
+            --text-muted: #57534e;
+            --border-color: #e7e5e4;
+            --footer-bg: #1c1917;
+            --footer-text: #ffffff;
+            --footer-muted: #a8a29e;
+            --font-heading: 'Inter', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+        }
+
+        .tail-container { font-family: var(--font-body); }
+        .heading-font { font-family: var(--font-heading); }
+
+        .bg-page { background-color: var(--bg-color) !important; }
+        .bg-page-alt { background-color: var(--bg-alt) !important; }
+        .bg-card { background-color: var(--card-bg) !important; }
+        .bg-nav { background-color: var(--nav-bg) !important; }
+        .bg-footer { background-color: var(--footer-bg) !important; }
+
+        .bg-primary { background-color: var(--primary) !important; }
+        .bg-primary-dark { background-color: var(--primary-dark) !important; }
+        .text-primary { color: var(--primary) !important; }
+        .border-primary { border-color: var(--primary) !important; }
+        .hover\:bg-primary-dark:hover { background-color: var(--primary-dark) !important; }
+        .hover\:text-primary:hover { color: var(--primary) !important; }
+        .hover\:bg-primary-50:hover { background-color: var(--primary-50) !important; }
+        .bg-primary-light { background-color: var(--primary-light) !important; }
+
+        .text-main { color: var(--text-color) !important; }
+        .text-muted { color: var(--text-muted) !important; }
+        .text-footer { color: var(--footer-text) !important; }
+        .text-footer-muted { color: var(--footer-muted) !important; }
+        .border-theme { border-color: var(--border-color) !important; }
+
+        .nav-link { position: relative; transition: all 0.3s ease; color: var(--text-color); }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px; bottom: -2px; left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after { width: 100%; }
+        .nav-link:hover { color: var(--primary); }
+
+        .hamburger span { 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: var(--text-color) !important;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        .nav-link.active {
+            color: var(--primary) !important;
+            font-weight: 600;
+        }
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 2px; bottom: -2px; left: 0;
+            background-color: var(--primary);
+        }
+
+        #theme-panel {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        #theme-panel.closed {
+            transform: translateX(110%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #theme-panel::-webkit-scrollbar { width: 6px; }
+        #theme-panel::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 3px; }
+    </style>
+
+    <div id="copy-toast"
+         class="fixed bottom-5 right-5 translate-y-[120%] opacity-0 z-[9999] transition-all duration-300 max-w-xs w-[90%] sm:w-full bg-white border border-stone-200 rounded-2xl shadow-xl">
+        <div class="flex items-center p-4 gap-x-3">
+            <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <p id="toast-message" class="text-sm font-medium text-stone-700 flex-1">Copied to clipboard!</p>
+            <button onclick="hideToast()" class="text-stone-400 hover:text-stone-700 transition shrink-0">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+</head>
+<body class="tail-container">
+
+<!-- NAVBAR -->
+<nav class="bg-nav border-b border-theme sticky top-0 z-50 shadow-sm">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex items-center gap-x-2 sm:gap-x-3 shrink-0">
+                <a href="index.html" class="flex items-center gap-x-2 sm:gap-x-3">
+                    <div id="logo-icon" class="w-9 h-9 sm:w-10 sm:h-10 bg-primary rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl shadow-inner font-bold">V</div>
+                    <div class="leading-tight">
+                        <span id="brand-name" class="heading-font text-xl sm:text-2xl font-bold tracking-tight text-main">Vertex</span>
+                        <span id="brand-tagline" class="block text-[9px] sm:text-[10px] text-muted -mt-1 tracking-[1px]">SOLUTIONS</span>
+                    </div>
+                </a>
+            </div>
+
+            <button onclick="handlePhoneCTA()"
+                class="lg:hidden ml-auto flex items-center gap-x-2 bg-card border border-primary text-primary px-3 py-2 rounded-2xl hover:bg-primary-50 transition text-sm font-semibold whitespace-nowrap">
+                <i class="fa-solid fa-phone"></i>
+                <span id="mobile-phone" class="font-medium">98765 43210</span>
+            </button>
+
+            <div class="hidden lg:flex items-center gap-x-6 xl:gap-x-8 text-sm font-medium">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="projects.html" class="nav-link">Work</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-x-3 xl:gap-x-4">
+                <button onclick="handlePhoneCTA()"
+                    class="hidden lg:flex items-center gap-x-2 bg-card border border-primary text-primary px-4 xl:px-5 py-2.5 rounded-2xl hover:bg-primary-50 transition text-sm font-semibold whitespace-nowrap">
+                    <i class="fa-solid fa-phone"></i>
+                    <span id="desktop-phone" class="truncate max-w-[140px] xl:max-w-none">+91 98765 43210</span>
+                </button>
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                        class="bg-primary hover:bg-primary-dark text-white px-5 xl:px-6 py-2.5 rounded-2xl text-sm font-semibold transition shadow-md whitespace-nowrap">
+                    Free Consultation
+                </button>
+            </div>
+
+            <button id="hamburger" class="hamburger lg:hidden flex flex-col justify-center items-center gap-y-1.5 w-11 h-11 shrink-0">
+                <span class="block w-7 h-0.5 rounded"></span>
+                <span class="block w-7 h-0.5 rounded"></span>
+                <span class="block w-7 h-0.5 rounded"></span>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden bg-nav border-t border-theme fixed inset-x-0 top-20 shadow-xl py-6 z-50 max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <div class="max-w-[85rem] mx-auto px-6">
+            <div class="flex flex-col text-lg font-medium">
+                <a href="index.html" onclick="toggleMobileMenu()" class="py-3 border-b border-theme text-main">Home</a>
+                <a href="about.html" onclick="toggleMobileMenu()" class="py-3 border-b border-theme text-main">About</a>
+                <a href="services.html" onclick="toggleMobileMenu()" class="py-3 border-b border-theme text-main">Services</a>
+                <a href="projects.html" onclick="toggleMobileMenu()" class="py-3 border-b border-theme text-main">Work</a>
+                <a href="contact.html" onclick="toggleMobileMenu()" class="py-3 border-b border-theme text-main">Contact</a>
+            </div>
+            <div class="pt-8">
+                <button onclick="toggleMobileMenu(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                        class="w-full bg-primary hover:bg-primary-dark text-white py-4 rounded-3xl font-semibold text-lg transition">
+                    Free Consultation
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="py-20 bg-page overflow-hidden">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-10 lg:pt-4 lg:pb-16">
+    
+    <div class="max-w-3xl mb-10 lg:mb-14 animate-on-scroll">
+      <h2 class="heading-font text-4xl font-bold text-main">Contact Us</h2>
+      <p class="mt-3 text-lg text-muted">Ready to discuss your next challenge? Let’s start a conversation.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16">
+      
+      <!-- Form -->
+      <div class="md:order-2 space-y-6 animate-on-scroll" style="transition-delay: 100ms;">
+        <form id="contactForm" class="space-y-6">
+          <input type="text" id="name" placeholder="Full Name *" required
+                 class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition bg-card text-main">
+
+          <input type="tel" id="phone" placeholder="Phone Number *" required
+                 class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition bg-card text-main">
+
+          <input type="email" id="email" placeholder="Email Address *" required
+                 class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition bg-card text-main">
+
+          <textarea id="message" rows="5" placeholder="Tell us about your goals, challenges, or project scope *" required
+                    class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition resize-y bg-card text-main"></textarea>
+
+          <button type="submit"
+                  class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-4 rounded-2xl transition flex items-center justify-center gap-3">
+            Send Message
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-10 pt-14 md:pt-2">
+        
+        <div class="flex gap-x-6 items-start animate-on-scroll" style="transition-delay: 200ms;">
+          <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-main text-xl">Our Office</h4>
+            <address id="contact-address" class="mt-2 text-muted not-italic leading-relaxed">
+              Business Hub, Ratanada<br>
+              Jodhpur, Rajasthan 342001
+            </address>
+          </div>
+        </div>
+
+        <div class="flex gap-x-6 items-start animate-on-scroll" style="transition-delay: 300ms;">
+          <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-main text-xl">Call Us</h4>
+            <button onclick="handlePhoneCTA()" id="contact-phone"
+                    class="mt-2 block text-xl font-semibold text-main hover:text-primary transition text-left">
+              +91 98765 43210
+            </button>
+            <p class="text-sm text-muted mt-1">
+              Monday to Saturday | 9:00 AM – 6:00 PM
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-x-6 items-start animate-on-scroll" style="transition-delay: 400ms;">
+          <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-main text-xl">Email</h4>
+            <button onclick="handleEmailCTA()" id="contact-email"
+                    class="mt-2 block text-lg text-main hover:text-primary transition text-left">
+              hello@vertex.com
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-footer text-footer py-12 lg:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+      <div class="lg:col-span-5">
+        <div class="flex items-center gap-x-3 mb-6">
+          <div id="footer-logo-icon" class="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center text-xl font-bold shadow-inner text-white">V</div>
+          <div>
+            <span id="footer-brand-name" class="heading-font text-3xl font-bold tracking-tight text-footer">Vertex</span>
+            <span id="footer-brand-tagline" class="block text-xs text-primary tracking-[1.5px] -mt-1">SOLUTIONS</span>
+          </div>
+        </div>
+        <p id="footer-desc" class="text-footer-muted max-w-md leading-relaxed text-[15px]">
+          Helping ambitious organizations solve complex challenges and achieve measurable growth since 2012.
+        </p>
+        <div class="mt-8 flex gap-4">
+          <a href="#" class="w-9 h-9 rounded-2xl bg-white/10 hover:bg-primary transition flex items-center justify-center text-xl text-footer">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-2xl bg-white/10 hover:bg-primary transition flex items-center justify-center text-xl text-footer">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-2xl bg-white/10 hover:bg-primary transition flex items-center justify-center text-xl text-footer">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2">
+        <h4 class="font-semibold mb-5 text-lg text-footer">Quick Links</h4>
+        <ul class="space-y-3 text-[15px]">
+          <li><a href="index.html" class="text-footer-muted hover:text-primary transition">Home</a></li>
+          <li><a href="about.html" class="text-footer-muted hover:text-primary transition">About</a></li>
+          <li><a href="services.html" class="text-footer-muted hover:text-primary transition">Services</a></li>
+          <li><a href="projects.html" class="text-footer-muted hover:text-primary transition">Work</a></li>
+          <li><a href="contact.html" class="text-footer-muted hover:text-primary transition">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-2">
+        <h4 class="font-semibold mb-5 text-lg text-footer">Services</h4>
+        <ul class="space-y-3 text-[15px] text-footer-muted">
+          <li>Business Strategy</li>
+          <li>Digital Transformation</li>
+          <li>Operations Excellence</li>
+          <li>Change Management</li>
+          <li>Financial Advisory</li>
+          <li>Leadership & Talent</li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-3">
+        <h4 class="font-semibold mb-5 text-lg text-footer">Get In Touch</h4>
+        <div class="space-y-6">
+          <div class="flex gap-x-4 group">
+            <i class="fa-solid fa-phone text-footer mt-1 text-xl transition group-hover:text-primary"></i>
+            <div>
+              <button onclick="handlePhoneCTA()" id="footer-phone" class="font-semibold hover:text-primary transition text-left text-[15px] text-footer">
+                +91 98765 43210
+              </button>
+              <p class="text-footer-muted mt-1 text-sm">Mon – Sat | 9 AM – 6 PM</p>
+            </div>
+          </div>
+          <div class="flex gap-x-4">
+            <i class="fa-solid fa-location-dot text-footer mt-1 text-xl"></i>
+            <div id="footer-address" class="text-[15px] text-footer-muted">
+              Business Hub, Ratanada<br>Jodhpur, Rajasthan 342001
+            </div>
+          </div>
+          <div class="flex gap-x-4">
+            <i class="fa-solid fa-envelope text-footer mt-1 text-xl"></i>
+            <button onclick="handleEmailCTA()" id="footer-email" class="text-[15px] hover:text-primary transition text-left text-footer-muted">
+              hello@vertex.com
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-12 pt-6 text-center text-sm text-footer-muted">
+      <p>© 2026 <span id="footer-copyright-name" class="text-footer">Vertex Solutions</span>. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- THEME PANEL -->
+<button id="theme-toggle-btn" onclick="toggleThemePanel()"
+        class="fixed bottom-6 right-6 z-[100] w-14 h-14 rounded-full bg-primary text-white shadow-lg flex items-center justify-center text-xl hover:scale-105 transition">
+  <i class="fa-solid fa-palette"></i>
+</button>
+
+<div id="theme-panel" class="fixed bottom-24 right-6 z-[100] w-80 bg-white rounded-2xl shadow-2xl border border-stone-200 p-5 closed">
+  <div class="flex items-center justify-between mb-5 sticky top-0 bg-white pb-2">
+    <h3 class="font-semibold text-gray-900 text-lg">Theme & Branding</h3>
+    <button onclick="toggleThemePanel()" class="text-stone-400 hover:text-stone-700 text-xl"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <div class="mb-6">
+    <p class="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-3">Business Details</p>
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Company Name</label>
+    <input type="text" id="input-name" value="Vertex" oninput="updateBusiness()" class="w-full mb-3 px-3 py-2 border border-stone-200 rounded-lg text-sm focus:outline-none focus:border-blue-500">
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Tagline / Subtitle</label>
+    <input type="text" id="input-tagline" value="SOLUTIONS" oninput="updateBusiness()" class="w-full mb-3 px-3 py-2 border border-stone-200 rounded-lg text-sm focus:outline-none focus:border-blue-500">
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Phone Number</label>
+    <input type="text" id="input-phone" value="+91 98765 43210" oninput="updateBusiness()" class="w-full mb-3 px-3 py-2 border border-stone-200 rounded-lg text-sm focus:outline-none focus:border-blue-500">
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Email</label>
+    <input type="email" id="input-email" value="hello@vertex.com" oninput="updateBusiness()" class="w-full mb-3 px-3 py-2 border border-stone-200 rounded-lg text-sm focus:outline-none focus:border-blue-500">
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Address</label>
+    <textarea id="input-address" rows="2" oninput="updateBusiness()" class="w-full px-3 py-2 border border-stone-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 resize-none">Business Hub, Ratanada
+Jodhpur, Rajasthan 342001</textarea>
+  </div>
+
+  <div class="mb-6">
+    <p class="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-3">Colors</p>
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Primary Color</label>
+    <div class="flex gap-2 mb-3">
+      <input type="color" id="color-primary" value="#2563eb" oninput="setPrimaryColor(this.value)" class="w-12 h-10 rounded-lg cursor-pointer border border-stone-200">
+      <div class="flex flex-wrap gap-1.5 flex-1">
+        <button onclick="setPrimaryColor('#2563eb')" class="w-7 h-7 rounded-full bg-blue-600"></button>
+        <button onclick="setPrimaryColor('#16a34a')" class="w-7 h-7 rounded-full bg-green-600"></button>
+        <button onclick="setPrimaryColor('#dc2626')" class="w-7 h-7 rounded-full bg-red-600"></button>
+        <button onclick="setPrimaryColor('#7c3aed')" class="w-7 h-7 rounded-full bg-violet-600"></button>
+        <button onclick="setPrimaryColor('#ea580c')" class="w-7 h-7 rounded-full bg-orange-600"></button>
+        <button onclick="setPrimaryColor('#0891b2')" class="w-7 h-7 rounded-full bg-cyan-600"></button>
+        <button onclick="setPrimaryColor('#db2777')" class="w-7 h-7 rounded-full bg-pink-600"></button>
+        <button onclick="setPrimaryColor('#4f46e5')" class="w-7 h-7 rounded-full bg-indigo-600"></button>
+      </div>
+    </div>
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Background Color</label>
+    <div class="flex gap-2 mb-3">
+      <input type="color" id="color-bg" value="#fafaf9" oninput="setBgColor(this.value)" class="w-12 h-10 rounded-lg cursor-pointer border border-stone-200">
+      <div class="flex flex-wrap gap-1.5 flex-1">
+        <button onclick="setBgColor('#fafaf9')" class="w-7 h-7 rounded-full bg-stone-50 border border-stone-200"></button>
+        <button onclick="setBgColor('#ffffff')" class="w-7 h-7 rounded-full bg-white border border-stone-200"></button>
+        <button onclick="setBgColor('#f8fafc')" class="w-7 h-7 rounded-full bg-slate-50 border border-stone-200"></button>
+        <button onclick="setBgColor('#f1f5f9')" class="w-7 h-7 rounded-full bg-slate-100 border border-stone-200"></button>
+        <button onclick="setBgColor('#ecfdf5')" class="w-7 h-7 rounded-full bg-emerald-50 border border-stone-200"></button>
+        <button onclick="setBgColor('#0f172a')" class="w-7 h-7 rounded-full bg-slate-900"></button>
+      </div>
+    </div>
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Text Color</label>
+    <div class="flex gap-2">
+      <input type="color" id="color-text" value="#1c1917" oninput="setTextColor(this.value)" class="w-12 h-10 rounded-lg cursor-pointer border border-stone-200">
+      <div class="flex flex-wrap gap-1.5 flex-1">
+        <button onclick="setTextColor('#1c1917')" class="w-7 h-7 rounded-full bg-stone-900"></button>
+        <button onclick="setTextColor('#0f172a')" class="w-7 h-7 rounded-full bg-slate-900"></button>
+        <button onclick="setTextColor('#111827')" class="w-7 h-7 rounded-full bg-gray-900"></button>
+        <button onclick="setTextColor('#ffffff')" class="w-7 h-7 rounded-full bg-white border border-stone-200"></button>
+        <button onclick="setTextColor('#e2e8f0')" class="w-7 h-7 rounded-full bg-slate-200 border border-stone-200"></button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <p class="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-3">Fonts</p>
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Heading Font</label>
+    <select id="font-heading" onchange="setFont('heading', this.value)" class="w-full mb-3 px-3 py-2 border border-stone-200 rounded-lg text-sm">
+      <option value="'Inter', system-ui, sans-serif">Inter</option>
+      <option value="'Poppins', sans-serif">Poppins</option>
+      <option value="'Montserrat', sans-serif">Montserrat</option>
+      <option value="'Outfit', sans-serif">Outfit</option>
+      <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+      <option value="'DM Sans', sans-serif">DM Sans</option>
+      <option value="'Manrope', sans-serif">Manrope</option>
+      <option value="'Work Sans', sans-serif">Work Sans</option>
+      <option value="'Raleway', sans-serif">Raleway</option>
+      <option value="'Nunito', sans-serif">Nunito</option>
+      <option value="'Oswald', sans-serif">Oswald</option>
+      <option value="'Playfair Display', serif">Playfair Display</option>
+      <option value="'Merriweather', serif">Merriweather</option>
+      <option value="'Libre Baskerville', serif">Libre Baskerville</option>
+      <option value="'Roboto Slab', serif">Roboto Slab</option>
+    </select>
+    <label class="text-sm font-medium text-gray-700 mb-1 block">Body Font</label>
+    <select id="font-body" onchange="setFont('body', this.value)" class="w-full px-3 py-2 border border-stone-200 rounded-lg text-sm">
+      <option value="'Inter', system-ui, sans-serif">Inter</option>
+      <option value="'Poppins', sans-serif">Poppins</option>
+      <option value="'Roboto', sans-serif">Roboto</option>
+      <option value="'Open Sans', sans-serif">Open Sans</option>
+      <option value="'Lato', sans-serif">Lato</option>
+      <option value="'Source Sans 3', sans-serif">Source Sans 3</option>
+      <option value="'Montserrat', sans-serif">Montserrat</option>
+      <option value="'DM Sans', sans-serif">DM Sans</option>
+      <option value="'Work Sans', sans-serif">Work Sans</option>
+      <option value="'Nunito', sans-serif">Nunito</option>
+      <option value="'Manrope', sans-serif">Manrope</option>
+      <option value="'Outfit', sans-serif">Outfit</option>
+    </select>
+  </div>
+</div>
+
+<script>
+function toggleThemePanel() {
+  document.getElementById('theme-panel').classList.toggle('closed');
+}
+
+function updateBusiness() {
+  const name = document.getElementById('input-name').value || 'Company';
+  const tagline = document.getElementById('input-tagline').value || '';
+  const phone = document.getElementById('input-phone').value || '';
+  const email = document.getElementById('input-email').value || '';
+  const address = document.getElementById('input-address').value || '';
+
+  const initial = name.charAt(0).toUpperCase();
+  document.getElementById('logo-icon').textContent = initial;
+  document.getElementById('footer-logo-icon').textContent = initial;
+
+  document.getElementById('brand-name').textContent = name;
+  document.getElementById('footer-brand-name').textContent = name;
+  document.getElementById('footer-copyright-name').textContent = name;
+
+  document.getElementById('brand-tagline').textContent = tagline;
+  document.getElementById('footer-brand-tagline').textContent = tagline;
+
+  document.getElementById('mobile-phone').textContent = phone.replace('+91 ', '');
+  document.getElementById('desktop-phone').textContent = phone;
+  document.getElementById('footer-phone').textContent = phone;
+  document.getElementById('contact-phone').textContent = phone;
+  document.getElementById('footer-email').textContent = email;
+  document.getElementById('contact-email').textContent = email;
+
+  const addressHtml = address.replace(/\n/g, '<br>');
+  document.getElementById('footer-address').innerHTML = addressHtml;
+  document.getElementById('contact-address').innerHTML = addressHtml;
+
+  document.title = 'Contact | ' + name + (tagline ? ' – ' + tagline : '');
+}
+
+function setPrimaryColor(hex) {
+  const root = document.documentElement;
+  root.style.setProperty('--primary', hex);
+  root.style.setProperty('--primary-dark', adjustBrightness(hex, -25));
+  root.style.setProperty('--primary-light', hex + '22');
+  root.style.setProperty('--primary-50', hex + '15');
+  document.getElementById('color-primary').value = hex;
+}
+
+function setBgColor(hex) {
+  const root = document.documentElement;
+  root.style.setProperty('--bg-color', hex);
+  const isLight = isLightColor(hex);
+  root.style.setProperty('--bg-alt', adjustBrightness(hex, isLight ? -8 : 12));
+  if (isLight) {
+    root.style.setProperty('--nav-bg', '#ffffff');
+    root.style.setProperty('--card-bg', '#ffffff');
+    root.style.setProperty('--border-color', '#e7e5e4');
+    root.style.setProperty('--footer-bg', '#1c1917');
+    root.style.setProperty('--footer-text', '#ffffff');
+    root.style.setProperty('--footer-muted', '#a8a29e');
+  } else {
+    root.style.setProperty('--nav-bg', adjustBrightness(hex, 12));
+    root.style.setProperty('--card-bg', adjustBrightness(hex, 18));
+    root.style.setProperty('--border-color', adjustBrightness(hex, 30));
+    root.style.setProperty('--footer-bg', adjustBrightness(hex, -18));
+    root.style.setProperty('--footer-text', '#f5f5f4');
+    root.style.setProperty('--footer-muted', '#a8a29e');
+  }
+  document.body.style.backgroundColor = hex;
+  document.getElementById('color-bg').value = hex;
+}
+
+function setTextColor(hex) {
+  document.documentElement.style.setProperty('--text-color', hex);
+  const muted = adjustBrightness(hex, isLightColor(hex) ? -40 : 40);
+  document.documentElement.style.setProperty('--text-muted', muted);
+  document.getElementById('color-text').value = hex;
+}
+
+function isLightColor(hex) {
+  const num = parseInt(hex.replace('#', ''), 16);
+  const r = (num >> 16) & 255, g = (num >> 8) & 255, b = num & 255;
+  return (r * 299 + g * 587 + b * 114) / 1000 > 160;
+}
+
+function adjustBrightness(hex, percent) {
+  let num = parseInt(hex.replace('#', ''), 16);
+  if (isNaN(num)) return hex;
+  let r = Math.min(255, Math.max(0, (num >> 16) + percent));
+  let g = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + percent));
+  let b = Math.min(255, Math.max(0, (num & 0x0000FF) + percent));
+  return '#' + (0x1000000 + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function setFont(type, value) {
+  if (type === 'heading') document.documentElement.style.setProperty('--font-heading', value);
+  else document.documentElement.style.setProperty('--font-body', value);
+}
+
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+async function handlePhoneCTA() {
+  const phone = document.getElementById('input-phone').value.replace(/\s/g, '');
+  if (isMobileDevice()) { window.location.href = `tel:${phone}`; return; }
+  try {
+    await navigator.clipboard.writeText(phone);
+    showToast('Phone number copied!');
+  } catch (err) { console.error(err); }
+}
+
+async function handleEmailCTA() {
+  const email = document.getElementById('input-email').value.trim();
+  try {
+    await navigator.clipboard.writeText(email);
+    showToast('Email copied to clipboard!');
+  } catch (err) { console.error(err); }
+}
+
+const toast = document.getElementById('copy-toast');
+function showToast(msg = 'Copied to clipboard!') {
+  document.getElementById('toast-message').textContent = msg;
+  toast.classList.remove('translate-y-[120%]', 'opacity-0');
+  setTimeout(() => hideToast(), 2500);
+}
+function hideToast() {
+  toast.classList.add('translate-y-[120%]', 'opacity-0');
+}
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+function toggleMobileMenu() {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('hidden');
+}
+hamburger.addEventListener('click', toggleMobileMenu);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll('.animate-on-scroll').forEach((el, index) => {
+    el.style.transitionDelay = (index * 80) + 'ms';
+    observer.observe(el);
+  });
+});
+</script>
+</body>
+</html>
