@@ -1,39 +1,52 @@
-// script.js
+// ── MOBILE NAVBAR TOGGLE ──
+document.addEventListener("DOMContentLoaded", () => {
+    const toggleButton = document.getElementById("hs-navbar-example-collapse");
+    const navbar = document.getElementById("hs-navbar-example");
 
-// Hamburger menu toggle
-const hamburger = document.querySelector('.hamburger');
-const navUl = document.querySelector('nav ul');
+    if (toggleButton && navbar) {
+        toggleButton.addEventListener("click", () => {
+            const isOpen = toggleButton.getAttribute("aria-expanded") === "true";
 
-if (hamburger && navUl) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navUl.classList.toggle('active');
-    });
-}
+            toggleButton.setAttribute("aria-expanded", String(!isOpen));
 
-// Header scroll effect
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (header) {
-        header.classList.toggle('scrolled', window.scrollY > 100);
+            navbar.classList.toggle("hidden");
+        });
+
+        // Close mobile menu when a navigation link is clicked
+        navbar.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                if (window.innerWidth < 640) {
+                    navbar.classList.add("hidden");
+                    toggleButton.setAttribute("aria-expanded", "false");
+                }
+            });
+        });
     }
 });
+
 
 // FAQ Toggle
 const faqQuestions = document.querySelectorAll(".faq-question");
 faqQuestions.forEach(question => {
     question.addEventListener("click", () => {
+        const item = question.closest(".faq-item");
         const answer = question.nextElementSibling;
-        if (answer.style.maxHeight) {
-            answer.style.maxHeight = null;
-        } else {
-            document.querySelectorAll(".faq-answer").forEach(item => {
-                item.style.maxHeight = null;
-            });
+        const isOpen = item.classList.contains("active");
+
+        // Close all
+        document.querySelectorAll(".faq-item").forEach(faq => {
+            faq.classList.remove("active");
+            faq.querySelector(".faq-answer").style.maxHeight = null;
+        });
+
+        // Open this one if it wasn't already open
+        if (!isOpen) {
+            item.classList.add("active");
             answer.style.maxHeight = answer.scrollHeight + "px";
         }
     });
 });
+
 
 // Copy email to clipboard + snackbar
 const emailLinks = document.querySelectorAll('.footer-email-link, .contact-email a');
@@ -64,15 +77,14 @@ const animationObserver = new IntersectionObserver((entries) => {
 });
 
 const elementsToAnimate = document.querySelectorAll(
-    '.hero-content, .hero-image, .feature-row, .approach-step, .portfolio-card, .blog-card, .package, .founder-container, .faq-item , .what-container, .what-card, .what-right'
+    '.hero-content, .hero-image, .feature-row, .approach-step, .portfolio-card, .blog-card, .package, .founder-container, .faq-item, .what-container, .what-card, .what-right, .feature-card, .comparison-table-wrapper, .final-cta-inner'
 );
 
 elementsToAnimate.forEach(el => animationObserver.observe(el));
 
-// ── SMOOTH SCROLL TO SECTION + AUTO-CLOSE MOBILE MENU (NOW 100% RELIABLE) ──
+// ── SMOOTH SCROLL TO SECTION + AUTO-CLOSE MOBILE MENU ──
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        // Prevent default behavior immediately
         e.preventDefault();
 
         const targetId = this.getAttribute('href').substring(1);
@@ -90,7 +102,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth'
             });
 
-            // Auto-close mobile menu
             if (hamburger && navUl && navUl.classList.contains('active')) {
                 hamburger.classList.remove('active');
                 navUl.classList.remove('active');
@@ -99,9 +110,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
-
     const modal = document.getElementById("orderModal");
     const openBtn = document.getElementById("openOrderModal");
     const closeBtn = document.getElementById("closeOrderModal");
@@ -127,37 +136,40 @@ document.addEventListener("DOMContentLoaded", () => {
             modal.classList.remove("active");
         }
     });
-
 });
 
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-    const form = e.target;
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.textContent;
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.textContent;
 
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
 
-    try {
-        const response = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: new FormData(form)
-        });
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: new FormData(form)
+            });
 
-        const result = await response.json();
+            const result = await response.json();
 
-        if (result.success) {
-            window.location.href = 'contact_success.html';
-        } else {
-            alert(result.message || 'Something went wrong. Please try again.');
+            if (result.success) {
+                window.location.href = 'contact_success.html';
+            } else {
+                alert(result.message || 'Something went wrong. Please try again.');
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        } catch (error) {
+            alert('Network error. Please try again.');
             btn.disabled = false;
             btn.textContent = originalText;
         }
-    } catch (error) {
-        alert('Network error. Please try again.');
-        btn.disabled = false;
-        btn.textContent = originalText;
-    }
-});
+    });
+}
+    
