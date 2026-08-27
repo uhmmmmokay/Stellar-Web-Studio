@@ -5,51 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message Sent | Stellar Web Studio</title>
     <link rel="icon" type="image/svg+xml" href="IMAGES/favicon stellar web studio.svg">
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        ink: {
+                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
+                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
+                            800: '#1e293b', 900: '#0f172a',
+                        },
+                        brand: { DEFAULT: '#2563eb', soft: '#eff6ff' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: Inter, system-ui, sans-serif; }</style>
 </head>
-<body>
+<body class="bg-ink-50 text-ink-900 antialiased min-h-screen flex items-center justify-center px-5">
 
-<section class="status-page">
+    <div class="w-full max-w-md text-center">
+        <a href="index.html" class="inline-flex items-center gap-2 mb-10">
+            <img src="IMAGES/stellar web studio.svg" alt="" class="h-7 w-auto">
+            <span class="text-sm font-semibold tracking-tight">Stellar Web Studio</span>
+        </a>
 
-    <div class="status-card">
-
-        <div class="status-icon success">
-            ✓
+        <div class="rounded-2xl border border-ink-200 bg-white p-8 sm:p-10 shadow-sm">
+            <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-green-50 text-green-600 text-xl font-semibold">
+                ✓
+            </div>
+            <p class="mt-4 text-xs font-semibold tracking-wide text-brand uppercase">Message sent</p>
+            <h1 class="mt-2 text-2xl font-semibold text-ink-900 tracking-tight">Thank you!</h1>
+            <p class="mt-3 text-ink-700 leading-relaxed text-[0.95rem]">
+                Your message has been sent. We’ll get back to you as soon as possible — usually within 24 hours.
+            </p>
+            <p class="mt-2 text-sm text-ink-600">
+                Keep an eye on your inbox (and spam folder, just in case).
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="index.html"
+                   class="inline-flex justify-center items-center rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700">
+                    Back to Home
+                </a>
+                <a href="templates.html"
+                   class="inline-flex justify-center items-center rounded-lg border border-ink-200 bg-white px-5 py-3 text-sm font-semibold text-ink-900 transition hover:bg-ink-50">
+                    View Designs
+                </a>
+            </div>
         </div>
-
-        <p class="status-label">
-            MESSAGE SENT
-        </p>
-
-        <h1>
-            Thank You!
-        </h1>
-
-        <p class="status-text">
-            Your message has been successfully sent. We’ve received your enquiry
-            and will get back to you as soon as possible.
-        </p>
-
-        <p class="status-text">
-            We typically reply within 24 hours. Keep an eye on your inbox
-            (and spam folder, just in case).
-        </p>
-
-        <div class="status-buttons">
-
-            <a href="index.html" class="btn-order">
-                Back to Home
-            </a>
-
-            <a href="templates.html" class="btn-preview">
-                Browse Templates
-            </a>
-
-        </div>
-
     </div>
-
-</section>
 
 </body>
 </html>
