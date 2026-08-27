@@ -3,137 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <!-- Updated Title -->
-    <title>Stellar Web Studio | Stellar Quality Websites for Professionals</title>
-   
-    <!-- Favicon (added exactly as requested) -->
+    <title>Stellar Web Studio | Choose Your Website</title>
     <link rel="icon" type="image/svg+xml" href="IMAGES/favicon stellar web studio.svg">
-   
-    <!-- Meta Description (new, made up to match your branding) -->
-    <meta name="description" content="Stellar Web Studio delivers stellar quality websites for professionals. We craft clean, modern, high-converting websites that build instant trust and credibility — starting at just $50. Includes free custom logo design, free hosting guidance, and ongoing support.">
-   
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Pick a professionally designed website template. Customized for your business — starting at $9.99.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        ink: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        brand: {
+                            DEFAULT: '#2563eb',
+                            soft: '#eff6ff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: Inter, system-ui, sans-serif; }
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal.in-view { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.08s; }
+        .reveal-delay-2 { transition-delay: 0.16s; }
+    </style>
 </head>
-<body>
+<body class="bg-ink-50 text-ink-900 antialiased min-h-screen">
 
+<!-- Slim top bar -->
+<div class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-ink-200">
+    <div class="max-w-5xl mx-auto px-5 sm:px-6 h-14 flex items-center justify-between">
+        <a href="index.html"
+           class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-600 hover:text-brand transition">
+            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m15 18-6-6 6-6"/>
+            </svg>
+            Back
+        </a>
+        <div class="flex items-center gap-2">
+            <img src="IMAGES/stellar web studio.svg" alt="" class="h-6 w-auto">
+            <span class="text-sm font-semibold text-ink-900 tracking-tight hidden sm:inline">Stellar Web Studio</span>
+        </div>
+        <span class="w-14" aria-hidden="true"></span><!-- spacer to center logo -->
+    </div>
+</div>
 
-<!-- (HTML remains 100% unchanged below this point - only the <head> was updated) -->
-<header>
-    <a href="index.html" class="logo">
-        <img src="IMAGES/stellar web studio.svg" alt="Stellar Web Studio Logo">
-    </a>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="templates.html" class="active">Templates</a></li>
-            <li><a href="index.html#faq">FAQ</a></li>
-            <li><a href="#contact" class="contact-btn">Contact Us</a></li>
-        </ul>
-    </nav>
-    <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </header>
+<main class="max-w-5xl mx-auto px-5 sm:px-6 py-10 sm:py-14">
 
-
-
-
-<section class="templates-page">
-
-    <div class="templates-header">
-        <h1>Choose Your Website</h1>
-        <p>
-            Every template is professionally designed, fully customized to your
-            business, and delivered ready to launch within one business day.
+    <div class="text-center mb-10 sm:mb-12 reveal">
+        <p class="text-sm font-semibold text-brand mb-2">Step 1 of 2</p>
+        <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-ink-900">
+            Pick a design
+        </h1>
+        <p class="mt-2 text-ink-700 text-base sm:text-lg max-w-md mx-auto">
+            Choose a template. We’ll customize it for your business.
         </p>
     </div>
 
-    <div class="templates-grid large-grid">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
 
-        <!-- Landscape Template -->
-        <a href="landscape_template_details.html" class="template-card">
-            <img src="landscape site/landscape_hero.png"
-                 alt="Landscape Template">
-            <div class="template-content">
-                <h3>Landscape Template</h3>
-                <p class="template-price">$50</p>
+        <a href="landscape_template_details.html"
+           class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white p-4 sm:p-5
+                  shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-ink-900/5 hover:border-brand/30 reveal reveal-delay-1">
+            <div class="bg-ink-100 aspect-[16/10] overflow-hidden rounded-xl mb-4">
+                <img src="landscape site/landscape_hero.png"
+                     alt="Landscape Template"
+                     class="h-full w-full object-contain object-top transition duration-300 group-hover:scale-[1.02]">
             </div>
-        </a>
-
-        <!-- Business Template -->
-        <a href="business_template_details.html" class="template-card">
-            <img src="business site/hero.png"
-                 alt="Business Template">
-            <div class="template-content">
-                <h3>Business Template</h3>
-                <p class="template-price">$50</p>
-            </div>
-        </a>
-
-    </div>
-
-</section>
-
-
-</section>
-    <div class="section-divider"></div>
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-container">
-           
-                <!-- Logo -->
-                <div class="footer-logo">
-                    <a href="index.html" class="logo">
-                        <img src="IMAGES/FOOTER LOGO.svg" alt="Stellar Web Studio Logo">
-                    </a>
+            <div class="flex items-center justify-between gap-3">
+                <div>
+                    <h2 class="text-base font-semibold text-ink-900">Landscape</h2>
+                    <p class="text-sm text-ink-600 mt-0.5">Outdoor & service businesses</p>
                 </div>
-                <!-- Navigation -->
-                <div class="footer-nav">
-                    <h4>Navigation</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="templates.html">Templates</a></li>
-                        <li><a href="index.html#faq">FAQ</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                    </ul>
-                </div>
-<!-- Email -->
-<div class="footer-email">
-    <h4>Email Us</h4>
-    <a href="mailto:Ayush@stellarwebstudio.com" class="footer-email-link">
-        Ayush@stellarwebstudio.com
-    </a>
-    <p class="footer-email-note">We reply within 24 hours.</p>
-    <!-- Social Icons -->
-    <div class="footer-socials">
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/company/stellar-web-studio" target="_blank" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="black">
-                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM.5 8h4v12h-4zM8.5 8h3.8v1.64h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.66 4.8 6.12V20h-4v-5.31c0-1.27-.02-2.91-1.77-2.91-1.77 0-2.04 1.38-2.04 2.82V20h-4z"/>
-            </svg>
-        </a>
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/stellarwebstudio?igsh=MXA1Y251OXBzMDRyZQ==" target="_blank" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="black">
-                <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm0 2h10c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3zm5 2.8A5.2 5.2 0 1 0 17.2 12 5.21 5.21 0 0 0 12 6.8zm0 2A3.2 3.2 0 1 1 8.8 12 3.2 3.2 0 0 1 12 8.8zm4.5-2.3a1.2 1.2 0 1 0 1.2 1.2 1.2 1.2 0 0 0-1.2-1.2z"/>
-            </svg>
-        </a>
-    </div>
-</div>
+                <span class="text-base font-bold text-ink-900 shrink-0">$9.99</span>
             </div>
-        </div>
-    </footer>
-    <!-- FULL WIDTH DIVIDER -->
-    <div class="footer-divider"></div>
-    <!-- Bottom -->
-    <div class="footer-bottom">
-        <p>© 2026 Stellar Web Studio. All rights reserved.</p>
+            <span class="mt-4 flex items-center justify-center gap-1.5 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white transition group-hover:bg-blue-700">
+                View Details
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+        </a>
+
+        <a href="business_template_details.html"
+           class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white p-4 sm:p-5
+                  shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-ink-900/5 hover:border-brand/30 reveal reveal-delay-2">
+            <div class="bg-ink-100 aspect-[16/10] overflow-hidden rounded-xl mb-4">
+                <img src="business site/hero.png"
+                     alt="Business Template"
+                     class="h-full w-full object-contain object-top transition duration-300 group-hover:scale-[1.02]">
+            </div>
+            <div class="flex items-center justify-between gap-3">
+                <div>
+                    <h2 class="text-base font-semibold text-ink-900">Business</h2>
+                    <p class="text-sm text-ink-600 mt-0.5">Pros, consultants & local brands</p>
+                </div>
+                <span class="text-base font-bold text-ink-900 shrink-0">$9.99</span>
+            </div>
+            <span class="mt-4 flex items-center justify-center gap-1.5 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white transition group-hover:bg-blue-700">
+                View Details
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+        </a>
+
     </div>
-    <!-- Snackbar for copy-to-clipboarsd feedback -->
-    <div id="snackbar" class="snackbar">Copied to clipboard!</div>
-    <script src="script.js"></script>
-    </body>
+
+    <p class="mt-10 text-center text-sm text-ink-600 reveal">
+        Free hosting · Copywriting included · Ready fast
+    </p>
+
+</main>
+
+<script>
+(function () {
+    const els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) entry.target.classList.add('in-view');
+        });
+    }, { threshold: 0.1 });
+    els.forEach(function (el) { observer.observe(el); });
+})();
+</script>
+</body>
 </html>
