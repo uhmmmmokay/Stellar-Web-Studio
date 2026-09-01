@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stellar Web Studio | Choose Your Website</title>
     <link rel="icon" type="image/svg+xml" href="IMAGES/favicon stellar web studio.svg">
-    <meta name="description" content="Pick a professionally designed website template. Customized for your business — starting at $9.99.">
+    <meta name="description" content="Pick a professionally designed website template. Customized for your business — starting at £9.99.">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -49,6 +49,8 @@
         .reveal.in-view { opacity: 1; transform: translateY(0); }
         .reveal-delay-1 { transition-delay: 0.08s; }
         .reveal-delay-2 { transition-delay: 0.16s; }
+        .reveal-delay-3 { transition-delay: 0.24s; }
+        .reveal-delay-4 { transition-delay: 0.32s; }
     </style>
 </head>
 <body class="bg-ink-50 text-ink-900 antialiased min-h-screen">
@@ -67,7 +69,7 @@
             <img src="IMAGES/stellar web studio.svg" alt="" class="h-6 w-auto">
             <span class="text-sm font-semibold text-ink-900 tracking-tight hidden sm:inline">Stellar Web Studio</span>
         </div>
-        <span class="w-14" aria-hidden="true"></span><!-- spacer to center logo -->
+        <span class="w-14" aria-hidden="true"></span>
     </div>
 </div>
 
@@ -85,6 +87,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
 
+        <!-- Landscape -->
         <a href="landscape_template_details.html"
            class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white p-4 sm:p-5
                   shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-ink-900/5 hover:border-brand/30 reveal reveal-delay-1">
@@ -98,7 +101,7 @@
                     <h2 class="text-base font-semibold text-ink-900">Landscape</h2>
                     <p class="text-sm text-ink-600 mt-0.5">Outdoor & service businesses</p>
                 </div>
-                <span class="text-base font-bold text-ink-900 shrink-0">$9.99</span>
+                <span class="text-base font-bold text-ink-900 shrink-0">£9.99</span>
             </div>
             <span class="mt-4 flex items-center justify-center gap-1.5 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white transition group-hover:bg-blue-700">
                 View Details
@@ -106,6 +109,7 @@
             </span>
         </a>
 
+        <!-- Business -->
         <a href="business_template_details.html"
            class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white p-4 sm:p-5
                   shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-ink-900/5 hover:border-brand/30 reveal reveal-delay-2">
@@ -119,7 +123,51 @@
                     <h2 class="text-base font-semibold text-ink-900">Business</h2>
                     <p class="text-sm text-ink-600 mt-0.5">Pros, consultants & local brands</p>
                 </div>
-                <span class="text-base font-bold text-ink-900 shrink-0">$9.99</span>
+                <span class="text-base font-bold text-ink-900 shrink-0">£9.99</span>
+            </div>
+            <span class="mt-4 flex items-center justify-center gap-1.5 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white transition group-hover:bg-blue-700">
+                View Details
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+        </a>
+
+        <!-- Pet Services -->
+        <a href="pet_template_details.html"
+           class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white p-4 sm:p-5
+                  shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-ink-900/5 hover:border-brand/30 reveal reveal-delay-3">
+            <div class="bg-ink-100 aspect-[16/10] overflow-hidden rounded-xl mb-4">
+                <img src="pet/pethero.png"
+                     alt="Pet Services Template"
+                     class="h-full w-full object-contain object-top transition duration-300 group-hover:scale-[1.02]">
+            </div>
+            <div class="flex items-center justify-between gap-3">
+                <div>
+                    <h2 class="text-base font-semibold text-ink-900">Pet Services</h2>
+                    <p class="text-sm text-ink-600 mt-0.5">Grooming, walking & pet care</p>
+                </div>
+                <span class="text-base font-bold text-ink-900 shrink-0">£9.99</span>
+            </div>
+            <span class="mt-4 flex items-center justify-center gap-1.5 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white transition group-hover:bg-blue-700">
+                View Details
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+        </a>
+
+        <!-- Premium House Services -->
+        <a href="premium_house_services_template_details.html"
+           class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white p-4 sm:p-5
+                  shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-ink-900/5 hover:border-brand/30 reveal reveal-delay-4">
+            <div class="bg-ink-100 aspect-[16/10] overflow-hidden rounded-xl mb-4">
+                <img src="premium house services/premiumhouseservices.png"
+                     alt="Premium House Services Template"
+                     class="h-full w-full object-contain object-top transition duration-300 group-hover:scale-[1.02]">
+            </div>
+            <div class="flex items-center justify-between gap-3">
+                <div>
+                    <h2 class="text-base font-semibold text-ink-900">Premium House Services</h2>
+                    <p class="text-sm text-ink-600 mt-0.5">House Services, renovations & property care</p>
+                </div>
+                <span class="text-base font-bold text-ink-900 shrink-0">£9.99</span>
             </div>
             <span class="mt-4 flex items-center justify-center gap-1.5 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white transition group-hover:bg-blue-700">
                 View Details
