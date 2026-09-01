@@ -6,13 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (toggleButton && navbar) {
         toggleButton.addEventListener("click", () => {
             const isOpen = toggleButton.getAttribute("aria-expanded") === "true";
-
             toggleButton.setAttribute("aria-expanded", String(!isOpen));
-
             navbar.classList.toggle("hidden");
         });
 
-        // Close mobile menu when a navigation link is clicked
         navbar.querySelectorAll("a").forEach(link => {
             link.addEventListener("click", () => {
                 if (window.innerWidth < 640) {
@@ -33,13 +30,11 @@ faqQuestions.forEach(question => {
         const answer = question.nextElementSibling;
         const isOpen = item.classList.contains("active");
 
-        // Close all
         document.querySelectorAll(".faq-item").forEach(faq => {
             faq.classList.remove("active");
             faq.querySelector(".faq-answer").style.maxHeight = null;
         });
 
-        // Open this one if it wasn't already open
         if (!isOpen) {
             item.classList.add("active");
             answer.style.maxHeight = answer.scrollHeight + "px";
@@ -64,6 +59,135 @@ emailLinks.forEach(link => {
     });
 });
 
+
+// ── DESIGNS CAROUSEL (4 designs, 2 visible, auto-scroll by 1) ──
+document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById("designsTrack");
+    const prevBtn = document.getElementById("carouselPrev");
+    const nextBtn = document.getElementById("carouselNext");
+    const dotsContainer = document.getElementById("carouselDots");
+
+    if (!track) return;
+
+    const slides = Array.from(track.children);
+    const total = slides.length; // 4
+    let currentIndex = 0;
+    let autoTimer = null;
+    const AUTO_INTERVAL = 4000;
+
+    function getVisibleCount() {
+        return window.innerWidth >= 640 ? 2 : 1;
+    }
+
+    function maxIndex() {
+        return Math.max(0, total - getVisibleCount());
+    }
+
+    function update() {
+        const visible = getVisibleCount();
+        const percent = (100 / visible) * currentIndex;
+        track.style.transform = `translateX(-${percent}%)`;
+
+        // dots
+        if (dotsContainer) {
+            const dots = dotsContainer.querySelectorAll(".carousel-dot");
+            dots.forEach((dot, i) => {
+                dot.classList.toggle("active", i === currentIndex);
+            });
+        }
+    }
+
+    function goTo(index) {
+        currentIndex = Math.max(0, Math.min(index, maxIndex()));
+        update();
+    }
+
+    function next() {
+        if (currentIndex >= maxIndex()) {
+            currentIndex = 0; // loop
+        } else {
+            currentIndex += 1;
+        }
+        update();
+    }
+
+    function prev() {
+        if (currentIndex <= 0) {
+            currentIndex = maxIndex();
+        } else {
+            currentIndex -= 1;
+        }
+        update();
+    }
+
+    // Build dots
+    if (dotsContainer) {
+        dotsContainer.innerHTML = "";
+        for (let i = 0; i <= maxIndex(); i++) {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "carousel-dot" + (i === 0 ? " active" : "");
+            btn.setAttribute("aria-label", `Go to slide group ${i + 1}`);
+            btn.addEventListener("click", () => {
+                goTo(i);
+                resetAuto();
+            });
+            dotsContainer.appendChild(btn);
+        }
+    }
+
+    if (nextBtn) nextBtn.addEventListener("click", () => { next(); resetAuto(); });
+    if (prevBtn) prevBtn.addEventListener("click", () => { prev(); resetAuto(); });
+
+    function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(next, AUTO_INTERVAL);
+    }
+    function stopAuto() {
+        if (autoTimer) clearInterval(autoTimer);
+    }
+    function resetAuto() {
+        stopAuto();
+        startAuto();
+    }
+
+    // Pause on hover
+    const carousel = document.getElementById("designsCarousel");
+    if (carousel) {
+        carousel.addEventListener("mouseenter", stopAuto);
+        carousel.addEventListener("mouseleave", startAuto);
+    }
+
+    // Recalculate on resize
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            // rebuild dots for new visible count
+            if (dotsContainer) {
+                dotsContainer.innerHTML = "";
+                for (let i = 0; i <= maxIndex(); i++) {
+                    const btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.className = "carousel-dot" + (i === currentIndex ? " active" : "");
+                    btn.setAttribute("aria-label", `Go to slide group ${i + 1}`);
+                    btn.addEventListener("click", () => {
+                        goTo(i);
+                        resetAuto();
+                    });
+                    dotsContainer.appendChild(btn);
+                }
+            }
+            if (currentIndex > maxIndex()) currentIndex = maxIndex();
+            update();
+        }, 150);
+    });
+
+    update();
+    startAuto();
+});
+
+
 // ── SIMPLE PROFESSIONAL SCROLL ANIMATIONS ──
 const animationObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -81,6 +205,7 @@ const elementsToAnimate = document.querySelectorAll(
 );
 
 elementsToAnimate.forEach(el => animationObserver.observe(el));
+
 
 // ── SMOOTH SCROLL TO SECTION + AUTO-CLOSE MOBILE MENU ──
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -102,6 +227,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth'
             });
 
+            // safe check (hamburger/navUl may not exist)
+            const hamburger = document.querySelector('.hamburger') || document.getElementById('hs-navbar-example-collapse');
+            const navUl = document.querySelector('nav ul') || document.getElementById('hs-navbar-example');
             if (hamburger && navUl && navUl.classList.contains('active')) {
                 hamburger.classList.remove('active');
                 navUl.classList.remove('active');
@@ -109,6 +237,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("orderModal");
@@ -137,6 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
 
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
@@ -172,4 +302,3 @@ if (contactForm) {
         }
     });
 }
-    
