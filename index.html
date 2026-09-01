@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stellar Web Studio | The Smarter Way to Get a Business Website</title>
-    <meta name="description" content="Stellar Web Studio — professional websites designed for your business. Everything you need to look credible and turn visitors into customers. Starting at $9.99 with free hosting and copywriting included.">
+    <meta name="description" content="Stellar Web Studio — professional websites designed for your business. Everything you need to look credible and turn visitors into customers. Starting at £9.99 with free hosting and copywriting included.">
     <meta name="theme-color" content="#2563eb">
     <link rel="canonical" href="https://www.stellarwebstudio.com/">
     <link rel="icon" type="image/svg+xml" href="IMAGES/favicon stellar web studio.svg">
@@ -13,14 +13,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.stellarwebstudio.com/">
     <meta property="og:title" content="Stellar Web Studio | The Smarter Way to Get a Business Website">
-    <meta property="og:description" content="Professional websites designed for your business. Starting at $9.99 with free hosting and copywriting included.">
+    <meta property="og:description" content="Professional websites designed for your business. Starting at £9.99 with free hosting and copywriting included.">
     <meta property="og:image" content="https://www.stellarwebstudio.com/IMAGES/og-cover.png">
     <meta property="og:site_name" content="Stellar Web Studio">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Stellar Web Studio | The Smarter Way to Get a Business Website">
-    <meta name="twitter:description" content="Professional websites for your business from $9.99. Free hosting & copywriting included.">
+    <meta name="twitter:description" content="Professional websites for your business from £9.99. Free hosting & copywriting included.">
     <meta name="twitter:image" content="https://www.stellarwebstudio.com/IMAGES/og-cover.png">
 
     <!-- Fonts -->
@@ -76,6 +76,99 @@
         .reveal-delay-2 { transition-delay: 0.16s; }
         .reveal-delay-3 { transition-delay: 0.24s; }
         .reveal-delay-4 { transition-delay: 0.32s; }
+
+        /* Snackbar – fixed & working */
+        .snackbar {
+            visibility: hidden;
+            min-width: 220px;
+            max-width: 90vw;
+            background-color: #1e293b;
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            padding: 14px 20px;
+            position: fixed;
+            z-index: 9999;
+            left: 50%;
+            bottom: 28px;
+            transform: translateX(-50%) translateY(20px);
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            pointer-events: none;
+        }
+        .snackbar.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Designs carousel */
+        .designs-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        .designs-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            will-change: transform;
+        }
+        .designs-slide {
+            flex: 0 0 100%;
+            padding: 0 0.5rem;
+            box-sizing: border-box;
+        }
+        @media (min-width: 640px) {
+            .designs-slide {
+                flex: 0 0 50%;
+            }
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #334155;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .carousel-btn:hover {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+        .carousel-btn.prev { left: 0.25rem; }
+        .carousel-btn.next { right: 0.25rem; }
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1.5rem;
+        }
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            background: #cbd5e1;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: background 0.2s, width 0.2s;
+        }
+        .carousel-dot.active {
+            background: #2563eb;
+            width: 22px;
+        }
     </style>
 
     <script type="application/ld+json">
@@ -85,8 +178,8 @@
       "name": "Stellar Web Studio",
       "url": "https://www.stellarwebstudio.com",
       "logo": "https://www.stellarwebstudio.com/IMAGES/stellar%20web%20studio.svg",
-      "email": "Ayush@stellarwebstudio.com",
-      "description": "Professional websites designed for your business. Starting at $9.99 with free hosting and copywriting included.",
+      "email": "support@stellarwebstudio.com",
+      "description": "Professional websites designed for your business. Starting at £9.99 with free hosting and copywriting included.",
       "sameAs": [
         "https://www.linkedin.com/company/stellar-web-studio",
         "https://www.instagram.com/stellarwebstudio",
@@ -176,14 +269,52 @@
                     </a>
                 </div>
                 <p class="mt-7 text-sm text-ink-600">
-                    Starting at <span class="font-semibold text-ink-800">$9.99</span> · Free hosting · Copywriting included
+                    Starting at <span class="font-semibold text-ink-800">£9.99</span> · Free hosting · Copywriting included
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===================== 2. DESIGNS ===================== -->
+<!-- ===================== TESTIMONIAL ===================== -->
+<section class="relative py-14 sm:py-16 bg-brand/[0.04] border-y border-ink-100">
+    <div class="mx-auto max-w-3xl px-5 sm:px-6 lg:px-8">
+        <div class="rounded-2xl border border-ink-200/80 bg-white p-7 sm:p-9 shadow-sm shadow-ink-900/5 reveal">
+            
+            <!-- Stars -->
+            <div class="flex items-center gap-0.5 mb-5">
+                <svg class="size-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="size-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="size-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="size-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="size-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+
+            <blockquote class="text-ink-800 text-[1.05rem] sm:text-lg leading-relaxed">
+                “The whole process was fast and effortless. We ordered and had our new website live within 4 hours. Our business finally looks professional and credible online.”
+            </blockquote>
+
+            <div class="mt-7 pt-6 border-t border-ink-100 flex items-center gap-4">
+                <!-- Avatar -->
+                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand text-white font-semibold text-lg">
+                    D
+                </div>
+                <div class="min-w-0">
+                    <p class="text-sm font-semibold text-ink-900">Dream Project Designs &amp; Developers</p>
+                    <a href="https://dreamproject2023.github.io/Dream-Project-Designers-and-Renovations/index.html"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center gap-1 text-sm font-medium text-brand hover:underline mt-0.5">
+                        Check their site live
+                        <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== 2. DESIGNS (Carousel – 4 designs, 2 visible) ===================== -->
 <section id="designs" class="relative pt-10 sm:pt-12 pb-20 sm:pb-24 overflow-hidden bg-gradient-to-b from-white via-brand/[0.03] to-white">
     <div aria-hidden="true" class="pointer-events-none absolute top-1/2 -right-32 -translate-y-1/2 w-96 h-96 bg-brand/10 blur-3xl rounded-full"></div>
     <div class="relative z-10 mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
@@ -191,40 +322,88 @@
             <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-900">Pick Your Website.</h2>
             <p class="mt-4 text-lg text-ink-700 leading-relaxed">Professionally designed websites, ready to be customized for your business.</p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <a href="landscape_template_details.html"
-               class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white/90 backdrop-blur-sm p-5 sm:p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-ink-900/5 reveal reveal-delay-1">
-                <div class="bg-ink-100 aspect-[16/10] overflow-hidden rounded-xl mb-5">
-                    <img src="landscape site/landscape_hero.png"
-                         alt="Landscape website template preview for outdoor and garden service businesses"
-                         width="800"
-                         height="500"
-                         loading="lazy"
-                         decoding="async"
-                         class="h-full w-full object-contain object-top transition duration-300 group-hover:scale-[1.02]">
+
+        <div class="designs-carousel reveal" id="designsCarousel">
+            <button type="button" class="carousel-btn prev" aria-label="Previous designs" id="carouselPrev">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="carousel-btn next" aria-label="Next designs" id="carouselNext">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            <div class="designs-track" id="designsTrack">
+                <!-- Slide 1 -->
+                <div class="designs-slide">
+                    <a href="landscape_template_details.html"
+                       class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white/90 backdrop-blur-sm p-5 sm:p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-ink-900/5 h-full">
+                        <div class="bg-ink-100 aspect-[16/10] overflow-hidden rounded-xl mb-5">
+                            <img src="landscape site/landscape_hero.png"
+                                 alt="Landscape website template preview for outdoor and garden service businesses"
+                                 width="800" height="500" loading="lazy" decoding="async"
+                                 class="h-full w-full object-contain object-top transition duration-300 group-hover:scale-[1.02]">
+                        </div>
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="text-lg font-semibold text-ink-900 tracking-tight">Landscape Template</h3>
+                            <span class="text-lg font-bold text-ink-900 shrink-0">£9.99</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="flex items-center justify-between gap-4">
-                    <h3 class="text-lg font-semibold text-ink-900 tracking-tight">Landscape Template</h3>
-                    <span class="text-lg font-bold text-ink-900 shrink-0">$9.99</span>
+
+                <!-- Slide 2 -->
+                <div class="designs-slide">
+                    <a href="business_template_details.html"
+                       class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white/90 backdrop-blur-sm p-5 sm:p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-ink-900/5 h-full">
+                        <div class="bg-ink-100 aspect-[16/10] overflow-hidden rounded-xl mb-5">
+                            <img src="business site/hero.png"
+                                 alt="Business website template preview for professional and service-based companies"
+                                 width="800" height="500" loading="lazy" decoding="async"
+                                 class="h-full w-full object-contain object-top transition duration-300 group-hover:scale-[1.02]">
+                        </div>
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="text-lg font-semibold text-ink-900 tracking-tight">Business Template</h3>
+                            <span class="text-lg font-bold text-ink-900 shrink-0">£9.99</span>
+                        </div>
+                    </a>
                 </div>
-            </a>
-            <a href="business_template_details.html"
-               class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white/90 backdrop-blur-sm p-5 sm:p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-ink-900/5 reveal reveal-delay-2">
-                <div class="bg-ink-100 aspect-[16/10] overflow-hidden rounded-xl mb-5">
-                    <img src="business site/hero.png"
-                         alt="Business website template preview for professional and service-based companies"
-                         width="800"
-                         height="500"
-                         loading="lazy"
-                         decoding="async"
-                         class="h-full w-full object-contain object-top transition duration-300 group-hover:scale-[1.02]">
+
+                <!-- Slide 3 – Pet Services -->
+                <div class="designs-slide">
+                    <a href="pet_template_details.html"
+                       class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white/90 backdrop-blur-sm p-5 sm:p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-ink-900/5 h-full">
+                        <div class="bg-ink-100 aspect-[16/10] overflow-hidden rounded-xl mb-5">
+                            <img src="pet/pethero.png"
+                                 alt="Pet Services website template preview"
+                                 width="800" height="500" loading="lazy" decoding="async"
+                                 class="h-full w-full object-contain object-top transition duration-300 group-hover:scale-[1.02]">
+                        </div>
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="text-lg font-semibold text-ink-900 tracking-tight">Pet Services Template</h3>
+                            <span class="text-lg font-bold text-ink-900 shrink-0">£9.99</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="flex items-center justify-between gap-4">
-                    <h3 class="text-lg font-semibold text-ink-900 tracking-tight">Business Template</h3>
-                    <span class="text-lg font-bold text-ink-900 shrink-0">$9.99</span>
+
+                <!-- Slide 4 – Premium House Services -->
+                <div class="designs-slide">
+                    <a href="premium_house_services_template_details.html"
+                       class="group block overflow-hidden rounded-2xl border border-ink-200 bg-white/90 backdrop-blur-sm p-5 sm:p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-ink-900/5 h-full">
+                        <div class="bg-ink-100 aspect-[16/10] overflow-hidden rounded-xl mb-5">
+                            <img src="premium house services/premiumhouseservices.png"
+                                 alt="Premium House Services website template preview"
+                                 width="800" height="500" loading="lazy" decoding="async"
+                                 class="h-full w-full object-contain object-top transition duration-300 group-hover:scale-[1.02]">
+                        </div>
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="text-lg font-semibold text-ink-900 tracking-tight">Premium House Services Template</h3>
+                            <span class="text-lg font-bold text-ink-900 shrink-0">£9.99</span>
+                        </div>
+                    </a>
                 </div>
-            </a>
+            </div>
+
+            <div class="carousel-dots" id="carouselDots"></div>
         </div>
+
         <div class="mt-12 text-center reveal">
             <a href="templates.html"
                class="inline-flex justify-center items-center gap-x-2 rounded-lg bg-brand px-7 py-3.5 text-base font-semibold text-white border border-brand transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-brand/30">
@@ -358,7 +537,7 @@
                     <tr>
                         <td class="px-5 py-4 font-medium text-ink-800">Affordable</td>
                         <td class="px-5 py-4 text-center bg-brand/5">
-                            <span class="inline-flex items-center rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white">$9.99</span>
+                            <span class="inline-flex items-center rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white">£9.99</span>
                         </td>
                         <td class="px-5 py-4 text-center text-ink-600">Monthly</td>
                         <td class="px-5 py-4 text-center text-ink-600">$$$</td>
@@ -427,7 +606,7 @@
         <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-900 text-center mb-12 reveal">Frequently Asked Questions</h2>
         <div class="divide-y divide-ink-200 border-t border-b border-ink-200 bg-white/80 backdrop-blur-sm rounded-2xl px-5 sm:px-6 reveal">
             <div class="faq-item">
-                <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">Why is it only $9.99?</button>
+                <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">Why is it only £9.99?</button>
                 <div class="faq-answer"><p class="pb-5 text-ink-700 leading-relaxed">We've already created the website designs and systems behind them. Instead of building every website from scratch, we customize an existing professional design for your business. This keeps the process fast and the price low.</p></div>
             </div>
             <div class="faq-item">
@@ -471,7 +650,7 @@
             <li>Copywriting included.</li>
             <li>Free hosting.</li>
         </ul>
-        <p class="mt-4 text-lg text-white">All for <strong class="font-semibold">$9.99</strong>.</p>
+        <p class="mt-4 text-lg text-white">All for <strong class="font-semibold">£9.99</strong>.</p>
         <div class="mt-6">
             <a href="templates.html"
                class="inline-flex justify-center items-center gap-x-2 rounded-lg bg-white px-7 py-3.5 text-base font-semibold text-ink-900 border border-white transition hover:bg-ink-50 focus:outline-none focus:ring-2 focus:ring-white/40">
@@ -519,7 +698,7 @@
                 <div>
                     <h2 class="font-semibold text-ink-900 mb-3 text-sm">Get in touch</h2>
                     <div class="text-sm space-y-2">
-                        <p><a href="mailto:Ayush@stellarwebstudio.com" class="footer-email-link text-ink-700 transition hover:text-brand">Ayush@stellarwebstudio.com</a></p>
+                        <p><a href="mailto:support@stellarwebstudio.com" class="footer-email-link text-ink-700 transition hover:text-brand">support@stellarwebstudio.com</a></p>
                         <p class="text-ink-600 text-xs">We reply within 24 hours.</p>
                     </div>
                 </div>
