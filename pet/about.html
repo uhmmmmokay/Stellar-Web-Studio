@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CuddlePaws Pet Grooming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --rose: #f472b6;
+            --lavender: #c4b5fd;
+            --mint: #6ee7b7;
+        }
+        
+        .tail-container {
+            font-family: 'Quicksand', system-ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Pacifico', cursive;
+        }
+
+        .bg-rose-500, 
+        .bg-pink-500,
+        .bg-fuchsia-500 {
+            background-color: #f472b6 !important;
+            color: white !important;
+        }
+
+        .bg-rose-500:hover, 
+        .bg-pink-500:hover,
+        .bg-fuchsia-500:hover {
+            background-color: #ec4899 !important;
+            color: white !important;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #db2777;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .hamburger span {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .swiper-button-prev:after,
+        .swiper-button-next:after {
+            content: '' !important;
+        }
+        .swiper-button-next svg,
+        .swiper-button-prev svg {
+            width: 24px !important;
+            height: 24px !important;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            position: relative !important;
+            margin-top: 32px;
+        }
+        .swiper-slide.swiper-slide-active {
+            border-color: #f472b6 !important;
+            --tw-border-opacity: 1;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger > * {
+            transition-delay: calc(100ms * var(--i));
+        }
+
+        .nav-link.active,
+        .nav-link[href="about.html"].active {
+            color: #db2777 !important;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #db2777;
+        }
+    </style>
+
+    <!-- Toast -->
+    <div id="copy-toast"
+         class="fixed bottom-5 right-5 translate-y-[0%] opacity-0 z-[9999] transition-all duration-300 max-w-xs w-[90%] sm:w-full bg-white border border-pink-100 rounded-2xl shadow-xl">
+        <div class="flex items-center p-4 gap-x-3">
+            <div class="w-9 h-9 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 shrink-0">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <p class="text-sm font-medium text-stone-700 flex-1">
+                Phone number copied to clipboard!
+            </p>
+            <button onclick="hideToast()"
+                    class="text-stone-400 hover:text-stone-700 transition shrink-0">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+</head>
+<body class="tail-container bg-rose-50 text-stone-800">
+
+<!-- NAVBAR -->
+<nav class="bg-white/90 backdrop-blur-md border-b border-pink-100 sticky top-0 z-50 shadow-sm">
+<div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+        
+        <!-- Logo -->
+        <div class="flex items-center gap-x-2 sm:gap-x-3 shrink-0">
+            <a href="index.html" class="flex items-center gap-x-2 sm:gap-x-3">
+                <div class="w-10 h-10 sm:w-11 sm:h-11 bg-gradient-to-br from-pink-400 to-rose-400 rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl shadow-md">
+                    🐾
+                </div>
+                <div class="leading-tight">
+                    <span class="heading-font text-xl sm:text-2xl tracking-tight text-pink-600">CuddlePaws</span>
+                    <span class="block text-[9px] sm:text-[10px] text-stone-500 -mt-1 tracking-[1.5px] font-medium">PET GROOMING</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Mobile CTA -->
+        <button
+            onclick="handlePhoneCTA('+919876543210')"
+            class="lg:hidden ml-auto flex items-center gap-x-2 bg-white border border-pink-300 text-pink-600 px-3 py-2 rounded-2xl hover:bg-pink-50 transition text-sm font-semibold whitespace-nowrap">
+            <i class="fa-solid fa-phone"></i>
+            <span class="font-medium">98765 43210</span>
+        </button>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex items-center gap-x-6 xl:gap-x-8 text-sm font-medium">
+            <a href="index.html" class="nav-link text-stone-700 hover:text-pink-600">Home</a>
+            <a href="about.html" class="nav-link text-stone-700 hover:text-pink-600">About Us</a>
+            <a href="services.html" class="nav-link text-stone-700 hover:text-pink-600">Services</a>
+            <a href="projects.html" class="nav-link text-stone-700 hover:text-pink-600">Projects</a>
+            <a href="contact.html" class="nav-link text-stone-700 hover:text-pink-600">Contact</a>
+        </div>
+
+        <!-- Desktop CTAs -->
+        <div class="hidden lg:flex items-center gap-x-3 xl:gap-x-4">
+            <button
+                onclick="handlePhoneCTA('+919876543210')"
+                class="hidden lg:flex items-center gap-x-2 bg-white border border-pink-300 text-pink-600 px-4 xl:px-5 py-2.5 rounded-2xl hover:bg-pink-50 transition text-sm font-semibold whitespace-nowrap">
+                <i class="fa-solid fa-phone"></i>
+                <span class="truncate max-w-[140px] xl:max-w-none">+91 98765 43210</span>
+            </button>
+            <a href="contact.html"
+                    class="bg-rose-500 hover:bg-pink-600 text-white px-5 xl:px-6 py-2.5 rounded-2xl text-sm font-semibold transition shadow-md whitespace-nowrap">
+                Book a Groom 💕
+            </a>
+        </div>
+
+        <!-- Hamburger -->
+        <button id="hamburger"
+                class="hamburger lg:hidden flex flex-col justify-center items-center gap-y-1.5 w-11 h-11 shrink-0">
+            <span class="block w-7 h-0.5 bg-stone-700 rounded"></span>
+            <span class="block w-7 h-0.5 bg-stone-700 rounded"></span>
+            <span class="block w-7 h-0.5 bg-stone-700 rounded"></span>
+        </button>
+    </div>
+</div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden lg:hidden bg-white border-t fixed inset-x-0 top-20 shadow-xl py-6 z-50 max-h-[calc(100vh-5rem)] overflow-y-auto">
+    <div class="max-w-[85rem] mx-auto px-6">
+        <div class="flex flex-col text-lg font-medium">
+            <a href="index.html" onclick="toggleMobileMenu()" class="py-3 border-b border-pink-50">Home</a>
+            <a href="about.html" onclick="toggleMobileMenu()" class="py-3 border-b border-pink-50">About Us</a>
+            <a href="services.html" onclick="toggleMobileMenu()" class="py-3 border-b border-pink-50">Services</a>
+            <a href="projects.html" onclick="toggleMobileMenu()" class="py-3 border-b border-pink-50">Projects</a>
+            <a href="contact.html" onclick="toggleMobileMenu()" class="py-3 border-b border-pink-50">Contact</a>
+        </div>
+        <div class="pt-8">
+            <a href="contact.html"
+                    class="block w-full text-center bg-rose-500 hover:bg-pink-600 text-white py-4 rounded-3xl font-semibold text-lg transition">
+                Book a Groom 💕
+            </a>
+        </div>
+    </div>
+</div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="bg-gradient-to-b from-rose-50 to-white pt-10 pb-12 lg:pt-16 lg:pb-16">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="animate-on-scroll">
+      <p class="text-pink-500 font-semibold tracking-wide uppercase text-sm mb-3">About CuddlePaws</p>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-800 leading-tight">
+        Where Every Pet is Treated<br class="hidden sm:block">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-500">Like Family</span>
+      </h1>
+      <p class="mt-5 text-lg text-stone-600 max-w-2xl mx-auto">
+        Soft baths, gentle hands, and lots of love since 2015. We’re a small team of certified groomers who believe grooming should feel like a spa day.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STORY -->
+<section class="bg-white">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- TEXT -->
+      <div class="animate-on-scroll">
+        <p class="text-pink-500 font-semibold tracking-wide uppercase text-sm">
+          Our Story
+        </p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-stone-800 leading-tight">
+          Born from a Love of Fluffy Friends
+        </h2>
+
+        <p class="mt-6 text-lg text-stone-600 leading-relaxed">
+          CuddlePaws started as a tiny home-based setup with one very enthusiastic groomer and a lot of wet towels. Today we’re a calm, purpose-built studio in Ratanada where dogs and cats leave happier than they arrived.
+        </p>
+
+        <p class="mt-4 text-stone-600">
+          We specialise in gentle, low-stress grooming. Every session is tailored to your pet’s personality, coat type, and comfort level — whether they’re a bouncing puppy or a senior cat who just wants a quiet brush.
+        </p>
+
+        <ul class="mt-8 space-y-4 text-stone-700">
+          <li class="flex items-start gap-3">
+            <span class="text-pink-500 text-xl">♡</span>
+            <span><strong>Stress-free environment</strong> — calm music, treats & endless patience</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-pink-500 text-xl">♡</span>
+            <span><strong>Pet-safe, natural products</strong> — gentle on skin & coat</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-pink-500 text-xl">♡</span>
+            <span><strong>Certified, animal-loving groomers</strong> who treat every pet like their own</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- IMAGE -->
+      <div class="animate-on-scroll">
+        <div class="relative">
+          <img 
+            src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?q=80&w=1200"
+            alt="Happy dog being gently brushed"
+            class="w-full h-[400px] sm:h-[480px] lg:h-[560px] object-cover rounded-3xl shadow-xl"
+          />
+          <div class="absolute -z-10 inset-0 bg-pink-200 rounded-3xl md:translate-x-6 md:translate-y-6"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="bg-rose-50/50">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-18">
+    <div class="animate-on-scroll">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-stone-800">
+          A Few Numbers We Love
+        </h2>
+        <p class="mt-3 text-stone-500">Little paws, big smiles</p>
+      </div>
+    </div>
+
+    <div class="animate-on-scroll">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="bg-white rounded-3xl p-6 border border-pink-100 shadow-sm">
+          <p class="text-4xl sm:text-5xl font-bold text-pink-500">1800+</p>
+          <h4 class="mt-2 text-base font-medium text-stone-600">Happy Pets Groomed</h4>
+        </div>
+        <div class="bg-white rounded-3xl p-6 border border-violet-100 shadow-sm">
+          <p class="text-4xl sm:text-5xl font-bold text-violet-500">950+</p>
+          <h4 class="mt-2 text-base font-medium text-stone-600">Pet Parents Trust Us</h4>
+        </div>
+        <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm">
+          <p class="text-4xl sm:text-5xl font-bold text-emerald-500">12+</p>
+          <h4 class="mt-2 text-base font-medium text-stone-600">Expert Groomers</h4>
+        </div>
+        <div class="bg-white rounded-3xl p-6 border border-amber-100 shadow-sm">
+          <p class="text-4xl sm:text-5xl font-bold text-amber-500">11</p>
+          <h4 class="mt-2 text-base font-medium text-stone-600">Years of Cuddles</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="bg-white">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+
+    <div class="animate-on-scroll">
+      <div class="max-w-2xl mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold text-stone-800">
+          How We Pamper Your Pet
+        </h2>
+        <p class="mt-3 text-stone-600">
+          A calm, caring process from the moment you walk in.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="animate-on-scroll">
+        <div class="h-[380px] sm:h-[460px]">
+          <img 
+            src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1200"
+            class="w-full h-full object-cover rounded-3xl shadow-lg"
+            alt="Happy dogs after grooming"
+          />
+        </div>
+      </div>
+
+      <div class="animate-on-scroll">
+        <div class="space-y-9">
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500 text-white flex items-center justify-center font-bold text-lg shadow-md">
+              1
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-stone-800">Welcome & Chat</h4>
+              <p class="text-stone-600 mt-1 text-[15px]">
+                We learn about your pet’s personality, any sensitivities, and the look you want.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500 text-white flex items-center justify-center font-bold text-lg shadow-md">
+              2
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-stone-800">Gentle Grooming</h4>
+              <p class="text-stone-600 mt-1 text-[15px]">
+                Bath, brush, trim, and style at your pet’s own pace with lots of praise and breaks.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-rose-500 text-white flex items-center justify-center font-bold text-lg shadow-md">
+              3
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-stone-800">Finishing Touches</h4>
+              <p class="text-stone-600 mt-1 text-[15px]">
+                Final fluff, optional bow or bandana, and a happy reunion with you!
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a href="contact.html"
+              class="inline-flex items-center gap-2 px-7 py-3.5 bg-rose-500 hover:bg-pink-600 text-white font-semibold rounded-2xl shadow-md transition">
+              Book Your Pet’s Spa Day
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="bg-rose-50/50">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <div class="animate-on-scroll">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold text-stone-800">
+          Meet Our Soft-Hearted Team
+        </h2>
+        <p class="mt-4 text-lg text-stone-600">
+          Certified groomers who treat every pet like their own.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="group text-center">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop"
+                 class="w-full h-72 object-cover transition duration-500 group-hover:scale-105">
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-stone-800">Ananya Sharma</h3>
+          <p class="text-pink-500 font-medium">Founder & Head Groomer</p>
+        </div>
+
+        <div class="group text-center">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop"
+                 class="w-full h-72 object-cover transition duration-500 group-hover:scale-105">
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-stone-800">Rohan Mehta</h3>
+          <p class="text-pink-500 font-medium">Senior Stylist</p>
+        </div>
+
+        <div class="group text-center">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop"
+                 class="w-full h-72 object-cover transition duration-500 group-hover:scale-105">
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-stone-800">Priya Nair</h3>
+          <p class="text-pink-500 font-medium">Cat Specialist</p>
+        </div>
+
+        <div class="group text-center">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop"
+                 class="w-full h-72 object-cover transition duration-500 group-hover:scale-105">
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-stone-800">Arjun Patel</h3>
+          <p class="text-pink-500 font-medium">Puppy Care Expert</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-20 bg-white">
+  <div class="animate-on-scroll"> 
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-center items-center gap-y-10 lg:gap-y-0 flex-wrap lg:flex-nowrap lg:justify-between lg:gap-x-10 max-w-sm sm:max-w-2xl lg:max-w-full mx-auto">
+          
+        <div class="w-full lg:w-2/5">
+          <span class="text-sm text-pink-500 font-semibold mb-3 block uppercase tracking-wide">Happy Pet Parents</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-stone-800 leading-tight mb-8">
+            What our <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-500">clients</span> say
+          </h2>
+          
+          <div class="flex items-center justify-center lg:justify-start gap-6">
+            <button class="prev-btn group flex justify-center items-center border-2 border-pink-300 !w-12 !h-12 transition-all duration-300 rounded-2xl hover:bg-rose-500 hover:border-rose-500">
+              <svg class="h-5 w-5 text-pink-500 group-hover:text-white" viewBox="0 0 24 24" fill="none">
+                <path d="M20.9999 12L4.99992 12M9.99992 6L4.70703 11.2929C4.3737 11.6262 4.20703 11.7929 4.20703 12C4.20703 12.2071 4.3737 12.3738 4.70703 12.7071L9.99992 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="next-btn group flex justify-center items-center border-2 border-pink-300 !w-12 !h-12 transition-all duration-300 rounded-2xl hover:bg-rose-500 hover:border-rose-500">
+              <svg class="h-5 w-5 text-pink-500 group-hover:text-white" viewBox="0 0 24 24" fill="none">
+                <path d="M3 12L19 12M14 18L19.2929 12.7071C19.6262 12.3738 19.7929 12.2071 19.7929 12C19.7929 11.7929 19.6262 11.6262 19.2929 11.2929L14 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="w-full lg:w-3/5">
+          <div class="swiper myTestimonialSwiper">
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide group bg-rose-50 border border-pink-100 rounded-3xl p-6 transition-all duration-300 hover:border-pink-300">
+                <div class="flex items-center gap-4 mb-5">
+                  <img class="rounded-full object-cover w-12 h-12" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="">
+                  <div>
+                    <h5 class="text-stone-800 font-bold">Meera Kapoor</h5>
+                    <span class="text-sm text-stone-500">Mom to Bruno (Golden Retriever)</span>
+                  </div>
+                </div>
+                <div class="flex items-center mb-4 gap-1 text-amber-400">★★★★★</div>
+                <p class="text-sm text-stone-600 leading-relaxed">
+                  Bruno comes out looking like a fluffy cloud every time! The team is so patient and gentle. Highly recommend CuddlePaws.
+                </p>
+              </div>
+
+              <div class="swiper-slide group bg-rose-50 border border-pink-100 rounded-3xl p-6 transition-all duration-300 hover:border-pink-300">
+                <div class="flex items-center gap-4 mb-5">
+                  <img class="rounded-full object-cover w-12 h-12" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="">
+                  <div>
+                    <h5 class="text-stone-800 font-bold">Vikram Singh</h5>
+                    <span class="text-sm text-stone-500">Dad to Luna (Persian Cat)</span>
+                  </div>
+                </div>
+                <div class="flex items-center mb-4 gap-1 text-amber-400">★★★★★</div>
+                <p class="text-sm text-stone-600 leading-relaxed">
+                  Luna is usually very nervous, but the cat specialists here somehow make her relax. She comes home purring!
+                </p>
+              </div>
+
+              <div class="swiper-slide group bg-rose-50 border border-pink-100 rounded-3xl p-6 transition-all duration-300 hover:border-pink-300">
+                <div class="flex items-center gap-4 mb-5">
+                  <img class="rounded-full object-cover w-12 h-12" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="">
+                  <div>
+                    <h5 class="text-stone-800 font-bold">Sneha Reddy</h5>
+                    <span class="text-sm text-stone-500">Mom to two Pomeranians</span>
+                  </div>
+                </div>
+                <div class="flex items-center mb-4 gap-1 text-amber-400">★★★★★</div>
+                <p class="text-sm text-stone-600 leading-relaxed">
+                  Best teddy-bear cuts in Jodhpur! My babies always leave looking adorable and smelling amazing.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="bg-gradient-to-r from-pink-500 to-rose-500 py-16">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="animate-on-scroll">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+        Ready to spoil your fur baby?
+      </h2>
+      <p class="text-pink-100 text-lg mb-8 max-w-xl mx-auto">
+        Book a gentle, loving grooming session today. Your pet will thank you with tail wags and purrs.
+      </p>
+      <a href="contact.html"
+         class="inline-flex items-center gap-2 px-8 py-4 bg-white text-pink-600 font-bold rounded-2xl hover:bg-pink-50 transition shadow-lg">
+        Book a Grooming Session
+        <i class="fa-solid fa-paw"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-stone-900 text-white py-14 lg:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+       
+      <div class="lg:col-span-5">
+        <div class="flex items-center gap-x-3 text-white mb-6">
+          <div class="w-11 h-11 bg-gradient-to-br from-pink-400 to-rose-400 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            🐾
+          </div>
+          <div>
+            <span class="heading-font text-2xl tracking-tight">CuddlePaws</span>
+            <span class="block text-xs text-pink-300 tracking-[1.5px] -mt-1">PET GROOMING</span>
+          </div>
+        </div>
+       
+        <p class="text-stone-300 max-w-md leading-relaxed text-[15px]">
+          Making tails wag and whiskers twitch since 2015. Soft, safe, and full of love.
+        </p>
+        <div class="mt-7 flex gap-3">
+          <a href="#" class="w-10 h-10 rounded-2xl bg-stone-800 hover:bg-pink-500 transition flex items-center justify-center text-lg">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-2xl bg-stone-800 hover:bg-pink-500 transition flex items-center justify-center text-lg">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-2xl bg-stone-800 hover:bg-pink-500 transition flex items-center justify-center text-lg">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2">
+        <h4 class="text-white font-semibold mb-5 text-lg">Quick Links</h4>
+        <ul class="space-y-3 text-[15px] text-stone-300">
+          <li><a href="index.html" class="hover:text-pink-300 transition">Home</a></li>
+          <li><a href="about.html" class="hover:text-pink-300 transition">About Us</a></li>
+          <li><a href="services.html" class="hover:text-pink-300 transition">Services</a></li>
+          <li><a href="projects.html" class="hover:text-pink-300 transition">Projects</a></li>
+          <li><a href="contact.html" class="hover:text-pink-300 transition">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-2">
+        <h4 class="text-white font-semibold mb-5 text-lg">Services</h4>
+        <ul class="space-y-3 text-[15px] text-stone-300">
+          <li>Full Spa Bath</li>
+          <li>Haircut & Styling</li>
+          <li>Nail & Paw Care</li>
+          <li>Cat Grooming</li>
+          <li>De-shedding</li>
+          <li>Puppy / Kitten Intro</li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-3">
+        <h4 class="text-white font-semibold mb-5 text-lg">Get In Touch</h4>
+       
+        <div class="space-y-5">
+          <div class="flex gap-x-4">
+            <i class="fa-solid fa-phone text-pink-300 mt-1"></i>
+            <div>
+              <button onclick="handlePhoneCTA('+919876543210')"
+                      class="font-semibold hover:text-pink-300 transition text-left text-[15px]">
+                +91 98765 43210
+              </button>
+              <p class="text-stone-400 mt-1 text-sm">Mon – Sat | 9 AM – 7 PM</p>
+            </div>
+          </div>
+          <div class="flex gap-x-4">
+            <i class="fa-solid fa-location-dot text-pink-300 mt-1"></i>
+            <div class="text-[15px] text-stone-300">
+              Near Circuit House, Ratanada<br>
+              Jodhpur, Rajasthan 342001
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-stone-800 mt-12 pt-6 text-center text-sm text-stone-400">
+      <p>
+        © 2026 CuddlePaws Pet Grooming • Making every pet feel extra special. All Rights Reserved.
+      </p>
+      <p class="mt-2 text-xs">
+        Designed with 💕 by 
+        <a href="https://stellarwebstudio.com/" target="_blank" rel="noopener noreferrer" class="hover:text-pink-300 transition-colors">
+          Stellar Web Studio
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+function toggleMobileMenu() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('hidden');
+}
+hamburger.addEventListener('click', toggleMobileMenu);
+
+// Phone CTA
+function isMobileDevice() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+async function handlePhoneCTA(phoneNumber) { 
+    if (isMobileDevice()) {
+        window.location.href = `tel:${phoneNumber}`;
+        return;
+    }
+    try {
+        await navigator.clipboard.writeText(phoneNumber);
+        showToast();
+    } catch (err) {
+        console.error('Clipboard copy failed:', err);
+    }
+}
+
+// Toast
+const toast = document.getElementById('copy-toast');
+function showToast() {
+    toast.classList.remove('translate-x-[120%]', 'opacity-0');
+    setTimeout(() => hideToast(), 2500);
+}
+function hideToast() {
+    toast.classList.add('translate-x-[120%]', 'opacity-0');
+}
+
+// Testimonials Swiper
+var testimonialSwiper = new Swiper(".myTestimonialSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    navigation: {
+        nextEl: ".next-btn",
+        prevEl: ".prev-btn",
+    },
+    breakpoints: {
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 24,
+        }
+    }
+}); 
+
+// Scroll animations + active nav
+document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el, index) => {
+        el.style.setProperty('--i', index % 6);
+        observer.observe(el);
+    });
+
+    // Active nav link
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+    });
+});
+</script>
+</body>
+</html>

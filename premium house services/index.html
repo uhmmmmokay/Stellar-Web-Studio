@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Renovations Jodhpur | Premium Home Services & Renovations Since 1985</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --black: #050505;
+            --zinc: #0a0a0a;
+            --gold: #c9a227;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Premium dark buttons */
+        .btn-primary {
+            background-color: #ffffff;
+            color: #050505;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #e5e5e5;
+            color: #050505;
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,0.45);
+            color: #ffffff;
+            background: transparent;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.75);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -3px;
+            left: 0;
+            background-color: #c9a227;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .hamburger span {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .swiper-button-prev:after,
+        .swiper-button-next:after {
+            content: '' !important;
+        }
+        .swiper-button-next svg,
+        .swiper-button-prev svg {
+            width: 22px !important;
+            height: 22px !important;
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-link.active,
+        .nav-link[href="index.html"].active {
+            color: #c9a227 !important;
+            font-weight: 500;
+        }
+
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -3px;
+            left: 0;
+            background-color: #c9a227;
+        }
+
+        .gold-line {
+            width: 48px;
+            height: 1px;
+            background: linear-gradient(90deg, #c9a227, transparent);
+        }
+
+        .premium-card {
+            background: #0c0c0c;
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+        .premium-card:hover {
+            border-color: rgba(201,162,39,0.45);
+            background: #111111;
+        }
+
+        .dark-input {
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.18);
+            color: #ffffff;
+            transition: border-color 0.3s ease;
+        }
+        .dark-input::placeholder {
+            color: rgba(255,255,255,0.45);
+        }
+        .dark-input:focus {
+            outline: none;
+            border-color: rgba(201,162,39,0.7);
+        }
+    </style>
+
+<!-- Toast -->
+<div id="copy-toast"
+     class="fixed bottom-5 right-5 translate-y-[0%] opacity-0 z-[9999] transition-all duration-300 max-w-xs w-[90%] sm:w-full bg-zinc-900 border border-white/15 shadow-2xl">
+
+    <div class="flex items-center p-4 gap-x-3">
+        <div class="w-9 h-9 bg-white/10 flex items-center justify-center text-[#c9a227] shrink-0">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <p class="text-sm font-medium text-white flex-1">
+            Phone number copied to clipboard!
+        </p>
+        <button onclick="hideToast()"
+                class="text-white/60 hover:text-white transition shrink-0">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+</div>
+<!-- End Toast -->
+
+</head>
+<body class="tail-container bg-[#050505] text-white antialiased">
+
+<!-- NAVBAR -->
+<nav class="bg-[#050505]/95 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
+<div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+            
+<!-- Logo -->
+<div class="flex items-center gap-x-2 sm:gap-x-3 shrink-0">
+    <a href="index.html" class="flex items-center gap-x-2.5 sm:gap-x-3">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 border border-white/25 flex items-center justify-center text-white text-lg">
+            <i class="fa-solid fa-house-chimney"></i>
+        </div>
+        <div class="leading-tight">
+            <span class="heading-font text-2xl sm:text-3xl font-semibold tracking-wide text-white">Apex</span>
+            <span class="block text-[9px] sm:text-[10px] text-white/60 -mt-1 tracking-[2px] uppercase">Renovations</span>
+        </div>
+    </a>
+</div>
+
+<!-- Mobile CTA -->
+<button
+    onclick="handlePhoneCTA('+919876543210')"
+    class="lg:hidden ml-auto flex items-center gap-x-2 border border-white/25 text-white px-3 py-2 hover:bg-white/10 transition text-sm font-medium whitespace-nowrap">
+    <i class="fa-solid fa-phone text-xs"></i>
+    <span>98765 43210</span>
+</button>
+
+<!-- Desktop Menu -->
+<div class="hidden lg:flex items-center gap-x-7 xl:gap-x-9 text-sm font-medium tracking-wide">
+    <a href="index.html" class="nav-link text-white/80 hover:text-white">Home</a>
+    <a href="about.html" class="nav-link text-white/80 hover:text-white">About Us</a>
+    <a href="services.html" class="nav-link text-white/80 hover:text-white">Services</a>
+    <a href="projects.html" class="nav-link text-white/80 hover:text-white">Projects</a>
+    <a href="contact.html" class="nav-link text-white/80 hover:text-white">Contact</a>
+</div>
+
+<!-- Desktop CTAs -->
+<div class="hidden lg:flex items-center gap-x-3 xl:gap-x-4">
+    <button
+        onclick="handlePhoneCTA('+919876543210')"
+        class="hidden lg:flex items-center gap-x-2 border border-white/25 text-white px-4 xl:px-5 py-2.5 hover:bg-white/10 transition text-sm font-medium whitespace-nowrap">
+        <i class="fa-solid fa-phone text-xs"></i>
+        <span class="truncate max-w-[140px] xl:max-w-none">+91 98765 43210</span>
+    </button>
+    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+            class="btn-primary px-5 xl:px-6 py-2.5 text-sm whitespace-nowrap">
+        Get Free Consultation
+    </button>
+</div>
+
+<!-- Hamburger -->
+<button id="hamburger"
+        class="hamburger lg:hidden flex flex-col justify-center items-center gap-y-1.5 w-11 h-11 shrink-0">
+    <span class="block w-6 h-px bg-white"></span>
+    <span class="block w-6 h-px bg-white"></span>
+    <span class="block w-6 h-px bg-white"></span>
+</button>
+</div>
+</div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden lg:hidden bg-[#0a0a0a] border-t border-white/10 fixed inset-x-0 top-20 shadow-2xl py-6 z-50 max-h-[calc(100vh-5rem)] overflow-y-auto">
+    <div class="max-w-[85rem] mx-auto px-6">
+        <div class="flex flex-col text-base font-medium tracking-wide">
+            <a href="index.html" onclick="toggleMobileMenu()" class="py-3.5 border-b border-white/10 text-white hover:text-[#c9a227]">Home</a>
+            <a href="about.html" onclick="toggleMobileMenu()" class="py-3.5 border-b border-white/10 text-white hover:text-[#c9a227]">About Us</a>
+            <a href="services.html" onclick="toggleMobileMenu()" class="py-3.5 border-b border-white/10 text-white hover:text-[#c9a227]">Services</a>
+            <a href="projects.html" onclick="toggleMobileMenu()" class="py-3.5 border-b border-white/10 text-white hover:text-[#c9a227]">Projects</a>
+            <a href="contact.html" onclick="toggleMobileMenu()" class="py-3.5 border-b border-white/10 text-white hover:text-[#c9a227]">Contact</a>
+        </div>
+        <div class="pt-8">
+            <button onclick="toggleMobileMenu(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                    class="w-full btn-primary py-4 text-base">
+                Get Free Consultation
+            </button>
+        </div>
+    </div>
+</div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="relative bg-[#050505] overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none"></div>
+  
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 lg:pt-16 lg:pb-24 relative">
+    
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <!-- LEFT CONTENT -->
+      <div class="animate-on-scroll">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="gold-line"></div>
+          <span class="text-[#c9a227] text-xs tracking-[3px] uppercase font-medium">Since 1985</span>
+        </div>
+
+        <h1 class="heading-font text-4xl sm:text-5xl lg:text-6xl xl:text-[3.75rem] font-semibold text-white leading-[1.1] tracking-tight">
+          Precision Home<br>Renovations<br>
+          <span class="text-white/75">Built to Last</span>
+        </h1>
+
+        <p class="mt-6 text-base sm:text-lg text-white/80 leading-relaxed max-w-lg">
+          Expert renovations, remodeling, and home services across Jodhpur. Structural integrity, refined finishes, and results that endure.
+        </p>
+
+        <!-- BUTTONS -->
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+          <a href="#contact" class="btn-primary px-8 py-3.5 text-center text-sm tracking-wide">
+            Get Free Consultation
+          </a>
+          <a href="#services" class="btn-outline px-8 py-3.5 text-center text-sm tracking-wide">
+            View Services
+          </a>
+        </div>
+
+        <!-- TRUST -->
+        <div class="mt-12 flex items-center gap-5">
+          <div class="flex -space-x-2.5">
+            <img class="w-9 h-9 border border-[#050505] object-cover" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+            <img class="w-9 h-9 border border-[#050505] object-cover" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+            <img class="w-9 h-9 border border-[#050505] object-cover" src="https://randomuser.me/api/portraits/men/75.jpg" alt="">
+          </div>
+          <div>
+            <div class="flex items-center gap-1 text-[#c9a227] text-sm leading-none tracking-wider">
+              ★ ★ ★ ★ ★
+            </div>
+            <p class="text-sm text-white/75 mt-1.5 tracking-wide">
+              <span class="text-white font-medium">4.9/5</span> from 150+ projects
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT IMAGE -->
+      <div class="animate-on-scroll">
+        <div class="relative h-[380px] sm:h-[480px] lg:h-[580px]">
+          <img 
+            src="https://images.unsplash.com/photo-1664662568348-24b1482b6354?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Modern renovated home exterior"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/50 via-transparent to-transparent"></div>
+          <div class="absolute -z-10 inset-0 bg-white/5 md:translate-x-5 md:translate-y-5"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- END HERO -->
+
+
+<!-- STATS SECTION -->
+<section class="bg-[#0a0a0a] border-y border-white/10">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+    <div class="animate-on-scroll">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 text-center">
+        
+        <div>
+          <p class="heading-font text-4xl sm:text-5xl font-semibold text-white">300+</p>
+          <h4 class="mt-2 text-xs uppercase tracking-[2px] text-white/70 font-medium">Projects Completed</h4>
+        </div>
+
+        <div>
+          <p class="heading-font text-4xl sm:text-5xl font-semibold text-white">220+</p>
+          <h4 class="mt-2 text-xs uppercase tracking-[2px] text-white/70 font-medium">Happy Clients</h4>
+        </div>
+
+        <div>
+          <p class="heading-font text-4xl sm:text-5xl font-semibold text-white">40+</p>
+          <h4 class="mt-2 text-xs uppercase tracking-[2px] text-white/70 font-medium">Years Experience</h4>
+        </div>
+
+        <div>
+          <p class="heading-font text-4xl sm:text-5xl font-semibold text-white">25+</p>
+          <h4 class="mt-2 text-xs uppercase tracking-[2px] text-white/70 font-medium">Expert Craftsmen</h4>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END STATS -->
+
+
+<!-- ABOUT SECTION -->
+<section id="about" class="bg-[#050505]">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 lg:pt-28 lg:pb-28">
+    
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      
+      <!-- TEXT -->
+      <div class="animate-on-scroll">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="gold-line"></div>
+          <span class="text-[#c9a227] text-xs tracking-[3px] uppercase font-medium">About Apex</span>
+        </div>
+
+        <h2 class="heading-font text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-tight">
+          Serious Craftsmanship.<br>Lasting Results.
+        </h2>
+
+        <p class="mt-6 text-white/85 leading-relaxed">
+          Apex Renovations has delivered high-quality home renovations and remodeling services in Jodhpur since 1985. We specialize in structural upgrades, complete interior overhauls, and precision finishing work.
+        </p>
+
+        <p class="mt-4 text-white/85 leading-relaxed">
+          Every project is managed with strict attention to detail, transparent timelines, and materials selected for durability. We build homes that perform as well as they look.
+        </p>
+
+        <ul class="mt-10 space-y-4">
+          <li class="flex items-start gap-4 text-white/90">
+            <span class="text-[#c9a227] mt-0.5 text-sm">→</span>
+            <span class="text-sm tracking-wide"><strong class="text-white font-medium">Full-Service Renovations</strong> — From concept to final handover</span>
+          </li>
+          <li class="flex items-start gap-4 text-white/90">
+            <span class="text-[#c9a227] mt-0.5 text-sm">→</span>
+            <span class="text-sm tracking-wide"><strong class="text-white font-medium">Licensed & Insured Team</strong> — Experienced craftsmen and project managers</span>
+          </li>
+          <li class="flex items-start gap-4 text-white/90">
+            <span class="text-[#c9a227] mt-0.5 text-sm">→</span>
+            <span class="text-sm tracking-wide"><strong class="text-white font-medium">Quality Materials</strong> — Built for Indian climate and long-term performance</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- IMAGE -->
+      <div class="animate-on-scroll">
+        <div class="relative">
+          <img 
+            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600"
+            alt="Professional renovation work"
+            class="w-full h-[400px] sm:h-[500px] lg:h-[560px] object-cover"
+          />
+          <div class="absolute -z-10 inset-0 bg-white/5 md:translate-x-5 md:translate-y-5"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- END ABOUT -->
+
+
+<!-- SERVICES SECTION -->
+<section id="services" class="bg-[#0a0a0a]">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+
+    <div class="text-center mb-16">
+      <div class="animate-on-scroll">
+        <div class="flex items-center justify-center gap-3 mb-5">
+          <div class="w-8 h-px bg-[#c9a227]/70"></div>
+          <span class="text-[#c9a227] text-xs tracking-[3px] uppercase font-medium">What We Do</span>
+          <div class="w-8 h-px bg-[#c9a227]/70"></div>
+        </div>
+        <h2 class="heading-font text-3xl sm:text-4xl lg:text-5xl font-semibold text-white">
+          Our Core Services
+        </h2>
+        <p class="mt-4 text-white/80 max-w-xl mx-auto">
+          Comprehensive renovation and home improvement solutions delivered with precision and accountability.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
+
+      <!-- CARD 1 -->
+      <div class="animate-on-scroll">
+        <div class="premium-card p-7 flex flex-col h-full">
+          <div class="w-11 h-11 border border-white/20 flex items-center justify-center text-white mb-6">
+            <i class="fa-solid fa-house text-sm"></i>
+          </div>
+          <h5 class="mb-3 text-lg font-semibold text-white tracking-wide">
+            Full Home Renovations
+          </h5>
+          <p class="text-white/80 mb-8 flex-grow text-sm leading-relaxed">
+            Complete structural and interior overhauls. We manage every phase from planning and demolition to finishing.
+          </p>
+          <a href="#contact" class="mt-auto inline-flex items-center justify-center btn-outline text-xs tracking-wider px-5 py-3">
+            Get Started
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="animate-on-scroll">
+        <div class="premium-card p-7 flex flex-col h-full">
+          <div class="w-11 h-11 border border-white/20 flex items-center justify-center text-white mb-6">
+            <i class="fa-solid fa-utensils text-sm"></i>
+          </div>
+          <h5 class="mb-3 text-lg font-semibold text-white tracking-wide">
+            Kitchen Remodeling
+          </h5>
+          <p class="text-white/80 mb-8 flex-grow text-sm leading-relaxed">
+            Functional, durable kitchens with modern layouts, quality cabinetry, countertops, and efficient storage.
+          </p>
+          <a href="#contact" class="mt-auto inline-flex items-center justify-center btn-outline text-xs tracking-wider px-5 py-3">
+            Get Started
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="animate-on-scroll">
+        <div class="premium-card p-7 flex flex-col h-full">
+          <div class="w-11 h-11 border border-white/20 flex items-center justify-center text-white mb-6">
+            <i class="fa-solid fa-bath text-sm"></i>
+          </div>
+          <h5 class="mb-3 text-lg font-semibold text-white tracking-wide">
+            Bathroom Renovations
+          </h5>
+          <p class="text-white/80 mb-8 flex-grow text-sm leading-relaxed">
+            Waterproofing, tiling, fixtures, and premium finishes designed for longevity and daily comfort.
+          </p>
+          <a href="#contact" class="mt-auto inline-flex items-center justify-center btn-outline text-xs tracking-wider px-5 py-3">
+            Get Started
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="animate-on-scroll">
+        <div class="premium-card p-7 flex flex-col h-full">
+          <div class="w-11 h-11 border border-white/20 flex items-center justify-center text-white mb-6">
+            <i class="fa-solid fa-border-all text-sm"></i>
+          </div>
+          <h5 class="mb-3 text-lg font-semibold text-white tracking-wide">
+            Flooring & Tiling
+          </h5>
+          <p class="text-white/80 mb-8 flex-grow text-sm leading-relaxed">
+            Expert installation of tiles, hardwood, vinyl, and stone flooring with precise leveling and finishing.
+          </p>
+          <a href="#contact" class="mt-auto inline-flex items-center justify-center btn-outline text-xs tracking-wider px-5 py-3">
+            Get Started
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="animate-on-scroll">
+        <div class="premium-card p-7 flex flex-col h-full">
+          <div class="w-11 h-11 border border-white/20 flex items-center justify-center text-white mb-6">
+            <i class="fa-solid fa-paint-roller text-sm"></i>
+          </div>
+          <h5 class="mb-3 text-lg font-semibold text-white tracking-wide">
+            Painting & Finishing
+          </h5>
+          <p class="text-white/80 mb-8 flex-grow text-sm leading-relaxed">
+            Interior and exterior painting, texture work, and protective coatings applied with professional preparation.
+          </p>
+          <a href="#contact" class="mt-auto inline-flex items-center justify-center btn-outline text-xs tracking-wider px-5 py-3">
+            Get Started
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="animate-on-scroll">
+        <div class="premium-card p-7 flex flex-col h-full">
+          <div class="w-11 h-11 border border-white/20 flex items-center justify-center text-white mb-6">
+            <i class="fa-solid fa-building text-sm"></i>
+          </div>
+          <h5 class="mb-3 text-lg font-semibold text-white tracking-wide">
+            Commercial Renovations
+          </h5>
+          <p class="text-white/80 mb-8 flex-grow text-sm leading-relaxed">
+            Offices, retail spaces, and commercial properties renovated to professional standards with minimal disruption.
+          </p>
+          <a href="#contact" class="mt-auto inline-flex items-center justify-center btn-outline text-xs tracking-wider px-5 py-3">
+            Get Started
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- END SERVICES -->
+
+
+<!-- APPROACH SECTION -->
+<section class="bg-[#050505]">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 lg:pt-28 lg:pb-28">
+
+    <div class="animate-on-scroll">
+      <div class="max-w-2xl mb-14">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="gold-line"></div>
+          <span class="text-[#c9a227] text-xs tracking-[3px] uppercase font-medium">Process</span>
+        </div>
+        <h2 class="heading-font text-3xl sm:text-4xl lg:text-5xl font-semibold text-white">
+          Our Working Process
+        </h2>
+        <p class="mt-4 text-white/80">
+          A clear, accountable process designed to deliver quality renovations on schedule and within budget.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <div class="animate-on-scroll">
+        <div class="h-[400px] sm:h-[500px]">
+          <img 
+            src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1600"
+            class="w-full h-full object-cover"
+            alt="Construction and renovation process"
+          />
+        </div>
+      </div>
+
+      <div class="animate-on-scroll">
+        <div class="space-y-10">
+
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-11 h-11 border border-white/25 flex items-center justify-center font-semibold text-sm text-white">
+              01
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-white tracking-wide">
+                Site Assessment & Consultation
+              </h4>
+              <p class="text-white/80 mt-1.5 text-sm leading-relaxed">
+                We inspect the property, discuss requirements, constraints, and budget, then provide a clear scope of work.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-11 h-11 border border-white/25 flex items-center justify-center font-semibold text-sm text-white">
+              02
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-white tracking-wide">
+                Design, Planning & Quotation
+              </h4>
+              <p class="text-white/80 mt-1.5 text-sm leading-relaxed">
+                Detailed plans, material selection, timeline, and transparent quotation. No hidden costs.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-11 h-11 border border-white/25 flex items-center justify-center font-semibold text-sm text-white">
+              03
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-white tracking-wide">
+                Execution & Handover
+              </h4>
+              <p class="text-white/80 mt-1.5 text-sm leading-relaxed">
+                Skilled teams execute the work with regular progress updates. Final inspection and handover with documentation.
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <a href="#contact" class="inline-flex items-center gap-2.5 btn-primary px-7 py-3.5 text-sm tracking-wide">
+              Start Your Project
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END APPROACH -->
+
+
+<!-- GALLERY SECTION -->
+<section class="bg-[#0a0a0a]">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+
+    <div class="animate-on-scroll">
+      <div class="text-center mb-14">
+        <div class="flex items-center justify-center gap-3 mb-5">
+          <div class="w-8 h-px bg-[#c9a227]/70"></div>
+          <span class="text-[#c9a227] text-xs tracking-[3px] uppercase font-medium">Portfolio</span>
+          <div class="w-8 h-px bg-[#c9a227]/70"></div>
+        </div>
+        <h2 class="heading-font text-3xl sm:text-4xl lg:text-5xl font-semibold text-white">
+          Recent Projects
+        </h2>
+        <p class="mt-4 text-white/80">
+          A selection of completed renovations across Jodhpur
+        </p>
+      </div>
+
+      <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+
+        <div onclick="openLightbox(event, 0)" class="cursor-pointer group relative overflow-hidden aspect-square">
+          <img class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200" alt="Modern living room renovation">
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+            <div class="px-4 py-2 bg-white text-[#050505] text-xs font-semibold tracking-wider">
+              VIEW
+            </div>
+          </div>
+        </div>
+
+        <div onclick="openLightbox(event, 1)" class="cursor-pointer group relative overflow-hidden aspect-square">
+          <img class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200" alt="Kitchen remodeling">
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+            <div class="px-4 py-2 bg-white text-[#050505] text-xs font-semibold tracking-wider">VIEW</div>
+          </div>
+        </div>
+
+        <div onclick="openLightbox(event, 2)" class="cursor-pointer group relative overflow-hidden aspect-square">
+          <img class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+            src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200" alt="Bathroom renovation">
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+            <div class="px-4 py-2 bg-white text-[#050505] text-xs font-semibold tracking-wider">VIEW</div>
+          </div>
+        </div>
+
+        <div onclick="openLightbox(event, 3)" class="cursor-pointer group relative overflow-hidden aspect-square">
+          <img class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Exterior home renovation">
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+            <div class="px-4 py-2 bg-white text-[#050505] text-xs font-semibold tracking-wider">VIEW</div>
+          </div>
+        </div>
+
+        <div onclick="openLightbox(event, 4)" class="cursor-pointer group relative overflow-hidden aspect-square">
+          <img class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200" alt="Flooring installation">
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+            <div class="px-4 py-2 bg-white text-[#050505] text-xs font-semibold tracking-wider">VIEW</div>
+          </div>
+        </div>
+
+        <div onclick="openLightbox(event, 5)" class="cursor-pointer group relative overflow-hidden aspect-square">
+          <img class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Completed renovation project">
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition duration-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+            <div class="px-4 py-2 bg-white text-[#050505] text-xs font-semibold tracking-wider">VIEW</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox"
+     onclick="closeLightbox()"
+     class="fixed inset-0 bg-black/95 hidden items-center justify-center z-50">
+
+  <span onclick="closeLightbox(); event.stopPropagation();"
+        class="absolute top-6 right-8 text-white/80 hover:text-white text-4xl cursor-pointer transition">
+    &times;
+  </span>
+
+  <button onclick="prevImage(); event.stopPropagation();"
+          class="absolute left-6 text-white/70 hover:text-white text-3xl transition">
+    &#10094;
+  </button>
+
+  <img id="lightbox-img"
+       onclick="event.stopPropagation()"
+       class="max-w-[90%] max-h-[85%] transition duration-300">
+
+  <button onclick="nextImage(); event.stopPropagation();"
+          class="absolute right-6 text-white/70 hover:text-white text-3xl transition">
+    &#10095;
+  </button>
+</div>
+
+
+<!-- TEAM SECTION -->
+<section class="bg-[#050505]">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="animate-on-scroll">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="flex items-center justify-center gap-3 mb-5">
+          <div class="w-8 h-px bg-[#c9a227]/70"></div>
+          <span class="text-[#c9a227] text-xs tracking-[3px] uppercase font-medium">Team</span>
+          <div class="w-8 h-px bg-[#c9a227]/70"></div>
+        </div>
+        <h2 class="heading-font text-3xl sm:text-4xl lg:text-5xl font-semibold text-white">
+          Leadership & Expertise
+        </h2>
+        <p class="mt-4 text-white/80">
+          Experienced project managers, architects, and site supervisors committed to delivering every renovation to specification.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div class="group text-center">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800"
+              class="w-full h-72 object-cover transition duration-700 group-hover:scale-105" alt="Rahul Sharma">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+          </div>
+          <h3 class="mt-5 text-lg font-semibold text-white tracking-wide">Rahul Sharma</h3>
+          <p class="text-white/70 text-sm mt-1 tracking-wide">Founder & Principal</p>
+        </div>
+
+        <div class="group text-center">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800"
+              class="w-full h-72 object-cover transition duration-700 group-hover:scale-105" alt="Amit Verma">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+          </div>
+          <h3 class="mt-5 text-lg font-semibold text-white tracking-wide">Amit Verma</h3>
+          <p class="text-white/70 text-sm mt-1 tracking-wide">Project Director</p>
+        </div>
+
+        <div class="group text-center">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800"
+              class="w-full h-72 object-cover transition duration-700 group-hover:scale-105" alt="Neha Singh">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+          </div>
+          <h3 class="mt-5 text-lg font-semibold text-white tracking-wide">Neha Singh</h3>
+          <p class="text-white/70 text-sm mt-1 tracking-wide">Interior Architect</p>
+        </div>
+
+        <div class="group text-center">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800"
+              class="w-full h-72 object-cover transition duration-700 group-hover:scale-105" alt="Vikram Mehta">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+          </div>
+          <h3 class="mt-5 text-lg font-semibold text-white tracking-wide">Vikram Mehta</h3>
+          <p class="text-white/70 text-sm mt-1 tracking-wide">Site Operations Head</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIAL SECTION -->
+<section class="py-20 lg:py-28 bg-[#0a0a0a] border-y border-white/10">
+  <div class="animate-on-scroll"> 
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-center items-center gap-y-10 lg:gap-y-0 flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between lg:gap-x-12 max-w-sm sm:max-w-2xl lg:max-w-full mx-auto">
+            
+      <div class="w-full lg:w-2/5">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="gold-line"></div>
+          <span class="text-[#c9a227] text-xs tracking-[3px] uppercase font-medium">Testimonials</span>
+        </div>
+        <h2 class="heading-font text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-8">
+          Trusted by Homeowners Across Jodhpur
+        </h2>
+        
+        <div class="flex items-center justify-center lg:justify-start gap-4">
+          <button class="prev-btn group flex justify-center items-center border border-white/30 !w-11 !h-11 transition-all duration-300 hover:bg-white hover:border-white">
+            <svg class="h-4 w-4 text-white group-hover:text-[#050505]" viewBox="0 0 24 24" fill="none">
+              <path d="M20.9999 12L4.99992 12M9.99992 6L4.70703 11.2929C4.3737 11.6262 4.20703 11.7929 4.20703 12C4.20703 12.2071 4.3737 12.3738 4.70703 12.7071L9.99992 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="next-btn group flex justify-center items-center border border-white/30 !w-11 !h-11 transition-all duration-300 hover:bg-white hover:border-white">
+            <svg class="h-4 w-4 text-white group-hover:text-[#050505]" viewBox="0 0 24 24" fill="none">
+              <path d="M3 12L19 12M14 18L19.2929 12.7071C19.6262 12.3738 19.7929 12.2071 19.7929 12C19.7929 11.7929 19.6262 11.6262 19.2929 11.2929L14 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="w-full lg:w-3/5">
+        <div class="swiper myTestimonialSwiper">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide premium-card p-6 lg:p-7">
+              <div class="flex items-center gap-4 mb-5">
+                <img class="object-cover w-11 h-11" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                <div>
+                  <h5 class="text-white font-semibold tracking-wide text-sm">Rajesh Sharma</h5>
+                  <span class="text-xs text-white/70">Homeowner, Ratanada</span>
+                </div>
+              </div>
+              <div class="flex items-center mb-4 gap-0.5 text-[#c9a227] text-xs tracking-widest">★★★★★</div>
+              <p class="text-sm text-white/85 leading-relaxed min-h-[5.5rem]">
+                Apex handled our full home renovation with complete professionalism. Timelines were met, quality was excellent, and communication was clear throughout.
+              </p>
+            </div>
+
+            <div class="swiper-slide premium-card p-6 lg:p-7">
+              <div class="flex items-center gap-4 mb-5">
+                <img class="object-cover w-11 h-11" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+                <div>
+                  <h5 class="text-white font-semibold tracking-wide text-sm">Priya Mehta</h5>
+                  <span class="text-xs text-white/70">Villa Owner</span>
+                </div>
+              </div>
+              <div class="flex items-center mb-4 gap-0.5 text-[#c9a227] text-xs tracking-widest">★★★★★</div>
+              <p class="text-sm text-white/85 leading-relaxed min-h-[5.5rem]">
+                Kitchen and bathroom remodeling exceeded expectations. The team was meticulous with waterproofing and finishing details.
+              </p>
+            </div>
+
+            <div class="swiper-slide premium-card p-6 lg:p-7">
+              <div class="flex items-center gap-4 mb-5">
+                <img class="object-cover w-11 h-11" src="https://randomuser.me/api/portraits/men/12.jpg" alt="">
+                <div>
+                  <h5 class="text-white font-semibold tracking-wide text-sm">Amit Singh</h5>
+                  <span class="text-xs text-white/70">Property Developer</span>
+                </div>
+              </div>
+              <div class="flex items-center mb-4 gap-0.5 text-[#c9a227] text-xs tracking-widest">★★★★★</div>
+              <p class="text-sm text-white/85 leading-relaxed min-h-[5.5rem]">
+                Reliable partner for multiple commercial and residential projects. Strong project management and consistent quality.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="py-20 lg:py-28 bg-[#050505]">
+  <div class="animate-on-scroll">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-5 gap-10 lg:gap-16">
+      
+      <div class="md:col-span-2">
+        <div class="max-w-xs">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="gold-line"></div>
+            <span class="text-[#c9a227] text-xs tracking-[3px] uppercase font-medium">FAQ</span>
+          </div>
+          <h2 class="heading-font text-3xl sm:text-4xl font-semibold text-white leading-tight">
+            Common Questions
+          </h2>
+          <p class="mt-4 text-white/80 text-sm leading-relaxed">
+            Straightforward answers about our renovation process, timelines, and services in Jodhpur.
+          </p>
+        </div>
+      </div>
+
+      <div class="md:col-span-3 space-y-2.5">
+        
+        <div class="faq-item border border-white/12 overflow-hidden bg-[#0a0a0a]">
+          <button onclick="toggleFaq(this)" 
+                  class="faq-button w-full px-6 py-5 text-left flex justify-between items-center hover:bg-white/[0.03] transition-all">
+            <span class="font-medium text-white pr-4 text-sm tracking-wide">How long does a typical home renovation take?</span>
+            <span class="faq-icon text-white/70 text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-white/80 text-sm leading-relaxed">
+              Most residential renovations take 6 to 14 weeks depending on scope. Kitchen or bathroom-only projects are usually completed in 3–6 weeks. Full-home renovations with structural work may take 3–5 months.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/12 overflow-hidden bg-[#0a0a0a]">
+          <button onclick="toggleFaq(this)" 
+                  class="faq-button w-full px-6 py-5 text-left flex justify-between items-center hover:bg-white/[0.03] transition-all">
+            <span class="font-medium text-white pr-4 text-sm tracking-wide">Do you provide warranties on workmanship?</span>
+            <span class="faq-icon text-white/70 text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-white/80 text-sm leading-relaxed">
+              Yes. We provide a 1-year warranty on workmanship and finish quality. Waterproofing and structural elements carry extended coverage as specified in the contract.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/12 overflow-hidden bg-[#0a0a0a]">
+          <button onclick="toggleFaq(this)" 
+                  class="faq-button w-full px-6 py-5 text-left flex justify-between items-center hover:bg-white/[0.03] transition-all">
+            <span class="font-medium text-white pr-4 text-sm tracking-wide">Can you work within an occupied home?</span>
+            <span class="faq-icon text-white/70 text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-white/80 text-sm leading-relaxed">
+              Yes. We plan phased work and daily clean-up protocols so that living areas remain usable wherever possible. We discuss logistics clearly during planning.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/12 overflow-hidden bg-[#0a0a0a]">
+          <button onclick="toggleFaq(this)" 
+                  class="faq-button w-full px-6 py-5 text-left flex justify-between items-center hover:bg-white/[0.03] transition-all">
+            <span class="font-medium text-white pr-4 text-sm tracking-wide">Do you offer free site visits and quotations?</span>
+            <span class="faq-icon text-white/70 text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-white/80 text-sm leading-relaxed">
+              Yes. We provide free consultation and site assessment within Jodhpur city limits. Detailed quotations are prepared after the site visit.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item border border-white/12 overflow-hidden bg-[#0a0a0a]">
+          <button onclick="toggleFaq(this)" 
+                  class="faq-button w-full px-6 py-5 text-left flex justify-between items-center hover:bg-white/[0.03] transition-all">
+            <span class="font-medium text-white pr-4 text-sm tracking-wide">What areas of Jodhpur do you serve?</span>
+            <span class="faq-icon text-white/70 text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-white/80 text-sm leading-relaxed">
+              We serve all major areas of Jodhpur including Ratanada, Sardarpura, Shastri Nagar, Pal Road, Chopasni, and surrounding localities.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</section>  
+
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="py-20 lg:py-28 bg-[#0a0a0a]">
+  <div class="animate-on-scroll">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="max-w-3xl mb-12 lg:mb-16">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="gold-line"></div>
+        <span class="text-[#c9a227] text-xs tracking-[3px] uppercase font-medium">Contact</span>
+      </div>
+      <h2 class="heading-font text-3xl sm:text-4xl lg:text-5xl font-semibold text-white">Get In Touch</h2>
+      <p class="mt-4 text-white/80">Ready to start your renovation? Tell us about the project.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20">
+      
+      <!-- Form -->
+      <div class="md:order-2">
+        <form id="contactForm" class="space-y-4">
+          <input type="text" id="name" placeholder="Full Name *" required
+                 class="dark-input w-full px-5 py-4 text-sm">
+
+          <input type="tel" id="phone" placeholder="Phone Number *" required
+                 class="dark-input w-full px-5 py-4 text-sm">
+
+          <input type="email" id="email" placeholder="Email Address *" required
+                 class="dark-input w-full px-5 py-4 text-sm">
+
+          <textarea id="message" rows="5" placeholder="Project details (type of work, approximate area, timeline, budget range) *" required
+                    class="dark-input w-full px-5 py-4 text-sm resize-y"></textarea>
+
+          <button type="submit"
+                  class="w-full btn-primary py-4 text-sm tracking-wide flex items-center justify-center gap-3">
+            Send Message
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-10 pt-12 md:pt-1">
+        
+        <div class="flex gap-x-5 items-start">
+          <div class="w-10 h-10 border border-white/20 flex items-center justify-center text-white shrink-0">
+            <i class="fa-solid fa-location-dot text-sm"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white tracking-wide">Office Address</h4>
+            <address class="mt-2 text-white/80 not-italic leading-relaxed text-sm">
+              Near Circuit House, Ratanada<br>
+              Jodhpur, Rajasthan 342001
+            </address>
+          </div>
+        </div>
+
+        <div class="flex gap-x-5 items-start">
+          <div class="w-10 h-10 border border-white/20 flex items-center justify-center text-white shrink-0">
+            <i class="fa-solid fa-phone text-sm"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white tracking-wide">Call Us</h4>
+            <button
+              onclick="handlePhoneCTA('+919876543210')"
+              class="mt-2 block text-lg font-medium text-white hover:text-[#c9a227] transition text-left tracking-wide">
+              +91 98765 43210
+            </button>
+            <p class="text-sm text-white/70 mt-1.5 tracking-wide">
+              Monday to Saturday | 9:00 AM – 6:00 PM
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-x-5 items-start">
+          <div class="w-10 h-10 border border-white/20 flex items-center justify-center text-white shrink-0">
+            <i class="fa-solid fa-map-location-dot text-sm"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white tracking-wide">Find Us</h4>
+            <a href="#" class="mt-3 inline-flex items-center gap-2 text-[#c9a227] hover:text-[#dfb83a] text-sm font-medium tracking-wide transition">
+              Get Directions on Google Maps
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#050505] border-t border-white/10 py-14 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-10">
+           
+            <div class="lg:col-span-5">
+                <div class="flex items-center gap-x-3 text-white mb-6">
+                    <div class="w-9 h-9 border border-white/25 flex items-center justify-center text-sm">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <div>
+                        <span class="heading-font text-2xl font-semibold tracking-wide">Apex</span>
+                        <span class="block text-[10px] text-white/60 tracking-[2px] -mt-0.5 uppercase">Renovations</span>
+                    </div>
+                </div>
+               
+                <p class="text-white/80 max-w-md leading-relaxed text-sm">
+                    Precision home renovations and remodeling services in Jodhpur since 1985. Built for durability and performance.
+                </p>
+                <div class="mt-8 flex gap-3">
+                    <a href="#" class="w-9 h-9 border border-white/20 hover:border-white/50 transition flex items-center justify-center text-sm text-white/80 hover:text-white">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 border border-white/20 hover:border-white/50 transition flex items-center justify-center text-sm text-white/80 hover:text-white">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 border border-white/20 hover:border-white/50 transition flex items-center justify-center text-sm text-white/80 hover:text-white">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2">
+                <h4 class="text-white font-semibold mb-5 text-sm tracking-wide">Quick Links</h4>
+                <ul class="space-y-3 text-sm text-white/80">
+                    <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                    <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="services.html" class="hover:text-white transition">Services</a></li>
+                    <li><a href="projects.html" class="hover:text-white transition">Projects</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-2">
+                <h4 class="text-white font-semibold mb-5 text-sm tracking-wide">Services</h4>
+                <ul class="space-y-3 text-sm text-white/80">
+                    <li>Full Home Renovations</li>
+                    <li>Kitchen Remodeling</li>
+                    <li>Bathroom Renovations</li>
+                    <li>Flooring & Tiling</li>
+                    <li>Painting & Finishing</li>
+                    <li>Commercial Work</li>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-3">
+                <h4 class="text-white font-semibold mb-5 text-sm tracking-wide">Get In Touch</h4>
+               
+                <div class="space-y-6">
+                    <div class="flex gap-x-4 group">
+                        <i class="fa-solid fa-phone text-white/70 mt-1 text-sm transition group-hover:text-white"></i>
+                        <div>
+                            <button onclick="handlePhoneCTA('+919876543210')"
+                                    class="font-medium hover:text-[#c9a227] transition text-left text-sm text-white tracking-wide">
+                                +91 98765 43210
+                            </button>
+                            <p class="text-white/70 mt-1 text-xs">Mon – Sat | 9 AM – 6 PM</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-4">
+                        <i class="fa-solid fa-location-dot text-white/70 mt-1 text-sm"></i>
+                        <div class="text-sm text-white/80">
+                            Near Circuit House, Ratanada<br>
+                            Jodhpur, Rajasthan 342001
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-white/10 mt-12 pt-6 text-center text-xs text-white/60 tracking-wide">
+            <p>
+                © 2026 Apex Renovations Jodhpur • Precision Home Services Since 1985. All Rights Reserved.
+            </p>
+            <p class="mt-2 text-white/50">
+                Designed by 
+                <a href="https://stellarwebstudio.com/" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="hover:text-white transition-colors">
+                    Stellar Web Studio
+                </a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+// Hamburger Menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+function toggleMobileMenu() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('hidden');
+}
+
+hamburger.addEventListener('click', toggleMobileMenu);
+
+// Smooth Scroll
+function smoothScrollTo(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    if (!mobileMenu.classList.contains('hidden')) {
+        toggleMobileMenu();
+    }
+}
+
+// Phone CTA Logic
+function isMobileDevice() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+async function handlePhoneCTA(phoneNumber) { 
+    if (isMobileDevice()) {
+        window.location.href = `tel:${phoneNumber}`;
+        return;
+    }
+    try {
+        await navigator.clipboard.writeText(phoneNumber);
+        showToast();
+    } catch (err) {
+        console.error('Clipboard copy failed:', err);
+    }
+}
+
+// Toast Logic
+const toast = document.getElementById('copy-toast');
+
+function showToast() {
+    toast.classList.remove('translate-x-[120%]', 'opacity-0');
+    setTimeout(() => { hideToast(); }, 2500);
+}
+
+function hideToast() {
+    toast.classList.add('translate-x-[120%]', 'opacity-0');
+}
+
+window.onload = function () {
+    window.scrollTo(0, 0);
+};
+
+let images = [];
+let currentIndex = 0;
+
+window.onload = function () {
+    const imgs = document.querySelectorAll("#galleryGrid img");
+    images = Array.from(imgs).map(img => img.src);
+};
+
+function openLightbox(event, index) {
+    event.preventDefault();
+    currentIndex = index;
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    lightboxImg.src = images[currentIndex];
+    lightbox.classList.remove("hidden");
+    lightbox.classList.add("flex");
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById("lightbox");
+    lightbox.classList.add("hidden");
+    lightbox.classList.remove("flex");
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById("lightbox-img").src = images[currentIndex];
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById("lightbox-img").src = images[currentIndex];
+}
+
+document.getElementById("lightbox").addEventListener("click", function(e) {
+    if (e.target.id === "lightbox") closeLightbox();
+});
+
+document.addEventListener("keydown", function(e) {
+    if (document.getElementById("lightbox").classList.contains("hidden")) return;
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+    if (e.key === "Escape") closeLightbox();
+});
+
+let startX = 0;
+document.getElementById("lightbox").addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+});
+document.getElementById("lightbox").addEventListener("touchend", (e) => {
+    let endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) nextImage();
+    if (endX - startX > 50) prevImage();
+});
+
+var testimonialSwiper = new Swiper(".myTestimonialSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    navigation: {
+        nextEl: ".next-btn",
+        prevEl: ".prev-btn",
+    },
+    breakpoints: {
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 24,
+        }
+    }
+}); 
+
+function toggleFaq(button) {
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('.faq-icon');
+    
+    document.querySelectorAll('.faq-content').forEach(item => {
+        if (item !== content) {
+            item.style.maxHeight = null;
+            const otherIcon = item.previousElementSibling.querySelector('.faq-icon');
+            if (otherIcon) otherIcon.textContent = '+';
+        }
+    });
+
+    if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        icon.textContent = '+';
+    } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.textContent = '−';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el, index) => {
+        el.style.setProperty('--i', index % 6);
+        observer.observe(el);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+    });
+});
+</script>
+</body>
+</html> 
