@@ -3,22 +3,87 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = document.getElementById("hs-navbar-example-collapse");
     const navbar = document.getElementById("hs-navbar-example");
 
-    if (toggleButton && navbar) {
-        toggleButton.addEventListener("click", () => {
-            const isOpen = toggleButton.getAttribute("aria-expanded") === "true";
-            toggleButton.setAttribute("aria-expanded", String(!isOpen));
-            navbar.classList.toggle("hidden");
-        });
+    if (!toggleButton || !navbar) return;
 
-        navbar.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                if (window.innerWidth < 640) {
-                    navbar.classList.add("hidden");
-                    toggleButton.setAttribute("aria-expanded", "false");
-                }
-            });
-        });
+    // Prevent Preline from controlling this menu (it conflicts with our logic)
+    toggleButton.removeAttribute("data-hs-collapse");
+    // Optional: stop Preline from auto-initializing this collapse if it already did
+    if (window.HSCollapse) {
+        try {
+            const instance = window.HSCollapse.getInstance(toggleButton, true);
+            if (instance) instance.destroy();
+        } catch (_) {}
     }
+
+    function isMobile() {
+        return window.innerWidth < 640; // Tailwind sm breakpoint
+    }
+
+    function openMenu() {
+        navbar.classList.remove("hidden");
+        toggleButton.setAttribute("aria-expanded", "true");
+        // Swap hamburger / close icons (Preline classes)
+        toggleButton.querySelector(".hs-collapse-open\\:hidden")?.classList.add("hidden");
+        toggleButton.querySelector(".hs-collapse-open\\:block")?.classList.remove("hidden");
+    }
+
+    function closeMenu() {
+        navbar.classList.add("hidden");
+        toggleButton.setAttribute("aria-expanded", "false");
+        toggleButton.querySelector(".hs-collapse-open\\:hidden")?.classList.remove("hidden");
+        toggleButton.querySelector(".hs-collapse-open\\:block")?.classList.add("hidden");
+    }
+
+    function setDesktopState() {
+        // On desktop the menu must always be visible and the button closed
+        navbar.classList.remove("hidden");
+        toggleButton.setAttribute("aria-expanded", "false");
+        toggleButton.querySelector(".hs-collapse-open\\:hidden")?.classList.remove("hidden");
+        toggleButton.querySelector(".hs-collapse-open\\:block")?.classList.add("hidden");
+    }
+
+    // Initial state
+    if (isMobile()) {
+        closeMenu();
+    } else {
+        setDesktopState();
+    }
+
+    // Toggle only on mobile
+    toggleButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // stop Preline or other handlers
+
+        if (!isMobile()) return;
+
+        const isOpen = toggleButton.getAttribute("aria-expanded") === "true";
+        if (isOpen) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    // Close when a nav link is clicked (mobile only)
+    navbar.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            if (isMobile()) closeMenu();
+        });
+    });
+
+    // Handle resize: restore correct state when crossing the breakpoint
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (isMobile()) {
+                // Stay closed when entering mobile (or keep current state if you prefer)
+                closeMenu();
+            } else {
+                setDesktopState();
+            }
+        }, 100);
+    });
 });
 
 
