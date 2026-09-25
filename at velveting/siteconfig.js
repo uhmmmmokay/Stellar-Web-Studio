@@ -65,9 +65,6 @@ const SiteConfig = {
     ],
     team: [
       "https://scontent.fjdh3-2.fna.fbcdn.net/v/t39.30808-6/771998169_122145127401139546_7372295244972774881_n.jpg?stp=cp6_dst-jpegr_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=aht_1zPYnZYQ7kNvwFAU-36&_nc_oc=Adrj3UhMNv4UJnls7kQ0CbKqO6a6bfvqjthL7ganBKqia2kSn_YtcBDVIeYu7sD1L6nMyUoHx9YentP_6p1fRCNx&_nc_zt=23&se=-1&_nc_ht=scontent.fjdh3-2.fna&_nc_gid=waFck7HMoFvppWky_hT3XA&_nc_ss=7b2a8&oh=00_AQJpx-l8POU-XTwqCakMNgAAyYEWrNCn9lIUS7xqr7F8hQ&oe=6ABC0057",
-      "https://randomuser.me/api/portraits/men/45.jpg",
-      "https://randomuser.me/api/portraits/men/67.jpg",
-      "https://randomuser.me/api/portraits/men/22.jpg"
     ],
     testimonials: [
       "https://randomuser.me/api/portraits/women/44.jpg",
