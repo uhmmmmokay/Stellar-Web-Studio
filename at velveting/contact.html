@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+        }
+
+        .tail-container { font-family: var(--font-body); }
+        .heading-font { font-family: var(--font-heading); }
+
+        .bg-page { background-color: var(--bg-color) !important; }
+        .bg-page-alt { background-color: var(--bg-alt) !important; }
+        .bg-card { background-color: var(--card-bg) !important; }
+        .bg-nav { background-color: var(--nav-bg) !important; }
+        .bg-footer { background-color: var(--footer-bg) !important; }
+
+        .bg-primary { background-color: var(--primary) !important; }
+        .bg-primary-dark { background-color: var(--primary-dark) !important; }
+        .bg-primary-light { background-color: var(--primary-light) !important; }
+        .bg-primary-50 { background-color: var(--primary-50) !important; }
+        .text-primary { color: var(--primary) !important; }
+        .border-primary { border-color: var(--primary) !important; }
+        .hover\:bg-primary-dark:hover { background-color: var(--primary-dark) !important; }
+        .hover\:bg-primary:hover { background-color: var(--primary) !important; }
+        .hover\:text-primary:hover { color: var(--primary) !important; }
+        .hover\:bg-primary-50:hover { background-color: var(--primary-50) !important; }
+        .hover\:text-white:hover { color: #fff !important; }
+
+        .text-main { color: var(--text-color) !important; }
+        .text-muted { color: var(--text-muted) !important; }
+        .text-footer { color: var(--footer-text) !important; }
+        .text-footer-muted { color: var(--footer-muted) !important; }
+        .border-theme { border-color: var(--border-color) !important; }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px; bottom: -2px; left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after { width: 100%; }
+        .nav-link:hover { color: var(--primary); }
+        .nav-link.active {
+            color: var(--primary) !important;
+            font-weight: 600;
+        }
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 2px; bottom: -2px; left: 0;
+            background-color: var(--primary);
+        }
+
+        .hamburger span {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: var(--text-color) !important;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="tail-container">
+
+<!-- NAVBAR -->
+<nav class="bg-nav border-b border-theme sticky top-0 z-50 shadow-sm">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex items-center gap-x-2 sm:gap-x-3 shrink-0">
+<a href="index.html" class="flex items-center gap-x-2 sm:gap-x-3">
+    <img data-logo-img
+         src="assets/logoandfavicon/image.png"
+         alt="ATValeting Logo"
+         class="h-10 sm:h-12 w-auto object-contain">
+    <div class="leading-tight">
+        <span class="heading-font text-xl sm:text-2xl font-bold tracking-tight text-main" data-logo-name></span>
+        <span class="block text-[9px] sm:text-[10px] text-muted -mt-1 tracking-[1px]" data-logo-tagline></span>
+    </div>
+</a>
+            </div>
+
+            <button data-phone="short"
+                class="lg:hidden ml-auto flex items-center gap-x-2 bg-transparent border border-primary text-primary px-3 py-2 rounded-2xl hover:bg-primary-50 transition text-sm font-semibold whitespace-nowrap">
+                <i class="fa-solid fa-phone"></i>
+                <span class="font-medium"></span>
+            </button>
+
+            <div class="hidden lg:flex items-center gap-x-6 xl:gap-x-8 text-sm font-medium" data-nav-desktop></div>
+
+            <div class="hidden lg:flex items-center gap-x-3 xl:gap-x-4">
+                <button data-phone="full"
+                    class="hidden lg:flex items-center gap-x-2 bg-transparent border border-primary text-primary px-4 xl:px-5 py-2.5 rounded-2xl hover:bg-primary-50 transition text-sm font-semibold whitespace-nowrap">
+                    <i class="fa-solid fa-phone"></i>
+                    <span class="truncate max-w-[140px] xl:max-w-none"></span>
+                </button>
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                        class="bg-primary hover:bg-primary-dark text-white px-5 xl:px-6 py-2.5 rounded-2xl text-sm font-semibold transition shadow-md whitespace-nowrap"
+                        data-nav-cta></button>
+            </div>
+
+            <button id="hamburger" class="hamburger lg:hidden flex flex-col justify-center items-center gap-y-1.5 w-11 h-11 shrink-0">
+                <span class="block w-7 h-0.5 rounded"></span>
+                <span class="block w-7 h-0.5 rounded"></span>
+                <span class="block w-7 h-0.5 rounded"></span>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden bg-nav border-t border-theme fixed inset-x-0 top-20 shadow-xl py-6 z-50 max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <div class="max-w-[85rem] mx-auto px-6">
+            <div class="flex flex-col text-lg font-medium" data-nav-mobile></div>
+            <div class="pt-8">
+                <button onclick="toggleMobileMenu(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                        class="w-full bg-primary hover:bg-primary-dark text-white py-4 rounded-3xl font-semibold text-lg transition"
+                        data-nav-cta></button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+<!-- CONTACT -->
+<section id="contact" class="py-20 bg-page-alt">
+  <div class="animate-on-scroll">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-10 lg:pt-4 lg:pb-16">
+      <div class="max-w-3xl mb-10 lg:mb-14">
+        <h2 class="heading-font text-4xl font-bold text-main" data-contact-title>Contact Us</h2>
+        <p class="mt-3 text-lg text-muted" data-contact-subtitle></p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16">
+        <div class="md:order-2">
+          <form id="contactForm" class="space-y-6">
+            <input type="text" id="name" placeholder="Full Name *" required class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition bg-card text-main">
+            <input type="tel" id="phone" placeholder="Phone Number *" required class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition bg-card text-main">
+            <input type="email" id="email" placeholder="Email Address *" required class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition bg-card text-main">
+            <textarea id="message" rows="5" placeholder="Tell us about your project *" required class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition resize-y bg-card text-main"></textarea>
+            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-4 rounded-2xl transition flex items-center justify-center gap-3" data-contact-submit>
+              Send Message <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+        <div class="space-y-10 pt-14 md:pt-2">
+          <div class="flex gap-x-6 items-start">
+            <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <h4 class="font-semibold text-main text-xl" data-contact-address-label>Our Address</h4>
+              <address class="mt-2 text-muted not-italic leading-relaxed" data-address></address>
+            </div>
+          </div>
+          <div class="flex gap-x-6 items-start">
+            <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <h4 class="font-semibold text-main text-xl" data-contact-phone-label>Call Us</h4>
+              <button data-phone="full" class="mt-2 block text-xl font-semibold text-main hover:text-primary transition text-left">
+                <span>+91 98765 43210</span>
+              </button>
+              <p class="text-sm text-muted mt-1" data-hours></p>
+            </div>
+          </div>
+          <div class="flex gap-x-6 items-start">
+            <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0"><i class="fa-solid fa-map-location-dot"></i></div>
+            <div>
+              <h4 class="font-semibold text-main text-xl" data-contact-maps-label>Find Us</h4>
+              <a href="#" class="mt-3 inline-flex items-center gap-2 text-primary hover:opacity-80 font-medium" data-contact-maps-cta>
+                Get Directions on Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer class="bg-footer text-footer py-12 lg:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+      <div class="lg:col-span-5">
+ <div class="flex items-center gap-x-3 mb-6">
+  <img data-logo-img
+       src="assets/logoandfavicon/image.png"
+       alt="ATValeting Logo"
+       class="h-12 w-auto object-contain">
+  <div>
+    <span class="heading-font text-3xl font-bold tracking-tight text-footer" data-logo-name></span>
+    <span class="block text-xs text-primary tracking-[1.5px] -mt-1" data-logo-tagline></span>
+  </div>
+</div>
+        <p class="text-footer-muted max-w-md leading-relaxed text-[15px]" data-footer-about></p>
+        <div class="mt-8 flex gap-4" data-footer-social></div>
+      </div>
+
+      <div class="lg:col-span-2">
+        <h4 class="font-semibold mb-5 text-lg text-footer" data-footer-quick-title></h4>
+        <ul class="space-y-3 text-[15px]" data-footer-quick-links></ul>
+      </div>
+
+      <div class="lg:col-span-2">
+        <h4 class="font-semibold mb-5 text-lg text-footer" data-footer-services-title></h4>
+        <ul class="space-y-3 text-[15px]" data-footer-services-list></ul>
+      </div>
+
+      <div class="lg:col-span-3">
+        <h4 class="font-semibold mb-5 text-lg text-footer" data-footer-contact-title></h4>
+        <div class="space-y-6">
+          <div class="flex gap-x-4 group">
+            <i class="fa-solid fa-phone text-primary mt-1 text-xl transition group-hover:text-primary"></i>
+            <div>
+              <button data-phone="full" class="font-semibold hover:text-primary transition text-left text-[15px] text-footer">
+                <span></span>
+              </button>
+              <p class="text-footer-muted mt-1 text-sm" data-hours></p>
+            </div>
+          </div>
+          <div class="flex gap-x-4">
+            <i class="fa-solid fa-location-dot text-primary mt-1 text-xl"></i>
+            <div class="text-[15px] text-footer-muted" data-address></div>
+          </div>
+          <a href="#" class="inline-flex items-center gap-2 text-footer-muted hover:text-primary font-medium transition text-[15px] group" data-contact-maps-cta></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-12 pt-6 text-center text-sm text-footer-muted">
+      <p data-footer-copyright></p>
+      <p class="mt-2 text-xs" data-footer-designed></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div id="copy-toast"
+     class="fixed bottom-5 right-5 translate-y-[120%] opacity-0 z-[9999] transition-all duration-300 max-w-xs w-[90%] sm:w-full bg-white border border-stone-200 rounded-2xl shadow-xl">
+    <div class="flex items-center p-4 gap-x-3">
+        <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <p class="text-sm font-medium text-stone-700 flex-1">Phone number copied to clipboard!</p>
+        <button onclick="hideToast()" class="text-stone-400 hover:text-stone-700 transition shrink-0">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+</div>
+
+<script src="siteconfig.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+function toggleMobileMenu() {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('hidden');
+}
+hamburger.addEventListener('click', toggleMobileMenu);
+
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+async function handlePhoneCTA(phoneNumber) {
+  if (isMobileDevice()) {
+    window.location.href = `tel:${phoneNumber}`;
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(phoneNumber);
+    showToast();
+  } catch (err) {
+    console.error('Clipboard copy failed:', err);
+  }
+}
+
+const toast = document.getElementById('copy-toast');
+function showToast() {
+  toast.classList.remove('translate-y-[120%]', 'opacity-0');
+  setTimeout(() => hideToast(), 2500);
+}
+function hideToast() {
+  toast.classList.add('translate-y-[120%]', 'opacity-0');
+}
+
+let images = [];
+let currentIndex = 0;
+
+window.onload = function () {
+  window.scrollTo(0, 0);
+  const imgs = document.querySelectorAll("#galleryGrid img");
+  images = Array.from(imgs).map(img => img.src);
+};
+
+function openLightbox(event, index) {
+  event.preventDefault();
+  currentIndex = index;
+  const srcs = window.images && window.images.length ? window.images : images;
+  document.getElementById("lightbox-img").src = srcs[currentIndex];
+  const lightbox = document.getElementById("lightbox");
+  lightbox.classList.remove("hidden");
+  lightbox.classList.add("flex");
+}
+function closeLightbox() {
+  const lightbox = document.getElementById("lightbox");
+  lightbox.classList.add("hidden");
+  lightbox.classList.remove("flex");
+}
+function nextImage() {
+  const srcs = window.images && window.images.length ? window.images : images;
+  currentIndex = (currentIndex + 1) % srcs.length;
+  document.getElementById("lightbox-img").src = srcs[currentIndex];
+}
+function prevImage() {
+  const srcs = window.images && window.images.length ? window.images : images;
+  currentIndex = (currentIndex - 1 + srcs.length) % srcs.length;
+  document.getElementById("lightbox-img").src = srcs[currentIndex];
+}
+document.getElementById("lightbox").addEventListener("click", function(e) {
+  if (e.target.id === "lightbox") closeLightbox();
+});
+document.addEventListener("keydown", function(e) {
+  if (document.getElementById("lightbox").classList.contains("hidden")) return;
+  if (e.key === "ArrowRight") nextImage();
+  if (e.key === "ArrowLeft") prevImage();
+  if (e.key === "Escape") closeLightbox();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    if (typeof Swiper !== "undefined") {
+      new Swiper(".myTestimonialSwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        navigation: { nextEl: ".next-btn", prevEl: ".prev-btn" },
+        breakpoints: { 768: { slidesPerView: 2, spaceBetween: 28 } }
+      });
+    }
+  }, 80);
+});
+
+function toggleFaq(button) {
+  const content = button.nextElementSibling;
+  const icon = button.querySelector('.faq-icon');
+  document.querySelectorAll('.faq-content').forEach(item => {
+    if (item !== content) {
+      item.style.maxHeight = null;
+      const otherIcon = item.previousElementSibling.querySelector('.faq-icon');
+      if (otherIcon) otherIcon.textContent = '+';
+    }
+  });
+  if (content.style.maxHeight) {
+    content.style.maxHeight = null;
+    icon.textContent = '+';
+  } else {
+    content.style.maxHeight = content.scrollHeight + "px";
+    icon.textContent = '−';
+  }
+}
+</script>
+</body>
+</html>
