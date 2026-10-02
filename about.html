@@ -139,51 +139,6 @@
         </div>
     </div>
 </nav>
-
-<!-- HERO -->
-<section class="bg-page">
-  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-10 lg:pt-4 lg:pb-16">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="animate-on-scroll">
-        <h1 class="heading-font text-3xl sm:text-4xl lg:text-6xl font-bold text-main leading-tight" data-hero-title></h1>
-        <p class="mt-4 text-lg text-muted" data-hero-subtitle></p>
-        <div class="mt-8 flex flex-col sm:flex-row gap-4">
-          <a href="#contact" class="px-6 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary-dark transition" data-hero-primary-cta></a>
-          <a href="#services" class="px-6 py-3 rounded-lg border border-theme text-main hover:opacity-80 transition" data-hero-secondary-cta></a>
-        </div>
-        <div class="mt-8 flex items-center gap-4">
-          <div class="flex -space-x-3" data-hero-avatars></div>
-          <div>
-            <div class="flex items-center gap-1 text-yellow-400 text-lg leading-none">★ ★ ★ ★ ★</div>
-            <p class="text-sm text-muted mt-1"><span class="font-bold text-main" data-hero-rating></span> <span data-hero-rating-text></span></p>
-          </div>
-        </div>
-      </div>
-      <div class="animate-on-scroll">
-        <div class="relative h-[380px] sm:h-[500px] lg:h-[650px]">
-          <img data-hero-img src="" alt="" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl"/>
-          <div class="absolute inset-0 bg-black/10 rounded-2xl"></div>
-          <div class="absolute -z-10 inset-0 bg-primary-light rounded-2xl md:translate-x-8 md:translate-y-8"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="bg-page-alt">
-  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
-    <div class="animate-on-scroll">
-      <div class="text-center mb-12">
-        <h2 class="heading-font text-3xl sm:text-4xl font-bold text-main" data-stats-heading></h2>
-      </div>
-    </div>
-    <div class="animate-on-scroll">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-center" data-stats-grid></div>
-    </div>
-  </div>
-</section>
-
 <!-- ABOUT -->
 <section id="about" class="bg-page">
   <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-10 lg:pt-4 lg:pb-16">
@@ -274,103 +229,35 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="py-24 bg-page-alt">
-  <div class="animate-on-scroll">
-    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-10 lg:pt-4 lg:pb-16">
-      <div class="flex justify-center items-center gap-y-8 lg:gap-y-0 flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between lg:gap-x-8 max-w-sm sm:max-w-2xl lg:max-w-full mx-auto">
-        <div class="w-full lg:w-2/5">
-          <span class="text-sm text-primary font-semibold mb-4 block" data-testimonials-eyebrow></span>
-          <h2 class="heading-font text-4xl font-bold text-main leading-[3.25rem] mb-8" data-testimonials-title></h2>
-          <div class="flex items-center justify-center lg:justify-start gap-10">
-            <button class="prev-btn group flex justify-center items-center border border-solid border-primary !w-12 !h-12 transition-all duration-500 rounded-xl hover:bg-primary hover:border-primary">
-              <svg class="h-6 w-6 text-primary transition-colors duration-300 group-hover:!text-white" viewBox="0 0 24 24" fill="none">
-                <path d="M20.9999 12L4.99992 12M9.99992 6L4.70703 11.2929C4.3737 11.6262 4.20703 11.7929 4.20703 12C4.20703 12.2071 4.3737 12.3738 4.70703 12.7071L9.99992 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <button class="next-btn group flex justify-center items-center border border-solid border-primary !w-12 !h-12 transition-all duration-500 rounded-xl hover:bg-primary hover:border-primary">
-              <svg class="h-6 w-6 text-primary transition-colors duration-300 group-hover:!text-white" viewBox="0 0 24 24" fill="none">
-                <path d="M3 12L19 12M14 18L19.2929 12.7071C19.6262 12.3738 19.7929 12.2071 19.7929 12C19.7929 11.7929 19.6262 11.6262 19.2929 11.2929L14 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="w-full lg:w-3/5">
-          <div class="swiper myTestimonialSwiper">
-            <div class="swiper-wrapper" data-testimonials-wrapper></div>
-          </div>
+<!-- CTA -->
+<section class="bg-page">
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <div class="animate-on-scroll relative overflow-hidden rounded-3xl bg-primary px-6 py-12 sm:px-10 sm:py-16 lg:px-16 text-center">
+      <div class="relative z-10 max-w-2xl mx-auto">
+        <h2 class="heading-font text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight" data-projects-cta-title>
+        </h2>
+        <p class="mt-4 text-white/80 text-base sm:text-lg" data-projects-cta-subtitle>
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="contact.html"
+             class="w-full sm:w-auto px-7 py-3.5 bg-card text-main font-semibold rounded-2xl hover:opacity-90 transition shadow-md inline-flex items-center justify-center"
+             data-projects-cta-primary>
+          </a>
+          <button data-phone="full"
+                  class="w-full sm:w-auto px-7 py-3.5 border-2 border-white/80 text-white font-semibold rounded-2xl hover:bg-white/10 transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-phone"></i>
+            <span></span>
+          </button>
         </div>
       </div>
+      <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-white/10"></div>
+      <div class="absolute -bottom-20 -left-12 w-56 h-56 rounded-full bg-black/10"></div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="py-20 bg-page">
-  <div class="animate-on-scroll">
-    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-10 lg:pt-4 lg:pb-16">
-      <div class="grid md:grid-cols-5 gap-10 lg:gap-16">
-        <div class="md:col-span-2">
-          <div class="max-w-xs">
-            <span class="text-primary font-semibold tracking-widest uppercase text-sm" data-faq-eyebrow></span>
-            <h2 class="heading-font text-4xl font-bold text-main leading-tight mt-3" data-faq-title></h2>
-            <p class="mt-4 text-muted" data-faq-subtitle></p>
-          </div>
-        </div>
-        <div class="md:col-span-3 space-y-4" data-faq-list></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact" class="py-20 bg-page-alt">
-  <div class="animate-on-scroll">
-    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-10 lg:pt-4 lg:pb-16">
-      <div class="max-w-3xl mb-10 lg:mb-14">
-        <h2 class="heading-font text-4xl font-bold text-main" data-contact-title></h2>
-        <p class="mt-3 text-lg text-muted" data-contact-subtitle></p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16">
-        <div class="md:order-2">
-          <form id="contactForm" class="space-y-6">
-            <input type="text" id="name" placeholder="" required class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition bg-card text-main">
-            <input type="tel" id="phone" placeholder="" required class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition bg-card text-main">
-            <input type="email" id="email" placeholder="" required class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition bg-card text-main">
-            <textarea id="message" rows="5" placeholder="" required class="w-full px-5 py-4 border border-theme rounded-2xl focus:border-primary focus:outline-none transition resize-y bg-card text-main"></textarea>
-            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-4 rounded-2xl transition flex items-center justify-center gap-3" data-contact-submit></button>
-          </form>
-        </div>
-        <div class="space-y-10 pt-14 md:pt-2">
-          <div class="flex gap-x-6 items-start">
-            <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0"><i class="fa-solid fa-location-dot"></i></div>
-            <div>
-              <h4 class="font-semibold text-main text-xl" data-contact-address-label></h4>
-              <address class="mt-2 text-muted not-italic leading-relaxed" data-address></address>
-            </div>
-          </div>
-          <div class="flex gap-x-6 items-start">
-            <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0"><i class="fa-solid fa-phone"></i></div>
-            <div>
-              <h4 class="font-semibold text-main text-xl" data-contact-phone-label></h4>
-              <button data-phone="full" class="mt-2 block text-xl font-semibold text-main hover:text-primary transition text-left">
-                <span></span>
-              </button>
-              <p class="text-sm text-muted mt-1" data-hours></p>
-            </div>
-          </div>
-          <div class="flex gap-x-6 items-start">
-            <div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary shrink-0"><i class="fa-solid fa-map-location-dot"></i></div>
-            <div>
-              <h4 class="font-semibold text-main text-xl" data-contact-maps-label></h4>
-              <a href="#" class="mt-3 inline-flex items-center gap-2 text-primary hover:opacity-80 font-medium" data-contact-maps-cta></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- FOOTER -->
 <footer class="bg-footer text-footer py-12 lg:py-16">
