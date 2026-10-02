@@ -1,10 +1,10 @@
 const SiteConfig = {
 
   business: {
-    name: "Northcote Groomers",
-    fullName: "Northcote Groomers",
+    name: "Northcote ",
+    fullName: "Northcote",
     tagline: "Caring, professional one-to-one dog grooming",
-    shortTagline: "GREAT STEEPING",
+    shortTagline: "Groomers",
     phone: "+447710431422",
     phoneDisplay: "+44 7710 431422",
     phoneDisplayShort: "07710 431422",
