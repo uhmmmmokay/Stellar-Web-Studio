@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Northcote Groomers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              DEFAULT: '#FACC15',
+              50:  '#FEFCE8',
+              100: '#FEF9C3',
+              200: '#FEF08A',
+              300: '#FDE047',
+              400: '#FACC15',
+              500: '#EAB308',
+              600: '#CA8A04',
+              700: '#A16207',
+              800: '#854D0E',
+              900: '#713F12',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+    * { font-family: 'Poppins', sans-serif; }
+
+    /* Soft glow behind the cards */
+    .cards-glow {
+      position: relative;
+    }
+    .cards-glow::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(ellipse at center, rgba(250, 204, 21, 0.25) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+      filter: blur(30px);
+    }
+
+    /* ========== SCROLL ANIMATIONS ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger children */
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+    .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.12s; }
+    .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.19s; }
+    .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.26s; }
+    .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.33s; }
+    .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.40s; }
+    .reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.47s; }
+    .reveal-stagger.visible > *:nth-child(8) { transition-delay: 0.54s; }
+    .reveal-stagger.visible > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Slight scale for cards */
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.95) translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-black min-h-screen">
+
+<!-- Sticky Navbar -->
+<div class="px-3 sm:px-6 pt-4 sticky top-0 z-50 bg-gray-100">
+  <header class="flex items-center justify-between px-5 py-3 md:py-4 shadow-sm max-w-5xl rounded-full mx-auto w-full bg-white border border-gray-100">
+    
+    <a href="#home" class="text-lg md:text-xl font-bold text-black tracking-tight">
+      Northcote <span class="text-gold">Groomers</span>
+    </a>
+
+    <!-- Desktop + Mobile Menu -->
+    <nav id="menu"
+      class="max-md:fixed max-md:inset-0 max-md:overflow-hidden items-center justify-center max-md:h-full max-md:w-0 transition-[width] bg-white/95 backdrop-blur flex-col md:flex-row flex gap-8 text-black text-sm font-medium z-50">
+      
+      <a class="hover:text-gold transition" href="#home">Home</a>
+      <a class="hover:text-gold transition" href="#about">About</a>
+      <a class="hover:text-gold transition" href="#services">Services</a>
+      <a class="hover:text-gold transition" href="#gallery">Gallery</a>
+      <a class="hover:text-gold transition" href="#contact">Contact us</a>
+
+      <!-- Phone button inside mobile menu -->
+      <a href="tel:+447710431422"
+        class="md:hidden mt-6 flex items-center gap-2 bg-gold text-black px-6 py-3 rounded-full text-sm font-semibold hover:bg-gold-500 transition shadow-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        </svg>
+        7710 431422
+      </a>
+
+      <!-- Close button (mobile) -->
+      <button id="closeMenu" class="md:hidden text-black mt-8">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+
+    <div class="flex items-center space-x-3">
+      <!-- Desktop phone button -->
+      <a href="tel:+447710431422"
+        class="hidden sm:flex items-center gap-2 bg-gold text-black px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gold-500 transition shadow-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        </svg>
+        7710 431422
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button id="openMenu" class="md:hidden text-black p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </header>
+</div>
+
+<section id="section" class="bg-gray-100 px-3 sm:px-6 pt-2 pb-16">
+  <!-- Hero -->
+  <main id="home" class="reveal flex-grow flex flex-col items-center max-w-5xl mx-auto w-full pt-10 md:pt-16 text-center px-4">
+    
+    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight max-w-4xl">
+      Professional Pet Grooming in<br>
+      <span class="text-gold">Great Steeping</span>
+    </h1>
+
+    <p class="mt-5 text-base sm:text-lg text-gray-700 max-w-xl leading-relaxed">
+      Experienced groomers who love animals. Book online or walk in today!
+    </p>
+
+    <!-- CTAs -->
+    <div class="mt-8 flex flex-row items-center justify-center gap-3 sm:gap-4">
+      <a href="#contact"
+        class="bg-gold text-black px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-gold-500 transition shadow-md hover:shadow-lg inline-flex items-center gap-3">
+        Book Now!
+        <span class="bg-white rounded-full p-1.5 flex items-center justify-center">
+          <svg class="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 512 512">
+            <path d="M256 224c-79.41 0-192 122.76-192 200.25 0 34.9 26.7 55.75 72 55.75 34.07 0 58.55-10.73 88-31.25 29.45 20.52 53.93 31.25 88 31.25 45.3 0 72-20.85 72-55.75C448 346.76 335.41 224 256 224zM96 128c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm320 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM192 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm128 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/>
+          </svg>
+        </span>
+      </a>
+
+      <a href="#services"
+        class="text-black px-2 py-3 sm:py-3.5 text-sm sm:text-base font-semibold hover:text-gold transition inline-flex items-center gap-1">
+        Services
+        <span class="text-lg">›</span>
+      </a>
+    </div>
+
+    <!-- 3 Dog Cards with tilt + glow -->
+    <div class="mt-14 relative cards-glow w-full max-w-4xl reveal-stagger">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 relative z-10">
+        
+        <!-- Card 1 - tilted left -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg 
+                    transform -rotate-3 hover:rotate-0 hover:-translate-y-3 
+                    transition-all duration-300 ease-out hover:shadow-2xl">
+          <img 
+            src="https://scontent.fjdh3-2.fna.fbcdn.net/v/t39.30808-6/814584636_122120326785365651_5841295366955078063_n.jpg?stp=c0.169.1536.1536a_dst-jpg_tt6&cstp=mx1536x1536&ctp=s206x206&_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=50ad20&_nc_ohc=uAj71pHtzTUQ7kNvwGMmd4G&_nc_oc=AdpUstj6PEOW2M7eDuXbG43zw4BA4Qd-civ43DAwuFg0ylcbxZET-qX0ANbRi0Y69nH-ZwjpxgLkMHswZ0OL543r&_nc_zt=23&_nc_ht=scontent.fjdh3-2.fna&_nc_gid=0KCCt7ifeA7eNLjG0YSAZQ&_nc_ss=7b2a8&oh=00_AQNvZZohHymHHoUtm7Lbne3eF9eAL9svoE_ZPwOEtv8pyw&oe=6AC970D5" 
+            alt="Happy golden retriever"
+            class="w-full h-56 object-cover"
+          >
+        </div>
+
+        <!-- Card 2 - straight (slightly raised) -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg 
+                    transform hover:-translate-y-4 
+                    transition-all duration-300 ease-out hover:shadow-2xl sm:-mt-4">
+          <img 
+            src="https://scontent.fjdh3-1.fna.fbcdn.net/v/t39.30808-6/786971529_122117203377365651_6128000233598802966_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=YctM19PIlIUQ7kNvwFnbtzQ&_nc_oc=AdqLGnAqch8WfN3EHiv1awz_WbmAypO-lpDeFtGmLcGgQU9fC9aYC09Oeon7-Gc-wthX7M2iImQxriaRmU-40DgD&_nc_zt=23&_nc_ht=scontent.fjdh3-1.fna&_nc_gid=LmJmzkY-ZyVeW06vorgBZw&_nc_ss=7b2a8&oh=00_AQPIckaWJv_iZ_ADHtGLzygb9-MOQzN-civBeq08EQgf6g&oe=6AC9667A"
+            alt="Happy dog smiling"
+            class="w-full h-56 object-cover"
+          >
+        </div>
+
+        <!-- Card 3 - tilted right -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg 
+                    transform rotate-3 hover:rotate-0 hover:-translate-y-3 
+                    transition-all duration-300 ease-out hover:shadow-2xl">
+          <img 
+            src="https://scontent.fjdh3-1.fna.fbcdn.net/v/t39.30808-6/831323709_122122304733365651_6595964922365969958_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ZaWffVbgjAAQ7kNvwEfdkQC&_nc_oc=Adod-PEd2A1UeSeM3g5xgqQAp7vkm8SpuL8VYB6DHmtpNq8KYXFD3xOTzd2t0wNYMIVzyXl4nCWZCsyktiDf9xo_&_nc_zt=23&_nc_ht=scontent.fjdh3-1.fna&_nc_gid=lvTDI0yru-bZUBKO_HzYpw&_nc_ss=7b2a8&oh=00_AQNqHx40xnP_EkIy6ZCeJzT4j4qmoy2C7CvE2aCaI4CYsg&oe=6AC98679" 
+            alt="Happy dog after grooming"
+            class="w-full h-56 object-cover"
+          >
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</section>
+
+<!-- Floating Call Button (Mobile only) -->
+<a href="tel:+447710431422"
+   class="fixed bottom-6 right-6 z-50 sm:hidden flex items-center justify-center w-14 h-14 bg-gold text-black rounded-full shadow-lg hover:bg-gold-500 active:scale-95 transition-all duration-200">
+     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+  </svg>
+</a>
+
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="py-20 px-4 bg-white reveal">
+      <div class="max-w-5xl mx-auto">
+    <div class="bg-gray-50 rounded-[2rem] shadow-sm border border-gray-100 p-8 md:p-12">
+      
+      <div class="flex flex-col md:flex-row gap-10 md:gap-14 items-center">
+        
+        <!-- Left: Title + Text -->
+        <div class="md:w-1/2 text-left">
+          <div class="inline-flex items-center gap-2 text-gold font-medium text-sm mb-4">
+            <span>🐾</span> Who We Are
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+            Northcote<br>Groomers
+          </h2>
+          <p class="text-gray-600 text-base sm:text-lg leading-relaxed">
+            We provide professional grooming services designed with your pet’s comfort, hygiene, and wellbeing in mind. Our mission is to deliver a calm, stress-free experience while helping pets look their best and feel confident every day.
+          </p>
+        </div>
+
+        <!-- Right: Image -->
+        <div class="md:w-1/2 w-full">
+          <img 
+            src="https://scontent.fjdh3-1.fna.fbcdn.net/v/t39.30808-6/813698103_122120326731365651_4341993536526149127_n.jpg?stp=dst-jpg_tt6&cstp=mx1152x2048&ctp=s1152x2048&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=RDsctiVQqN4Q7kNvwEJeNLw&_nc_oc=AdoWg6iv4F5D02BDfcSt0Z2PeBURSyJJBJYdDEsZfcpezlIf10DEcX8lD3-FoAeAQ9tOHsdS__XUHFjer4afJmic&_nc_zt=23&_nc_ht=scontent.fjdh3-1.fna&_nc_gid=MG-_1pz7r3msRyp4uvbBpA&_nc_ss=7b2a8&oh=00_AQNszEvP5Pq4s2uJDjSzqXZvBsH8bBVt-TIoLuhi_I6pcQ&oe=6AC972E8"
+            alt="Professional dog grooming"
+            class="w-full h-72 sm:h-80 md:h-96 object-cover rounded-2xl shadow-md"
+          >
+        </div>
+
+      </div>
+
+      <!-- Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 pt-10 border-t border-gray-200 reveal-stagger">        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-extrabold mb-1">10+</div>
+          <div class="text-xs font-medium text-gray-500 tracking-wider uppercase">Years of Experience</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-extrabold mb-1">100%</div>
+          <div class="text-xs font-medium text-gray-500 tracking-wider uppercase">Stress-Free Care</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-extrabold mb-1">2K+</div>
+          <div class="text-xs font-medium text-gray-500 tracking-wider uppercase">Happy Pets Groomed</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-extrabold mb-1">98%</div>
+          <div class="text-xs font-medium text-gray-500 tracking-wider uppercase">Positive Reviews</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section id="services" class="py-20 px-4 bg-gray-100">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Header -->
+<div class="text-center mb-14 reveal">
+          <div class="inline-flex items-center gap-2 text-gold font-medium text-sm mb-3">
+        <span>🐾</span> Our Services
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black mb-4">
+        Professional<br class="sm:hidden"> pet grooming solutions
+      </h2>
+      <p class="text-gray-600 text-base sm:text-lg max-w-xl mx-auto">
+        Gentle, professional grooming services for pets of all sizes.
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+<div class="grid grid-cols-1 md:grid-cols-6 gap-8 max-w-4xl mx-auto reveal-stagger">      <!-- Row 1: 2 cards -->
+      <div class="md:col-span-3">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=700&auto=format&fit=crop"
+               alt="Full Groom" class="w-full h-56 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-black mb-2">Full Groom</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Complete wash, cut, style and finish for a fresh new look.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?q=80&w=700&auto=format&fit=crop"
+               alt="Bath & Brush" class="w-full h-56 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-black mb-2">Bath & Brush</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Gentle cleanse and thorough brush for a soft, shiny coat.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: 3 cards -->
+      <div class="md:col-span-2">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=700&auto=format&fit=crop"
+               alt="Nail Trimming" class="w-full h-56 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-black mb-2">Nail Trimming</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Safe and precise nail care to keep paws healthy and comfortable.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=700&auto=format&fit=crop"
+               alt="De-shedding" class="w-full h-56 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-black mb-2">De-shedding</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Reduces loose fur and keeps your home cleaner for longer.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=700&auto=format&fit=crop"
+               alt="Puppy Groom" class="w-full h-56 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-black mb-2">Puppy Groom</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Gentle introduction to grooming for your little one.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: 2 cards -->
+      <div class="md:col-span-3">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?q=80&w=700&auto=format&fit=crop"
+               alt="Ear Cleaning" class="w-full h-56 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-black mb-2">Ear Cleaning</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Thorough clean to prevent infections and keep ears fresh.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?q=80&w=700&auto=format&fit=crop"
+               alt="Teeth Brushing" class="w-full h-56 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-bold text-black mb-2">Teeth Brushing</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Helps maintain oral health and freshens breath.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-14">
+  <a href="#book"
+    class="bg-gold text-black px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-gold-500 transition shadow-md hover:shadow-lg inline-flex items-center gap-3">
+    Book Now!
+    <span class="bg-white rounded-full p-1.5 flex items-center justify-center">
+      <svg class="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 512 512">
+        <path d="M256 224c-79.41 0-192 122.76-192 200.25 0 34.9 26.7 55.75 72 55.75 34.07 0 58.55-10.73 88-31.25 29.45 20.52 53.93 31.25 88 31.25 45.3 0 72-20.85 72-55.75C448 346.76 335.41 224 256 224zM96 128c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm320 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM192 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm128 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/>
+      </svg>
+    </span>
+  </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section id="gallery" class="py-20 px-4 bg-white">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Header -->
+<div class="text-center mb-14 reveal">
+          <div class="inline-flex items-center gap-2 text-gold font-medium text-sm mb-3">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 512 512">
+          <path d="M256 224c-79.41 0-192 122.76-192 200.25 0 34.9 26.7 55.75 72 55.75 34.07 0 58.55-10.73 88-31.25 29.45 20.52 53.93 31.25 88 31.25 45.3 0 72-20.85 72-55.75C448 346.76 335.41 224 256 224zM96 128c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM192 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm128 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/>
+        </svg>
+        Gallery
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black mb-4">
+        Smiles, styles,<br>and happy tails
+      </h2>
+      <p class="text-gray-600 text-base sm:text-lg max-w-xl mx-auto">
+        A gallery full of fresh looks and wagging tails.<br class="hidden sm:block">
+        Each photo captures the love and attention we give to every pet.
+      </p>
+    </div>
+
+    <!-- Gallery Grid -->
+<div class="grid gap-5 md:grid-cols-2 reveal-stagger" id="galleryGrid">      
+      <div>
+        <img src="https://scontent.fjdh3-1.fna.fbcdn.net/v/t39.30808-6/790392252_122117891199365651_7956463924325452468_n.jpg?stp=dst-jpg_tt6&cstp=mx1152x2048&ctp=s1152x2048&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=d8usnGXMDIoQ7kNvwGNDg39&_nc_oc=AdoBgpDnRB4LL8QhM0YGB6dfvoJhLsOSr5WPg12eTFyZO9jcgt4yCyA4LKz4_61n9g2wEugZf1TeCPB5aJG3Wv30&_nc_zt=23&_nc_ht=scontent.fjdh3-1.fna&_nc_gid=RqKFgEuY3QfIdDmI3dG6EA&_nc_ss=7b2a8&oh=00_AQMHK1xHTM7F4gMyoXVBjmfz7QQYbjKpVJVhqlezURISCg&oe=6AC99026"
+             alt="Happy golden retriever"
+             class="gallery-img rounded-2xl w-full h-full min-h-[320px] object-cover shadow-sm hover:shadow-lg transition duration-300 cursor-pointer"
+             data-index="0">
+      </div>
+
+      <div class="grid grid-cols-2 gap-5">
+        <img src="https://scontent.fjdh3-1.fna.fbcdn.net/v/t39.30808-6/793160625_122117891151365651_4588107557691642394_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=QJ3xt5Q8StUQ7kNvwGY9KaJ&_nc_oc=Adrcc-Kl3SXcxTpCREKov795Hp7sLtPGA5SrHSQ-GV3mepoFJBz8g9HBOuTqUo995tEYvrRvkUKDv9GnDiKMsL6p&_nc_zt=23&_nc_ht=scontent.fjdh3-1.fna&_nc_gid=4Uh2JLtJyY7gBoT2BnwFgg&_nc_ss=7b2a8&oh=00_AQPR4c5mRuW-qbcmTZMflvfe4KegYVKwBJ1uKAVSbThRyA&oe=6AC98568"
+             alt="Happy dog"
+             class="gallery-img rounded-2xl w-full h-full min-h-[150px] object-cover shadow-sm hover:shadow-lg transition duration-300 cursor-pointer"
+             data-index="1">
+        <img src="https://scontent.fjdh3-1.fna.fbcdn.net/v/t39.30808-6/794484832_122117891139365651_3313221253540030312_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=YMZIBG3GfwcQ7kNvwHJKZa6&_nc_oc=Adrqm3Us-s3a4iBkAkGILUuF1UoUAcQ0HTcYGCDOvoDsUitX7M7UUdi9_q2C-KbIzHcfv_JvUFtf2W6pcdlI4iqv&_nc_zt=23&_nc_ht=scontent.fjdh3-1.fna&_nc_gid=QC7H-oV234gLpBwMaPBr_Q&_nc_ss=7b2a8&oh=00_AQNm47SSWsI3YLbbzC-lMQPzNxGtANjq8PoT7O0Iz4F6pw&oe=6AC99548"
+             alt="Cute dog"
+             class="gallery-img rounded-2xl w-full h-full min-h-[150px] object-cover shadow-sm hover:shadow-lg transition duration-300 cursor-pointer"
+             data-index="2">
+        <img src="https://scontent.fjdh3-2.fna.fbcdn.net/v/t39.30808-6/794144773_122117891085365651_8106180178605342413_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=R7gxtRW9Tg4Q7kNvwHblefr&_nc_oc=AdoMGrSI4UYTP_KgxIC5aaoLyiCUSWRxUgA6TnfaeiXBaKhqvdW7X1k9gz_02QsDS8NJjPRmrPXYtaK8ibw2ER-D&_nc_zt=23&_nc_ht=scontent.fjdh3-2.fna&_nc_gid=xHWitC-OdVwmXVwrzw91ZA&_nc_ss=7b2a8&oh=00_AQP27EynrQwfFTEWS8Vr9Kk-xSFcAv0BoLRA_eF9XD_puQ&oe=6AC96CB7"
+             alt="Dog outdoors"
+             class="gallery-img rounded-2xl w-full h-full min-h-[150px] object-cover shadow-sm hover:shadow-lg transition duration-300 cursor-pointer"
+             data-index="3">
+        <img src="https://scontent.fjdh3-1.fna.fbcdn.net/v/t39.30808-6/799334020_122117733201365651_6031928851343427535_n.jpg?stp=dst-jpg_tt6&cstp=mx1320x1152&ctp=s1320x1152&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=pvKs7iSylH0Q7kNvwHl6Qor&_nc_oc=AdodAFBWxVKR1mOJfD12XYJOXSVwcuUuTTs_QUuVoGW4e_jDS8H8AR9v0ChqJe3kot6ULX1VjXGMFk80w3H-f0mO&_nc_zt=23&_nc_ht=scontent.fjdh3-1.fna&_nc_gid=axQPyg685zRMA53XskdCbw&_nc_ss=7b2a8&oh=00_AQPNQa5_SLf2s5oKH8rje0QiaT_3A17reW1sfaQAxD-aVg&oe=6AC992C9"
+             alt="Fluffy dog"
+             class="gallery-img rounded-2xl w-full h-full min-h-[150px] object-cover shadow-sm hover:shadow-lg transition duration-300 cursor-pointer"
+             data-index="4">
+      </div>
+
+      <div class="grid grid-cols-2 gap-5">
+        <img src="https://scontent.fjdh3-2.fna.fbcdn.net/v/t39.30808-6/793090611_122117732571365651_7290402172711775084_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1520&ctp=s2048x1520&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=I9rFCG_Ib2UQ7kNvwF7tvtY&_nc_oc=Adquq-GK4YID0ygrvgZe-D_VzPOmCeMJ3_ym5LJveoxVXry2Agt-bjXomlzcUS_ndIJrubfBW4hVhJaxZs8zWcGG&_nc_zt=23&_nc_ht=scontent.fjdh3-2.fna&_nc_gid=k0NH0dRbSRXnt1lxqssxJA&_nc_ss=7b2a8&oh=00_AQNnTUp9W8zumcCDza9SOxstKdCQWLwZobuko-2aB1b0WQ&oe=6AC983ED"
+             alt="Groomed dog"
+             class="gallery-img rounded-2xl w-full h-full min-h-[150px] object-cover shadow-sm hover:shadow-lg transition duration-300 cursor-pointer"
+             data-index="5">
+        <img src="https://scontent.fjdh3-1.fna.fbcdn.net/v/t39.30808-6/790317786_122117732535365651_8807499445110001143_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=zrjjzZgOvC8Q7kNvwHaaXQF&_nc_oc=AdrHUsLeZhxKlJDTD9Sl6YKa4U8TuF7J1VsrlnNgxC18FQfPyvklmEiuDJ2dK12JSsNsf33-km_igJAWnEQlVvA2&_nc_zt=23&_nc_ht=scontent.fjdh3-1.fna&_nc_gid=CNjAKa1-VHkstL16_75ghA&_nc_ss=7b2a8&oh=00_AQPlnEFUKrir3VwW1oJmS1X8zMbBgOPE7_STAI7t4kkDDg&oe=6AC97D55"
+             alt="Dog bath"
+             class="gallery-img rounded-2xl w-full h-full min-h-[150px] object-cover shadow-sm hover:shadow-lg transition duration-300 cursor-pointer"
+             data-index="6">
+        <img src="https://scontent.fjdh3-2.fna.fbcdn.net/v/t39.30808-6/790392253_122117696049365651_4483847587506219863_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=9MQ9t903LPEQ7kNvwGdQmpw&_nc_oc=AdoTA-Uj1g9B-Ldh4rcu4k4Zql8nb-9NANSzGdwpZ_axqZ2PeH9Emw4TLPmnRpsV1sqXP28OMtzkdjwtzlL4yK7r&_nc_zt=23&_nc_ht=scontent.fjdh3-2.fna&_nc_gid=7ozNZAH9eMneGqW4tasgpw&_nc_ss=7b2a8&oh=00_AQPHxHNIETr9vCPC1Yw_4PuglDjBq8TSZZv5jBWOYVkPdA&oe=6AC97B8D"
+             alt="Puppy"
+             class="gallery-img rounded-2xl w-full h-full min-h-[150px] object-cover shadow-sm hover:shadow-lg transition duration-300 cursor-pointer"
+             data-index="7">
+        <img src="https://scontent.fjdh3-2.fna.fbcdn.net/v/t39.30808-6/786811208_122117203425365651_1297124257462193802_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=gR639qO6J3YQ7kNvwH6ZpKU&_nc_oc=AdrrDWQEMX3M8XjYAKJ3vUB294Dai8DA7arL2I7Xi21--hUwJu-05jGi7vk3e9Ez8RsM_F4v-tFXTBY7aqjD7enJ&_nc_zt=23&_nc_ht=scontent.fjdh3-2.fna&_nc_gid=309gsmEbQNYJFMCQx63pqg&_nc_ss=7b2a8&oh=00_AQP2TgImhqkQ85fGB2EjLM_Kpqny6sPUJcuLgBJl0CfzJg&oe=6AC99892"
+             alt="Happy pup"
+             class="gallery-img rounded-2xl w-full h-full min-h-[150px] object-cover shadow-sm hover:shadow-lg transition duration-300 cursor-pointer"
+             data-index="8">
+      </div>
+
+      <div>
+        <img src="https://scontent.fjdh3-2.fna.fbcdn.net/v/t39.30808-6/795438334_122117203413365651_1093780924539999987_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=HizL67GRnGAQ7kNvwGqmgJQ&_nc_oc=AdrkfLk8icDwZpdDjdH1vHKlPKceDxexM6hNPQcthzeBjqf5mcUfeQzUK-vdY6DexsDsPrXEUUELST5L4ZXD58o0&_nc_zt=23&_nc_ht=scontent.fjdh3-2.fna&_nc_gid=d6J2sxyjbjIoGYrmZjSLNA&_nc_ss=7b2a8&oh=00_AQM1axk7576VqJoa1CIyVN-v_M2Kyu8HxQHHQd_ELyBY_Q&oe=6AC99A2D"
+             alt="Stylish dog"
+             class="gallery-img rounded-2xl w-full h-full min-h-[320px] object-cover shadow-sm hover:shadow-lg transition duration-300 cursor-pointer"
+             data-index="9">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 p-4">
+  <!-- Close button -->
+  <button id="lightboxClose" class="absolute top-5 right-5 text-white hover:text-gold transition z-10">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <!-- Previous -->
+  <button id="lightboxPrev" class="absolute left-3 sm:left-6 text-white hover:text-gold transition z-10 p-2">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+    </svg>
+  </button>
+
+  <!-- Image -->
+  <img id="lightboxImg" src="" alt="" class="max-h-[85vh] max-w-full rounded-xl object-contain shadow-2xl">
+
+  <!-- Next -->
+  <button id="lightboxNext" class="absolute right-3 sm:right-6 text-white hover:text-gold transition z-10 p-2">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+</div>
+
+
+<!-- ========== TESTIMONIALS ========== -->
+<section id="testimonials" class="py-20 px-4 bg-gray-100">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Header -->
+<div class="text-center mb-14 reveal">
+          <div class="inline-flex items-center gap-2 text-gold font-medium text-sm mb-3">
+        <span>🐾</span> Testimonials
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black mb-4">
+        What pet owners<br>say about us
+      </h2>
+      <p class="text-gray-600 text-base sm:text-lg max-w-xl mx-auto">
+        Real reviews from happy pet owners who trust our grooming services.
+      </p>
+    </div>
+
+    <!-- Content -->
+<div class="grid md:grid-cols-3 gap-6 items-start reveal-stagger">
+      <!-- Stat + Dog Image -->
+      <div class="text-center md:text-left flex flex-col items-center md:items-start">
+        <div class="text-5xl font-extrabold text-black mb-1">2500+</div>
+        <div class="text-xl font-medium text-gray-600 mb-6">happy<br>customers</div>
+        
+        <img 
+          src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=400&auto=format&fit=crop" 
+          alt="Happy dog"
+          class="w-40 h-40 object-cover rounded-2xl shadow-md"
+        >
+      </div>
+
+      <!-- Reviews (2x2) -->
+      <div class="md:col-span-2 grid sm:grid-cols-2 gap-6">
+
+        <!-- Review 1 - Green -->
+        <div class="bg-green-100 rounded-2xl p-6">
+          <div class="flex gap-1 text-gold mb-3 text-lg">★★★★★</div>
+          <p class="text-gray-800 mb-4 leading-relaxed">
+            “Northcote Groomers is absolutely amazing! Buddy came out wagging his tail like never before. You can really tell how much love and care they give every pet.”
+          </p>
+          <p class="font-semibold text-sm text-black">— Megan, Buddy’s Owner</p>
+        </div>
+
+        <!-- Review 2 - Purple -->
+        <div class="bg-purple-100 rounded-2xl p-6">
+          <div class="flex gap-1 text-gold mb-3 text-lg">★★★★★</div>
+          <p class="text-gray-800 mb-4 leading-relaxed">
+            “Milo’s first grooming was perfect. The team was so kind and made him feel safe the whole time. He came out looking adorable and confident.”
+          </p>
+          <p class="font-semibold text-sm text-black">— Sophia, Milo’s Owner</p>
+        </div>
+
+        <!-- Review 3 - Purple -->
+        <div class="bg-purple-100 rounded-2xl p-6">
+          <div class="flex gap-1 text-gold mb-3 text-lg">★★★★★</div>
+          <p class="text-gray-800 mb-4 leading-relaxed">
+            “I’ve tried several groomers and this is by far the best. My anxious little terrier actually enjoys going now. Highly recommend!”
+          </p>
+          <p class="font-semibold text-sm text-black">— James, Coco’s Owner</p>
+        </div>
+
+        <!-- Review 4 - Green -->
+        <div class="bg-green-100 rounded-2xl p-6">
+          <div class="flex gap-1 text-gold mb-3 text-lg">★★★★★</div>
+          <p class="text-gray-800 mb-4 leading-relaxed">
+            “Professional, gentle, and the results are always stunning. Bella looks and smells amazing every single time. True pet lovers!”
+          </p>
+          <p class="font-semibold text-sm text-black">— Emma, Bella’s Owner</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section id="faq" class="py-20 px-4 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+
+      <!-- Left Image -->
+<div class="w-full lg:w-1/2 reveal">
+            <img
+          src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=700&auto=format&fit=crop"
+          alt="Happy dog"
+          class="w-full rounded-2xl object-cover shadow-md"
+        >
+      </div>
+
+      <!-- Right FAQ -->
+<div class="w-full lg:w-1/2 reveal">
+            <div class="mb-10">
+          <div class="inline-flex items-center gap-2 text-gold font-medium text-sm mb-3">
+            <span>❓</span> FAQs
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-black">
+            Looking for answers?
+          </h2>
+        </div>
+
+        <!-- Accordion -->
+        <div class="space-y-1" id="faqAccordion">
+
+          <!-- Item 1 -->
+          <div class="faq-item border-b border-gray-200">
+            <button class="faq-toggle w-full flex items-center justify-between py-5 text-left text-lg font-medium text-gray-700 hover:text-gold transition duration-300">
+              <span>Do I need to book an appointment?</span>
+              <svg class="faq-icon w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+              <p class="pb-5 text-gray-600 leading-relaxed">
+                Yes, we recommend booking in advance to secure your preferred time. Walk-ins are welcome when availability allows, but appointments guarantee your slot.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="faq-item border-b border-gray-200">
+            <button class="faq-toggle w-full flex items-center justify-between py-5 text-left text-lg font-medium text-gray-700 hover:text-gold transition duration-300">
+              <span>How long does a full groom take?</span>
+              <svg class="faq-icon w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+              <p class="pb-5 text-gray-600 leading-relaxed">
+                A full groom usually takes between 1.5 to 3 hours depending on your dog’s breed, size, coat condition and temperament. We’ll always give you an estimated time when you book.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="faq-item border-b border-gray-200">
+            <button class="faq-toggle w-full flex items-center justify-between py-5 text-left text-lg font-medium text-gray-700 hover:text-gold transition duration-300">
+              <span>Are your products pet-safe?</span>
+              <svg class="faq-icon w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+              <p class="pb-5 text-gray-600 leading-relaxed">
+                Absolutely. We only use high-quality, pet-safe shampoos and products that are gentle on skin and coats. Just let us know if your pet has any allergies or sensitivities.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="faq-item border-b border-gray-200">
+            <button class="faq-toggle w-full flex items-center justify-between py-5 text-left text-lg font-medium text-gray-700 hover:text-gold transition duration-300">
+              <span>What if my dog is anxious or nervous?</span>
+              <svg class="faq-icon w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+              <p class="pb-5 text-gray-600 leading-relaxed">
+                We specialise in gentle, stress-free grooming. Our team is experienced with nervous dogs and takes extra time, patience and care to make the experience as calm as possible.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="faq-item">
+            <button class="faq-toggle w-full flex items-center justify-between py-5 text-left text-lg font-medium text-gray-700 hover:text-gold transition duration-300">
+              <span>How often should my dog be groomed?</span>
+              <svg class="faq-icon w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+              <p class="pb-5 text-gray-600 leading-relaxed">
+                Most dogs benefit from a professional groom every 4–8 weeks, depending on breed and coat type. We’ll happily advise the best schedule for your pet during their visit.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="py-20 px-4 bg-gray-100">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Header -->
+<div class="text-center mb-14 reveal">
+          <div class="inline-flex items-center gap-2 text-gold font-medium text-sm mb-3">
+        <span>📍</span> Contact us
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black mb-4">
+        Book your appointment
+      </h2>
+      <p class="text-gray-600 text-base sm:text-lg max-w-xl mx-auto">
+        Fill in the form and we’ll get back to you as soon as possible.
+      </p>
+    </div>
+
+    <!-- Combined container -->
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal-scale">
+          <div class="grid grid-cols-1 md:grid-cols-2">
+
+        <!-- Contact Info (left on larger screens) -->
+        <div class="p-6 sm:p-8 lg:p-10 space-y-10 flex flex-col border-b md:border-b-0 md:border-r border-gray-100">
+
+          <!-- Address -->
+          <div class="flex gap-4">
+            <div class="shrink-0 w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
+              <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-black mb-1">Our Address</p>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Northcote, Sandy Lane<br>
+                Great Steeping, Spilsby<br>
+                United Kingdom, PE23 5PS
+              </p>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="flex gap-4">
+            <div class="shrink-0 w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
+              <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-black mb-1">Phone</p>
+              <a href="tel:+447710431422" class="text-gray-600 text-sm hover:text-gold transition">
+                +44 7710 431422
+              </a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="flex gap-4">
+            <div class="shrink-0 w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
+              <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-black mb-1">Email</p>
+              <a href="mailto:northcotegroomers@outlook.com" class="text-gray-600 text-sm hover:text-gold transition">
+                northcotegroomers@outlook.com
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Form (right on larger screens) -->
+        <div class="p-6 sm:p-8 lg:p-10">
+          <form class="space-y-5">
+
+            <!-- Name -->
+            <div>
+              <label class="block text-sm font-medium text-black mb-1.5">Name</label>
+              <input type="text" placeholder="Your full name"
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-black text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition">
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label class="block text-sm font-medium text-black mb-1.5">Phone Number</label>
+              <input type="tel" placeholder="07123 456789"
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-black text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition">
+            </div>
+
+            <!-- Service -->
+            <div>
+              <label class="block text-sm font-medium text-black mb-1.5">Service</label>
+              <select
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-black text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition">
+                <option value="">Select a service</option>
+                <option>Full Groom</option>
+                <option>Bath & Brush</option>
+                <option>Nail Trimming</option>
+                <option>De-shedding</option>
+                <option>Puppy Groom</option>
+                <option>Ear Cleaning</option>
+                <option>Teeth Brushing</option>
+              </select>
+            </div>
+
+            <!-- Date + Time -->
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-black mb-1.5">Date</label>
+                <input type="date"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-black text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-black mb-1.5">Time</label>
+                <input type="time"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-black text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition">
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label class="block text-sm font-medium text-black mb-1.5">Message</label>
+              <textarea rows="4" placeholder="Any special requests or notes about your pet..."
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-black text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition resize-none"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit"
+              class="w-full bg-gold text-black font-semibold py-3.5 rounded-full text-sm sm:text-base hover:bg-gold-500 transition shadow-md hover:shadow-lg">
+              Submit Booking Request
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-black text-white reveal">
+      <div class="mx-auto max-w-5xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-12">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-3">
+
+      <!-- Brand + Social -->
+      <div>
+        <a href="#home" class="text-xl font-bold tracking-tight">
+          Northcote <span class="text-gold">Groomers</span>
+        </a>
+        <p class="mt-4 max-w-xs text-sm text-gray-400 leading-relaxed">
+          Professional pet grooming in Great Steeping. Calm, stress-free care for happy pets.
+        </p>
+
+        <ul class="mt-8 flex gap-5">
+          <!-- Facebook -->
+          <li>
+            <a href="#" rel="noreferrer" target="_blank" class="text-gray-400 transition hover:text-gold">
+              <span class="sr-only">Facebook</span>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+          </li>
+          <!-- Instagram -->
+          <li>
+            <a href="#" rel="noreferrer" target="_blank" class="text-gray-400 transition hover:text-gold">
+              <span class="sr-only">Instagram</span>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+          </li>
+          <!-- WhatsApp -->
+          <li>
+            <a href="https://wa.me/447710431422" rel="noreferrer" target="_blank" class="text-gray-400 transition hover:text-gold">
+              <span class="sr-only">WhatsApp</span>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Links -->
+      <div class="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:col-span-2">
+
+        <!-- Services -->
+        <div>
+          <p class="font-semibold text-white">Services</p>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="#services" class="text-gray-400 transition hover:text-gold">Full Groom</a></li>
+            <li><a href="#services" class="text-gray-400 transition hover:text-gold">Bath & Brush</a></li>
+            <li><a href="#services" class="text-gray-400 transition hover:text-gold">Nail Trimming</a></li>
+            <li><a href="#services" class="text-gray-400 transition hover:text-gold">De-shedding</a></li>
+            <li><a href="#services" class="text-gray-400 transition hover:text-gold">Puppy Groom</a></li>
+            <li><a href="#services" class="text-gray-400 transition hover:text-gold">Ear Cleaning</a></li>
+            <li><a href="#services" class="text-gray-400 transition hover:text-gold">Teeth Brushing</a></li>
+          </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div>
+          <p class="font-semibold text-white">Navigate</p>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="#home" class="text-gray-400 transition hover:text-gold">Home</a></li>
+            <li><a href="#about" class="text-gray-400 transition hover:text-gold">About</a></li>
+            <li><a href="#services" class="text-gray-400 transition hover:text-gold">Services</a></li>
+            <li><a href="#gallery" class="text-gray-400 transition hover:text-gold">Gallery</a></li>
+            <li><a href="#contact" class="text-gray-400 transition hover:text-gold">Contact us</a></li>
+            <li><a href="#faq" class="text-gray-400 transition hover:text-gold">FAQs</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="text-xs text-gray-500 border-t border-gray-800 pt-8">
+      &copy; 2026 Northcote Groomers. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+
+<script>
+  const openMenu = document.getElementById('openMenu');
+  const closeMenu = document.getElementById('closeMenu');
+  const menu = document.getElementById('menu');
+  const section = document.getElementById('section');
+
+  openMenu.addEventListener('click', () => {
+    menu.classList.remove('max-md:w-0');
+    menu.classList.add('max-md:w-full');
+    section.classList.add('overflow-hidden');
+  });
+
+  closeMenu.addEventListener('click', () => {
+    menu.classList.remove('max-md:w-full');
+    menu.classList.add('max-md:w-0');
+    section.classList.remove('overflow-hidden');
+  });
+
+  // Close mobile menu when a nav link is clicked
+  document.querySelectorAll('#menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('max-md:w-full');
+      menu.classList.add('max-md:w-0');
+      section.classList.remove('overflow-hidden');
+    });
+  });
+
+  
+  // Lightbox logic
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const galleryImgs = document.querySelectorAll('.gallery-img');
+  let currentIndex = 0;
+  const images = Array.from(galleryImgs).map(img => img.src);
+
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImg.src = images[currentIndex];
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImg.src = images[currentIndex];
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentIndex];
+  }
+
+  galleryImgs.forEach(img => {
+    img.addEventListener('click', () => openLightbox(parseInt(img.dataset.index)));
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxNext').addEventListener('click', showNext);
+  document.getElementById('lightboxPrev').addEventListener('click', showPrev);
+
+  // Close on background click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Keyboard support
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
+
+  // FAQ Accordion
+  document.querySelectorAll('.faq-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.parentElement;
+      const content = item.querySelector('.faq-content');
+      const icon = button.querySelector('.faq-icon');
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+      // Close all
+      document.querySelectorAll('.faq-content').forEach(c => {
+        c.style.maxHeight = '0px';
+      });
+      document.querySelectorAll('.faq-icon').forEach(i => {
+        i.style.transform = 'rotate(0deg)';
+      });
+      document.querySelectorAll('.faq-toggle').forEach(b => {
+        b.classList.remove('text-gold', 'font-semibold');
+        b.classList.add('text-gray-700', 'font-medium');
+      });
+
+      // Open clicked (if it was closed)
+      if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+        button.classList.remove('text-gray-700', 'font-medium');
+        button.classList.add('text-gold', 'font-semibold');
+      }
+    });
+  });
+
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger, .reveal-scale');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Optional: unobserve after first reveal so it doesn't re-trigger
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Hero appears immediately on load
+document.querySelector('#home')?.classList.add('visible');
+document.querySelector('#home .reveal-stagger')?.classList.add('visible');
+</script>
+
+</body>
+</html>
