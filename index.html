@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stellar Web Studio | Free Websites for Pet Groomers</title>
-    <meta name="description" content="Black Friday Sale: Don't spend $1,000 on a grooming website. Get a professional site free. Now $5/month hosting (was $12) or $50/month Marketing Plan (was $75). Built for pet groomers.">
+    <title>Stellar Web Studio | Free Websites for Florida Small Businesses</title>
+    <meta name="description" content="Don't spend $1,000 on a website. Get a professional website free. Just $4.99/month for hosting or $9.99/month with monthly revisions. Built for Florida small businesses.">
     <meta name="theme-color" content="#b45309">
     <link rel="canonical" href="https://www.stellarwebstudio.com/">
     <link rel="icon" type="image/svg+xml" href="IMAGES/faviconstellarwebstudio.svg">
@@ -12,18 +12,18 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.stellarwebstudio.com/">
-    <meta property="og:title" content="Stellar Web Studio | Free Websites for Pet Groomers">
-    <meta property="og:description" content="Black Friday Sale: Professional websites for pet groomers — free to build. Now $5/mo hosting (58% off) or $50/mo Marketing Plan (33% off). Attract more local pet owners.">
+    <meta property="og:title" content="Stellar Web Studio | Free Websites for Florida Small Businesses">
+    <meta property="og:description" content="Professional websites for Florida small businesses — free to build. Just $4.99/month for hosting or $9.99/month with monthly revisions.">
     <meta property="og:image" content="https://www.stellarwebstudio.com/IMAGES/og-cover.png">
     <meta property="og:site_name" content="Stellar Web Studio">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Stellar Web Studio | Free Websites for Pet Groomers">
-    <meta name="twitter:description" content="Black Friday Sale: Don't spend $1,000 on your grooming website. Take one from us for free. Now $5/mo (was $12) or $50/mo Marketing Plan (was $75).">
+    <meta name="twitter:title" content="Stellar Web Studio | Free Websites for Florida Small Businesses">
+    <meta name="twitter:description" content="Don't spend $1,000 on your website. Take one from us for free. $4.99/mo hosting or $9.99/mo with monthly revisions.">
     <meta name="twitter:image" content="https://www.stellarwebstudio.com/IMAGES/og-cover.png">
 
-    <!-- Fonts - elegant, Claude-inspired -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -76,8 +76,59 @@
             font-family: Inter, system-ui, sans-serif;
             background-color: #fdfbf7;
         }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-        .faq-item.active .faq-question { color: #b45309; }
+
+        /* ========== STARRY BACKGROUND ========== */
+        .stars-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        .stars-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(1.8px 1.8px at 12% 18%, rgba(180, 120, 50, 0.55), transparent),
+                radial-gradient(1.5px 1.5px at 28% 42%, rgba(180, 120, 50, 0.45), transparent),
+                radial-gradient(2px 2px at 45% 12%, rgba(180, 120, 50, 0.5), transparent),
+                radial-gradient(1.4px 1.4px at 62% 38%, rgba(180, 120, 50, 0.4), transparent),
+                radial-gradient(1.8px 1.8px at 78% 22%, rgba(180, 120, 50, 0.55), transparent),
+                radial-gradient(1.3px 1.3px at 88% 55%, rgba(180, 120, 50, 0.4), transparent),
+                radial-gradient(2.2px 2.2px at 15% 68%, rgba(180, 120, 50, 0.5), transparent),
+                radial-gradient(1.6px 1.6px at 35% 78%, rgba(180, 120, 50, 0.45), transparent),
+                radial-gradient(1.9px 1.9px at 55% 65%, rgba(180, 120, 50, 0.55), transparent),
+                radial-gradient(1.4px 1.4px at 72% 82%, rgba(180, 120, 50, 0.4), transparent),
+                radial-gradient(2px 2px at 92% 72%, rgba(180, 120, 50, 0.5), transparent),
+                radial-gradient(1.5px 1.5px at 8% 88%, rgba(180, 120, 50, 0.45), transparent),
+                radial-gradient(1.7px 1.7px at 42% 95%, rgba(180, 120, 50, 0.4), transparent),
+                radial-gradient(2.1px 2.1px at 68% 8%, rgba(180, 120, 50, 0.5), transparent),
+                radial-gradient(1.3px 1.3px at 95% 35%, rgba(180, 120, 50, 0.4), transparent);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            opacity: 0.9;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .stars-bg > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== SMOOTH FAQ (no lag) ========== */
+        .faq-answer {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .faq-item.active .faq-answer {
+            grid-template-rows: 1fr;
+        }
+        .faq-answer-inner {
+            overflow: hidden;
+        }
+        .faq-item.active .faq-question {
+            color: #b45309;
+        }
+
         .reveal {
             opacity: 0;
             transform: translateY(18px);
@@ -151,7 +202,6 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Soft elegant cards */
         .card-warm {
             background: #fdfbf7;
             border: 1px solid #e8dfd4;
@@ -159,34 +209,6 @@
         }
         .card-warm:hover {
             box-shadow: 0 12px 32px -8px rgba(28, 24, 20, 0.1);
-        }
-
-        /* Showcase scroll */
-        .showcase-track {
-            display: flex;
-            gap: 1.5rem;
-            animation: scroll 40s linear infinite;
-        }
-        .showcase-track:hover {
-            animation-play-state: paused;
-        }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .showcase-item {
-            flex-shrink: 0;
-            width: 280px;
-            border-radius: 1rem;
-            overflow: hidden;
-            border: 1px solid #e8dfd4;
-            background: white;
-            box-shadow: 0 8px 24px -6px rgba(28,24,20,0.08);
-        }
-        .showcase-item img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
         }
     </style>
 
@@ -198,7 +220,7 @@
       "url": "https://www.stellarwebstudio.com",
       "logo": "https://www.stellarwebstudio.com/IMAGES/stellar%20web%20studio.svg",
       "email": "hello@stellarwebstudio.com",
-      "description": "Black Friday Sale: Professional free websites for pet groomers. Now $5/month hosting (was $12) or $50/month Marketing Plan (was $75) with Google Ads. Built specifically for the pet industry.",
+      "description": "Professional free websites for Florida small businesses. $4.99/month hosting or $9.99/month with monthly revisions.",
       "sameAs": [
         "https://www.linkedin.com/company/stellar-web-studio",
         "https://www.instagram.com/stellarwebstudio",
@@ -208,11 +230,6 @@
     </script>
 </head>
 <body class="bg-cream-50 text-ink-900 antialiased">
-
-<!-- ===================== ANNOUNCEMENT BANNER ===================== -->
-<div class="bg-brand text-white text-center text-sm sm:text-[0.9375rem] font-medium py-2.5 px-4 leading-snug">
-    🖤 Black Friday Sale is on — Essential $5/mo (58% off) · Marketing $50/mo (33% off). Ends December 1.
-</div>
 
 <!-- ===================== HEADER ===================== -->
 <header class="sticky top-0 z-50 flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-3 bg-cream-50/95 backdrop-blur-md border-b border-cream-200">
@@ -266,7 +283,7 @@
 </header>
 
 <!-- ===================== 1. HERO ===================== -->
-<section id="home" class="relative overflow-hidden bg-gradient-to-b from-cream-100 via-cream-50 to-cream-50">
+<section id="home" class="relative overflow-hidden bg-gradient-to-b from-cream-100 via-cream-50 to-cream-50 stars-bg">
     <div aria-hidden="true" class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2">
         <div class="bg-gradient-to-tl from-brand/15 via-orange-100/60 to-cream-200/80 blur-3xl w-[900px] h-[500px] rounded-full origin-top-left -rotate-12 -translate-x-32"></div>
     </div>
@@ -274,16 +291,16 @@
         <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16">
             <div class="max-w-3xl text-center mx-auto reveal">
                 <p class="inline-block text-sm font-semibold tracking-wide text-brand uppercase">
-                    Built for pet groomers
+                    Built for Florida small businesses
                 </p>
                 <div class="mt-5 max-w-3xl mx-auto">
                     <h1 class="font-serif font-semibold text-ink-900 text-3xl sm:text-4xl lg:text-5xl xl:text-[3.25rem] leading-[1.15] tracking-tight">
-                        Don’t Wanna Spend $1,000 on Your Grooming Business Website? <span class="text-brand">Good.</span> Take One From Us for Free.
+                        Don’t Wanna Spend $1,000 on Your Website? <span class="text-brand">Good.</span> Take One From Us for Free.
                     </h1>
                 </div>
                 <div class="mt-6 max-w-2xl mx-auto">
                     <p class="text-lg sm:text-xl text-ink-600 leading-relaxed">
-                        We help pet groomers build a professional online presence without the high design costs. <strong class="text-brand">Black Friday Sale:</strong> choose our <strong class="text-ink-800">$50/month Marketing Plan</strong> <span class="text-ink-400 line-through text-sm">(was $75)</span> or just <strong class="text-ink-800">$5/month</strong> <span class="text-ink-400 line-through text-sm">(was $12)</span> for hosting.
+                        We help Florida small businesses build a professional online presence without the high design costs. Choose pure hosting at <strong class="text-ink-800">$4.99/month</strong> or hosting + monthly revisions for just <strong class="text-ink-800">$9.99/month</strong>.
                     </p>
                 </div>
                 <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
@@ -308,26 +325,26 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             <div class="reveal">
                 <p class="text-brand font-semibold text-sm mb-1">01</p>
-                <p class="font-medium text-ink-900">Attract more local pet owners</p>
+                <p class="font-medium text-ink-900">Attract more local customers</p>
             </div>
             <div class="reveal reveal-delay-1">
                 <p class="text-brand font-semibold text-sm mb-1">02</p>
-                <p class="font-medium text-ink-900">Showcase your grooming work</p>
+                <p class="font-medium text-ink-900">Look professional online</p>
             </div>
             <div class="reveal reveal-delay-2">
                 <p class="text-brand font-semibold text-sm mb-1">03</p>
-                <p class="font-medium text-ink-900">Build trust with potential customers</p>
+                <p class="font-medium text-ink-900">Build trust with potential clients</p>
             </div>
             <div class="reveal reveal-delay-3">
                 <p class="text-brand font-semibold text-sm mb-1">04</p>
-                <p class="font-medium text-ink-900">Make booking easier</p>
+                <p class="font-medium text-ink-900">Make contact & booking easier</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ===================== WHAT'S THE CATCH ===================== -->
-<section class="relative py-16 sm:py-20 bg-cream-50">
+<section class="relative py-16 sm:py-20 bg-cream-50 stars-bg">
     <div class="mx-auto max-w-3xl px-5 sm:px-6 lg:px-8 text-center reveal">
         <p class="text-sm font-semibold text-brand mb-3 tracking-wide uppercase">The question everyone asks</p>
         <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-ink-900">
@@ -337,21 +354,22 @@
             None.
         </p>
         <div class="mt-8 space-y-5 text-lg sm:text-xl text-ink-600 leading-relaxed max-w-2xl mx-auto text-left sm:text-center">
-            <p>We simply have two ways of making this work:</p>
+            <p>We simply have two simple plans:</p>
             <div class="bg-cream-100 border border-cream-200 rounded-2xl p-6 text-left space-y-4">
                 <div class="flex gap-4">
                     <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand text-white text-sm font-bold">1</span>
-                    <p class="text-ink-700"><strong class="text-ink-900">Free website + hosting.</strong> We build your site for free. You cover the monthly hosting cost — <strong class="text-brand">now $5/mo</strong> <span class="text-ink-400 line-through text-sm">(was $12)</span> for Black Friday — so we don’t lose money.</p>
+                    <p class="text-ink-700"><strong class="text-ink-900">Free website + hosting ($4.99/mo).</strong> We build your site for free. You cover the monthly hosting so we don’t lose money.</p>
                 </div>
                 <div class="flex gap-4">
                     <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand text-white text-sm font-bold">2</span>
-                    <p class="text-ink-700"><strong class="text-ink-900">Marketing Plan.</strong> You choose our marketing services and Google Ads — that’s where we make our money. <strong class="text-brand">Black Friday: $50/mo</strong> <span class="text-ink-400 line-through text-sm">(was $75)</span>.</p>
+                    <p class="text-ink-700"><strong class="text-ink-900">Hosting + monthly revisions ($9.99/mo).</strong> Same free website and hosting, plus we make small content or design updates for you every month.</p>
                 </div>
             </div>
-            <p class="text-ink-600">No pressure to choose the Marketing Plan. Pick whatever makes you happy. You’re happy, we’re happy.</p>
+            <p class="text-ink-600">No pressure. Pick whatever makes sense for your business. You’re happy, we’re happy.</p>
         </div>
     </div>
 </section>
+
 
 <section id="work" class="relative py-16 sm:py-20 bg-cream-100 border-y border-cream-200 overflow-hidden">
     <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
@@ -409,14 +427,16 @@
     </div>
 </section>
 
+
+
 <!-- ===================== FEATURES ===================== -->
-<section id="features" class="relative py-20 sm:py-24 overflow-hidden bg-cream-50">
+<section id="features" class="relative py-20 sm:py-24 overflow-hidden bg-cream-50 stars-bg">
     <div aria-hidden="true" class="pointer-events-none absolute -left-24 top-1/3 w-80 h-80 bg-brand/10 blur-3xl rounded-full"></div>
     <div class="relative z-10 mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center reveal">
             <p class="text-sm font-semibold text-brand mb-3 tracking-wide uppercase">Everything You Need</p>
-            <h2 class="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink-900">A Professional Website Built for Pet Groomers</h2>
-            <p class="mt-4 text-lg text-ink-600 leading-relaxed">We take care of the website so you can focus on the dogs (and cats).</p>
+            <h2 class="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink-900">A Professional Website Built for Florida Small Businesses</h2>
+            <p class="mt-4 text-lg text-ink-600 leading-relaxed">We take care of the website so you can focus on running your business.</p>
         </div>
         <div class="mx-auto mt-14 sm:mt-16">
             <dl class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-2 lg:gap-y-16">
@@ -427,7 +447,7 @@
                         </div>
                         Look Professional Online
                     </dt>
-                    <dd class="mt-2 text-base text-ink-600 leading-relaxed">A clean, warm, modern website that makes your grooming business look credible and trustworthy on every device.</dd>
+                    <dd class="mt-2 text-base text-ink-600 leading-relaxed">A clean, modern website that makes your Florida business look credible and trustworthy on every device.</dd>
                 </div>
                 <div class="relative pl-16 reveal reveal-delay-2">
                     <dt class="text-base font-semibold text-ink-900">
@@ -436,7 +456,7 @@
                         </div>
                         We Build It For You
                     </dt>
-                    <dd class="mt-2 text-base text-ink-600 leading-relaxed">No templates to fight with. No complicated builders. We handle the design, setup, and technical work for your pet business.</dd>
+                    <dd class="mt-2 text-base text-ink-600 leading-relaxed">No templates to fight with. No complicated builders. We handle the design, setup, and technical work.</dd>
                 </div>
                 <div class="relative pl-16 reveal reveal-delay-1">
                     <dt class="text-base font-semibold text-ink-900">
@@ -445,7 +465,7 @@
                         </div>
                         We’ll Write Your Website
                     </dt>
-                    <dd class="mt-2 text-base text-ink-600 leading-relaxed">Clear, professional copy tailored to pet owners — services, pricing cues, trust signals, and calls to book.</dd>
+                    <dd class="mt-2 text-base text-ink-600 leading-relaxed">Clear, professional copy tailored to your services, location, and the customers you want to reach.</dd>
                 </div>
                 <div class="relative pl-16 reveal reveal-delay-2">
                     <dt class="text-base font-semibold text-ink-900">
@@ -454,25 +474,25 @@
                         </div>
                         Ready for Local Search
                     </dt>
-                    <dd class="mt-2 text-base text-ink-600 leading-relaxed">Essential SEO setup so nearby pet owners can find you when they search for a groomer.</dd>
+                    <dd class="mt-2 text-base text-ink-600 leading-relaxed">Essential SEO setup so nearby customers in Florida can find you when they search.</dd>
                 </div>
                 <div class="relative pl-16 reveal">
                     <dt class="text-base font-semibold text-ink-900">
                         <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-brand">
                             <svg class="size-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
                         </div>
-                        Easy for Customers to Book
+                        Easy for Customers to Reach You
                     </dt>
-                    <dd class="mt-2 text-base text-ink-600 leading-relaxed">Clear calls-to-action, contact forms, phone links, and service info so pet owners can reach you in one or two taps.</dd>
+                    <dd class="mt-2 text-base text-ink-600 leading-relaxed">Clear calls-to-action, contact forms, phone links, and service info so people can get in touch in one or two taps.</dd>
                 </div>
                 <div class="relative pl-16 reveal reveal-delay-1">
                     <dt class="text-base font-semibold text-ink-900">
                         <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-brand">
                             <svg class="size-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
                         </div>
-                        Hosting + Optional Marketing
+                        Hosting + Optional Revisions
                     </dt>
-                    <dd class="mt-2 text-base text-ink-600 leading-relaxed"><strong class="text-brand">Black Friday:</strong> Hosting from $5/month <span class="text-ink-400 line-through text-sm">(was $12)</span>. Or step up to the $50 Marketing Plan <span class="text-ink-400 line-through text-sm">(was $75)</span> and we’ll run Google Ads to bring in more local clients.</dd>
+                    <dd class="mt-2 text-base text-ink-600 leading-relaxed">Hosting from just $4.99/month. Or step up to $9.99/month and get monthly content & design updates included.</dd>
                 </div>
             </dl>
         </div>
@@ -489,26 +509,21 @@
 <section id="pricing" class="relative py-20 sm:py-24 bg-cream-100 border-y border-cream-200">
     <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-14 reveal">
-            <p class="text-sm font-semibold text-brand mb-3 tracking-wide uppercase">🖤 Black Friday Sale — Ends December 1</p>
+            <p class="text-sm font-semibold text-brand mb-3 tracking-wide uppercase">Simple, Transparent Pricing</p>
             <h2 class="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink-900">Choose the plan that fits</h2>
-            <p class="mt-4 text-lg text-ink-600">Website built free. Limited-time Black Friday pricing.</p>
+            <p class="mt-4 text-lg text-ink-600">Website built free. Then pick how you want to keep it running.</p>
         </div>
 
-        <!-- Pricing Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <!-- Plan 1: Essential — Black Friday $5 (was $12) -->
-            <div class="rounded-2xl border border-cream-300 bg-cream-50 p-8 shadow-sm reveal flex flex-col card-warm relative">
-                <div class="absolute -top-3 left-4">
-                    <span class="inline-flex items-center rounded-full bg-ink-900 px-3 py-1 text-xs font-semibold text-white">58% OFF</span>
-                </div>
+            <!-- Plan 1: $4.99 -->
+            <div class="rounded-2xl border border-cream-300 bg-cream-50 p-8 shadow-sm reveal flex flex-col card-warm">
                 <div class="mb-6">
                     <p class="text-sm font-semibold text-ink-500 uppercase tracking-wide">Essential</p>
-                    <div class="mt-2 flex items-baseline gap-2">
-                        <span class="text-4xl font-bold tracking-tight text-ink-900">$5</span>
+                    <div class="mt-2 flex items-baseline gap-1">
+                        <span class="text-4xl font-bold tracking-tight text-ink-900">$4.99</span>
                         <span class="text-ink-500">/month</span>
-                        <span class="text-lg text-ink-400 line-through ml-1">$12</span>
                     </div>
-                    <p class="mt-2 text-ink-600 text-sm">Everything you need to get a professional grooming website online.</p>
+                    <p class="mt-2 text-ink-600 text-sm">Everything you need to get a professional website online and keep it hosted.</p>
                 </div>
                 <ul class="space-y-3.5 flex-1 mb-8">
                     <li class="flex gap-3">
@@ -517,7 +532,7 @@
                         </span>
                         <div>
                             <p class="font-medium text-ink-900">Professional Design</p>
-                            <p class="text-sm text-ink-600">A polished website built for your grooming business.</p>
+                            <p class="text-sm text-ink-600">A polished website built for your Florida business.</p>
                         </div>
                     </li>
                     <li class="flex gap-3">
@@ -526,7 +541,7 @@
                         </span>
                         <div>
                             <p class="font-medium text-ink-900">Mobile Responsive</p>
-                            <p class="text-sm text-ink-600">Looks great on phones — where most pet owners browse.</p>
+                            <p class="text-sm text-ink-600">Looks great on phones — where most customers browse.</p>
                         </div>
                     </li>
                     <li class="flex gap-3">
@@ -544,7 +559,7 @@
                         </span>
                         <div>
                             <p class="font-medium text-ink-900">Local SEO Setup</p>
-                            <p class="text-sm text-ink-600">Essential on-page SEO so local pet owners can find you.</p>
+                            <p class="text-sm text-ink-600">Essential on-page SEO so local customers can find you.</p>
                         </div>
                     </li>
                     <li class="flex gap-3">
@@ -568,24 +583,22 @@
                 </ul>
                 <button type="button"
                         class="open-modal-btn w-full inline-flex justify-center items-center rounded-lg bg-ink-900 px-6 py-3.5 text-base font-semibold text-white transition hover:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-ink-900/30">
-                    Get Started — $5/mo
+                    Get Started — $4.99/mo
                 </button>
             </div>
 
-            <!-- Plan 2: Marketing — Black Friday $50 (was $75) -->
+            <!-- Plan 2: $9.99 -->
             <div class="rounded-2xl border-2 border-brand bg-brand/[0.04] p-8 shadow-md relative reveal flex flex-col">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 flex gap-2">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span class="inline-flex items-center rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white">Most Popular</span>
-                    <span class="inline-flex items-center rounded-full bg-ink-900 px-3 py-1 text-xs font-semibold text-white">33% OFF</span>
                 </div>
                 <div class="mb-6">
-                    <p class="text-sm font-semibold text-brand uppercase tracking-wide">Marketing Plan</p>
-                    <div class="mt-2 flex items-baseline gap-2">
-                        <span class="text-4xl font-bold tracking-tight text-ink-900">$50</span>
+                    <p class="text-sm font-semibold text-brand uppercase tracking-wide">Hosting + Revisions</p>
+                    <div class="mt-2 flex items-baseline gap-1">
+                        <span class="text-4xl font-bold tracking-tight text-ink-900">$9.99</span>
                         <span class="text-ink-500">/month</span>
-                        <span class="text-lg text-ink-400 line-through ml-1">$75</span>
                     </div>
-                    <p class="mt-2 text-ink-600 text-sm">Everything in Essential + we run ads to bring you more clients.</p>
+                    <p class="mt-2 text-ink-600 text-sm">Everything in Essential + monthly content & design updates.</p>
                 </div>
                 <ul class="space-y-3.5 flex-1 mb-8">
                     <li class="flex gap-3">
@@ -602,8 +615,8 @@
                             <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
                         </span>
                         <div>
-                            <p class="font-medium text-ink-900">Google Ads Management</p>
-                            <p class="text-sm text-ink-600">We set up and run ads targeting local pet owners searching for groomers.</p>
+                            <p class="font-medium text-ink-900">Monthly Revisions</p>
+                            <p class="text-sm text-ink-600">Small content changes, text updates, photo swaps, and minor design tweaks each month.</p>
                         </div>
                     </li>
                     <li class="flex gap-3">
@@ -611,8 +624,8 @@
                             <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
                         </span>
                         <div>
-                            <p class="font-medium text-ink-900">Ongoing Optimization</p>
-                            <p class="text-sm text-ink-600">We monitor performance and refine campaigns so your budget works harder.</p>
+                            <p class="font-medium text-ink-900">Priority Support</p>
+                            <p class="text-sm text-ink-600">Faster responses when you need help or want something updated.</p>
                         </div>
                     </li>
                     <li class="flex gap-3">
@@ -620,8 +633,8 @@
                             <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
                         </span>
                         <div>
-                            <p class="font-medium text-ink-900">Priority Support & Revisions</p>
-                            <p class="text-sm text-ink-600">Website updates, content changes, and faster help when you need it.</p>
+                            <p class="font-medium text-ink-900">Keep Your Site Fresh</p>
+                            <p class="text-sm text-ink-600">Perfect if your services, hours, or offers change regularly.</p>
                         </div>
                     </li>
                     <li class="flex gap-3">
@@ -629,28 +642,25 @@
                             <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
                         </span>
                         <div>
-                            <p class="font-medium text-ink-900">This is how we make money</p>
-                            <p class="text-sm text-ink-600">No pressure — choose it only if you want more clients.</p>
+                            <p class="font-medium text-ink-900">No long-term lock-in</p>
+                            <p class="text-sm text-ink-600">Cancel or switch plans anytime. You’re always in control.</p>
                         </div>
                     </li>
                 </ul>
                 <button type="button"
                         class="open-modal-btn w-full inline-flex justify-center items-center rounded-lg bg-brand px-6 py-3.5 text-base font-semibold text-white transition hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand/30">
-                    Get Started — $50/mo
+                    Get Started — $9.99/mo
                 </button>
             </div>
         </div>
 
-        <!-- Payment methods -->
         <div class="text-center mt-14 reveal">
             <p class="text-sm text-ink-600 mb-5">Secure monthly subscriptions managed with</p>
             <div class="flex items-center justify-center gap-10 flex-wrap">
-                <!-- Stripe Logo -->
                 <svg class="h-12 w-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" aria-label="Stripe">
                     <circle cx="512" cy="512" r="512" style="fill:#635bff"/>
                     <path d="M781.67 515.75c0-38.35-18.58-68.62-54.08-68.62s-57.23 30.26-57.23 68.32c0 45.09 25.47 67.87 62 67.87 17.83 0 31.31-4 41.5-9.74v-30c-10.19 5.09-21.87 8.24-36.7 8.24-14.53 0-27.42-5.09-29.06-22.77h73.26c.01-1.92.31-9.71.31-13.3zm-74-14.23c0-16.93 10.34-24 19.78-24 9.14 0 18.88 7 18.88 24zm-95.14-54.39a42.32 42.32 0 0 0-29.36 11.69l-1.95-9.29h-33v174.68l37.45-7.94.15-42.4c5.39 3.9 13.33 9.44 26.52 9.44 26.82 0 51.24-21.57 51.24-69.06-.12-43.45-24.84-67.12-51.05-67.12zm-9 103.22c-8.84 0-14.08-3.15-17.68-7l-.15-55.58c3.9-4.34 9.29-7.34 17.83-7.34 13.63 0 23.07 15.28 23.07 34.91.01 20.03-9.28 35.01-23.06 35.01zM496.72 438.29l37.6-8.09v-30.41l-37.6 7.94v30.56zm0 11.39h37.6v131.09h-37.6zm-40.3 11.08L454 449.68h-32.34v131.08h37.45v-88.84c8.84-11.54 23.82-9.44 28.46-7.79v-34.45c-4.78-1.8-22.31-5.1-31.15 11.08zm-74.91-43.59L345 425l-.15 120c0 22.17 16.63 38.5 38.8 38.5 12.28 0 21.27-2.25 26.22-4.94v-30.45c-4.79 1.95-28.46 8.84-28.46-13.33v-53.19h28.46v-31.91h-28.51zm-101.27 70.56c0-5.84 4.79-8.09 12.73-8.09a83.56 83.56 0 0 1 37.15 9.59V454a98.8 98.8 0 0 0-37.12-6.87c-30.41 0-50.64 15.88-50.64 42.4 0 41.35 56.93 34.76 56.93 52.58 0 6.89-6 9.14-14.38 9.14-12.43 0-28.32-5.09-40.9-12v35.66a103.85 103.85 0 0 0 40.9 8.54c31.16 0 52.58-15.43 52.58-42.25-.17-44.63-57.25-36.69-57.25-53.47z" style="fill:#fff"/>
                 </svg>
-                <!-- PayPal Logo -->
                 <svg class="h-12 w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="7.056 3 37.351 45" aria-label="PayPal">
                     <g>
                         <path fill="#002991" d="M38.914 13.35c0 5.574-5.144 12.15-12.927 12.15H18.49l-.368 2.322L16.373 39H7.056l5.605-36h15.095c5.083 0 9.082 2.833 10.555 6.77a9.687 9.687 0 0 1 .603 3.58z"></path>
@@ -667,7 +677,7 @@
 </section>
 
 <!-- ===================== HOW IT WORKS ===================== -->
-<section id="how-it-works" class="relative py-20 sm:py-24 overflow-hidden bg-cream-50">
+<section id="how-it-works" class="relative py-20 sm:py-24 overflow-hidden bg-cream-50 stars-bg">
     <div aria-hidden="true" class="pointer-events-none absolute -left-20 bottom-10 w-80 h-80 bg-brand/10 blur-3xl rounded-full"></div>
     <div class="relative z-10 mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-14 reveal">
@@ -681,7 +691,7 @@
                 </div>
                 <p class="text-sm font-semibold tracking-wide text-brand mb-2">01</p>
                 <h3 class="text-lg font-semibold text-ink-900 mb-2">Tell Us About Your Business</h3>
-                <p class="text-ink-600 text-[0.95rem] leading-relaxed">A few details about your grooming services, location, and how customers can reach you.</p>
+                <p class="text-ink-600 text-[0.95rem] leading-relaxed">A few details about your services, location in Florida, and how customers can reach you.</p>
             </div>
             <div class="rounded-2xl border border-cream-200 bg-cream-50 p-7 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-ink-900/5 reveal reveal-delay-2 card-warm">
                 <div class="mb-5 flex size-10 items-center justify-center rounded-lg bg-brand">
@@ -689,7 +699,7 @@
                 </div>
                 <p class="text-sm font-semibold tracking-wide text-brand mb-2">02</p>
                 <h3 class="text-lg font-semibold text-ink-900 mb-2">We Build Your Website</h3>
-                <p class="text-ink-600 text-[0.95rem] leading-relaxed">We design, write, and set everything up specifically for your pet business.</p>
+                <p class="text-ink-600 text-[0.95rem] leading-relaxed">We design, write, and set everything up specifically for your business.</p>
             </div>
             <div class="rounded-2xl border border-cream-200 bg-cream-50 p-7 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-ink-900/5 reveal reveal-delay-3 card-warm">
                 <div class="mb-5 flex size-10 items-center justify-center rounded-lg bg-brand">
@@ -705,7 +715,7 @@
                 </div>
                 <p class="text-sm font-semibold tracking-wide text-brand mb-2">04</p>
                 <h3 class="text-lg font-semibold text-ink-900 mb-2">Go Live</h3>
-                <p class="text-ink-600 text-[0.95rem] leading-relaxed">We launch your site. <strong class="text-brand">Black Friday:</strong> Hosting starts at $5/month — or step into the Marketing Plan at $50/mo when you’re ready.</p>
+                <p class="text-ink-600 text-[0.95rem] leading-relaxed">We launch your site. Hosting starts at $4.99/month — or add monthly revisions for $9.99.</p>
             </div>
         </div>
         <div class="mt-12 text-center reveal">
@@ -723,72 +733,116 @@
     <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-6 lg:px-8 text-center reveal">
         <h2 class="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink-900">Why Are We Offering Websites for Free?</h2>
         <div class="mt-6 space-y-4 text-lg text-ink-600 leading-relaxed">
-            <p>Getting a professional website shouldn’t require a $1,000+ upfront payment — especially when you’re focused on growing a grooming business.</p>
-            <p>We build your website at no upfront cost, then keep it hosted and supported. <strong class="text-brand">Black Friday Sale:</strong> starting at $5/month <span class="text-ink-400 line-through text-sm">(was $12)</span>. Or choose the $50 Marketing Plan <span class="text-ink-400 line-through text-sm">(was $75)</span> and we’ll actively bring you more local clients through Google Ads.</p>
-            <p>You get a professional presence without a large initial investment. We get to support pet businesses over time.</p>
+            <p>Getting a professional website shouldn’t require a $1,000+ upfront payment — especially when you’re focused on growing a small business in Florida.</p>
+            <p>We build your website at no upfront cost, then keep it hosted and supported starting at just $4.99/month. Or you can choose the $9.99 plan and get monthly revisions included.</p>
+            <p>You get a professional presence without a large initial investment. We get to support Florida small businesses over time.</p>
         </div>
         <p class="mt-8 inline-flex items-center rounded-full bg-brand px-5 py-2.5 text-base font-semibold text-white">
-            $0 upfront · From $5/month · Or $50 with marketing · Sale ends Dec 1
+            $0 upfront · From $4.99/month · Or $9.99 with monthly revisions
         </p>
     </div>
 </section>
 
 <!-- ===================== FAQ ===================== -->
-<section id="faq" class="relative py-20 sm:py-24 overflow-hidden bg-cream-50">
+<section id="faq" class="relative py-20 sm:py-24 overflow-hidden bg-cream-50 stars-bg">
     <div class="relative z-10 mx-auto max-w-3xl px-5 sm:px-6 lg:px-8">
         <h2 class="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink-900 text-center mb-12 reveal">Common Questions</h2>
         <div class="divide-y divide-cream-200 border-t border-b border-cream-200 bg-cream-50/80 backdrop-blur-sm rounded-2xl px-5 sm:px-6 reveal border border-cream-200">
             <div class="faq-item">
                 <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">Is the website really free?</button>
-                <div class="faq-answer"><p class="pb-5 text-ink-600 leading-relaxed">Yes. There is no upfront website design fee. We build your website for $0. <strong>Black Friday Sale (ends Dec 1):</strong> choose either $5/month for hosting (was $12 — 58% off) or $50/month for the Marketing Plan (was $75 — 33% off).</p></div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="pb-5 text-ink-600 leading-relaxed">Yes. There is no upfront website design fee. We build your website for $0. You then choose either $4.99/month for hosting or $9.99/month for hosting + monthly revisions.</p>
+                    </div>
+                </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">What’s the difference between $5 and $50?</button>
-                <div class="faq-answer"><p class="pb-5 text-ink-600 leading-relaxed"><strong>Black Friday pricing:</strong> $5/month (was $12) covers everything needed to get a professional website live (design, copy, SEO, hosting). $50/month (was $75) includes all of that plus ongoing Google Ads management so we can help bring more local pet owners to your business. That’s also how we make our money. Sale ends December 1.</p></div>
+                <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">What’s the difference between $4.99 and $9.99?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="pb-5 text-ink-600 leading-relaxed">$4.99/month covers everything needed to get a professional website live (design, copy, SEO, hosting). $9.99/month includes all of that plus monthly content and minor design revisions so your site stays up to date.</p>
+                    </div>
+                </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">Do I have to take the Marketing Plan?</button>
-                <div class="faq-answer"><p class="pb-5 text-ink-600 leading-relaxed">No. There is zero pressure. Many groomers just want a professional website and the $5 hosting plan (Black Friday price). The Marketing Plan is there if you want us to actively run ads and grow your client list.</p></div>
+                <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">Do I have to take the $9.99 plan?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="pb-5 text-ink-600 leading-relaxed">No. There is zero pressure. Many businesses just want a professional website and the $4.99 hosting plan. The higher plan is there if you want ongoing monthly updates without extra charges.</p>
+                    </div>
+                </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">How do payments and subscriptions work?</button>
-                <div class="faq-answer"><p class="pb-5 text-ink-600 leading-relaxed">We use Stripe and PayPal for all subscriptions. You can manage, pause, upgrade, or cancel anytime directly from your Stripe or PayPal account. You’re always in control.</p></div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="pb-5 text-ink-600 leading-relaxed">We use Stripe and PayPal for all subscriptions. You can manage, pause, upgrade, or cancel anytime directly from your Stripe or PayPal account. You’re always in control.</p>
+                    </div>
+                </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">Do I need to write the website content?</button>
-                <div class="faq-answer"><p class="pb-5 text-ink-600 leading-relaxed">No. Copywriting is included. We’ll create clear, professional content based on the information you give us about your grooming services and clients.</p></div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="pb-5 text-ink-600 leading-relaxed">No. Copywriting is included. We’ll create clear, professional content based on the information you give us about your business and services.</p>
+                    </div>
+                </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">Can I request changes?</button>
-                <div class="faq-answer"><p class="pb-5 text-ink-600 leading-relaxed">Yes. On the Marketing Plan, minor content and information updates are included. Larger changes or new pages may require a separate quote. On the Essential ($5) plan we can still help — just let us know.</p></div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="pb-5 text-ink-600 leading-relaxed">Yes. On the $9.99 plan, monthly content and minor design updates are included. On the $4.99 plan we can still help with changes — just let us know and we can quote any larger work.</p>
+                    </div>
+                </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">Can I use my own domain?</button>
-                <div class="faq-answer"><p class="pb-5 text-ink-600 leading-relaxed">Yes. You can connect your existing domain, or we can help you get one.</p></div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="pb-5 text-ink-600 leading-relaxed">Yes. You can connect your existing domain, or we can help you get one.</p>
+                    </div>
+                </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">How long does it take?</button>
-                <div class="faq-answer"><p class="pb-5 text-ink-600 leading-relaxed">Once we have the information and materials we need from you, we’ll get your website built and ready for review quickly.</p></div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="pb-5 text-ink-600 leading-relaxed">Once we have the information and materials we need from you, we’ll get your website built and ready for review quickly.</p>
+                    </div>
+                </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">What happens if I cancel?</button>
-                <div class="faq-answer"><p class="pb-5 text-ink-600 leading-relaxed">Your monthly subscription covers hosting (and marketing services if on the Marketing Plan). If you cancel via Stripe or PayPal, the service ends at the end of the current billing period.</p></div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="pb-5 text-ink-600 leading-relaxed">Your monthly subscription covers hosting (and revisions if on the $9.99 plan). If you cancel via Stripe or PayPal, the service ends at the end of the current billing period.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question w-full py-5 text-left text-base font-semibold text-ink-900 hover:text-ink-600 transition">Is this only for Florida businesses?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p class="pb-5 text-ink-600 leading-relaxed">Yes — we are currently focusing on small businesses located in the state of Florida so we can provide better local support and results.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ===================== FINAL CTA ===================== -->
-<section class="relative bg-gradient-to-br from-ink-900 via-ink-900 to-brand-dark">
+<section class="relative bg-gradient-to-br from-ink-900 via-ink-900 to-brand-dark stars-bg">
     <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-14 sm:py-16">
         <div class="text-center reveal">
             <p class="text-sm font-semibold text-brand-light mb-3 tracking-wide uppercase">Ready to Get Online?</p>
-            <h2 class="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-white">Claim Your Free Grooming Website</h2>
+            <h2 class="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-white">Claim Your Free Website</h2>
             <p class="mt-4 max-w-2xl mx-auto text-cream-300 text-base sm:text-lg leading-relaxed">
-                Tell us a bit about your business and we’ll get started. No large upfront payment. No DIY. <strong class="text-white">Black Friday:</strong> professional website from $5/month — or grow faster with the $50 Marketing Plan.
+                Tell us a bit about your Florida business and we’ll get started. No large upfront payment. No DIY. Just a professional website from $4.99/month — or add monthly revisions for $9.99.
             </p>
             <p class="mt-3 text-sm text-cream-400">
-                $0 upfront · From $5/month (58% off) · Or $50 with Google Ads (33% off) · Sale ends Dec 1
+                $0 upfront · From $4.99/month · Or $9.99 with monthly revisions · Managed with Stripe & PayPal
             </p>
             <div class="mt-8">
                 <button type="button"
@@ -797,18 +851,6 @@
                 </button>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- ===================== FOUNDER'S NOTE ===================== -->
-<section id="founder" class="relative py-16 sm:py-20 overflow-hidden bg-cream-50">
-    <div class="relative z-10 mx-auto max-w-2xl px-5 sm:px-6 lg:px-8 text-center reveal">
-        <p class="text-sm font-semibold text-brand mb-3 tracking-wide uppercase">Why Stellar Exists</p>
-        <h2 class="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-ink-900 mb-5">A simpler way for pet businesses to get online</h2>
-        <p class="text-ink-600 leading-relaxed">
-            We make it easier for pet groomers and small pet businesses to get a professional website without the big upfront cost. We build it for you, then handle hosting and optional marketing. Black Friday: starting at just $5/month.
-        </p>
-        <p class="mt-5 text-sm font-semibold text-ink-900">— Ayush, Founder</p>
     </div>
 </section>
 
@@ -821,7 +863,7 @@
                     <img src="IMAGES/stellar web studio.svg" alt="Stellar Web Studio Logo" width="32" height="32" class="h-8 w-auto" decoding="async">
                     <span class="text-xl font-semibold text-ink-900 tracking-tight">Stellar Web Studio</span>
                 </a>
-                <p class="mt-4 text-sm text-ink-600 leading-relaxed">Free websites for pet groomers & the pet industry</p>
+                <p class="mt-4 text-sm text-ink-600 leading-relaxed">Free websites for Florida small businesses</p>
                 <div class="flex items-center gap-3 mt-4">
                     <a href="https://www.linkedin.com/company/stellar-web-studio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
                        class="flex h-9 w-9 items-center justify-center rounded-lg border border-cream-300 bg-cream-50 text-ink-700 transition hover:bg-brand hover:border-brand hover:text-white">
@@ -874,7 +916,7 @@
         </div>
         <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="px-6 pb-6 space-y-4">
             <input type="hidden" name="access_key" value="2c9d2ec3-5e81-43c5-ae41-0ed8f8dad0de">
-            <input type="hidden" name="subject" value="New Free Website Request — Stellar Web Studio (Pet)">
+            <input type="hidden" name="subject" value="New Free Website Request — Stellar Web Studio (Florida)">
             <input type="hidden" name="from_name" value="Stellar Web Studio Contact Form">
             <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
@@ -888,27 +930,27 @@
                 <label for="email" class="block text-sm font-medium text-ink-800 mb-1.5">Email</label>
                 <input type="email" id="email" name="email" required
                        class="w-full rounded-lg border border-cream-300 bg-cream-50 px-4 py-2.5 text-ink-900 placeholder:text-ink-400 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand"
-                       placeholder="jane@grooming.com">
+                       placeholder="jane@business.com">
             </div>
             <div>
                 <label for="business" class="block text-sm font-medium text-ink-800 mb-1.5">Business name</label>
                 <input type="text" id="business" name="business" required
                        class="w-full rounded-lg border border-cream-300 bg-cream-50 px-4 py-2.5 text-ink-900 placeholder:text-ink-400 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand"
-                       placeholder="Paws & Polish Grooming">
+                       placeholder="Your Business Name">
             </div>
             <div>
                 <label for="plan" class="block text-sm font-medium text-ink-800 mb-1.5">Preferred plan</label>
                 <select id="plan" name="plan"
                         class="w-full rounded-lg border border-cream-300 bg-cream-50 px-4 py-2.5 text-ink-900 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand">
-                    <option value="5">$5/mo — Essential (Hosting) · 58% OFF Black Friday</option>
-                    <option value="50" selected>$50/mo — Marketing Plan (Hosting + Google Ads) · 33% OFF Black Friday</option>
+                    <option value="4.99">$4.99/mo — Essential (Hosting)</option>
+                    <option value="9.99" selected>$9.99/mo — Hosting + Monthly Revisions</option>
                 </select>
             </div>
             <div>
                 <label for="message" class="block text-sm font-medium text-ink-800 mb-1.5">Tell us about your business <span class="text-ink-500 font-normal">(optional)</span></label>
                 <textarea id="message" name="message" rows="3"
                           class="w-full rounded-lg border border-cream-300 bg-cream-50 px-4 py-2.5 text-ink-900 placeholder:text-ink-400 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand resize-y"
-                          placeholder="What services you offer, location, anything else we should know..."></textarea>
+                          placeholder="What services you offer, location in Florida, anything else we should know..."></textarea>
             </div>
             <button type="submit"
                     class="w-full inline-flex justify-center items-center gap-x-2 rounded-lg bg-brand px-6 py-3.5 text-base font-semibold text-white transition hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand/30">
@@ -935,19 +977,20 @@
         els.forEach(function (el) { observer.observe(el); });
     }
 
-    // FAQ accordion
+    // Smooth FAQ (grid method – no lag)
     document.querySelectorAll('.faq-question').forEach(function (btn) {
         btn.addEventListener('click', function () {
             const item = btn.closest('.faq-item');
-            const answer = item.querySelector('.faq-answer');
             const isOpen = item.classList.contains('active');
+
+            // Close all
             document.querySelectorAll('.faq-item').forEach(function (i) {
                 i.classList.remove('active');
-                i.querySelector('.faq-answer').style.maxHeight = null;
             });
+
+            // Open clicked one (if it was closed)
             if (!isOpen) {
                 item.classList.add('active');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
             }
         });
     });
